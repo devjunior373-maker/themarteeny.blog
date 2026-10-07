@@ -1,34 +1,26 @@
 @import "tailwindcss";
 
 @theme {
-  --font-serif: 'Newsreader', Georgia, Cambria, 'Times New Roman', serif;
-  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
-
-  /* Paleta sóbria e madura de 3 cores primárias:
-     1. Neutros sofisticados (Off-white / Grafite Profundo)
-     2. Superfícies Estruturadas (Branco puro / Ardósia escura)
-     3. Tom de destaque sóbrio (Azul Tinteiro / Deep Ink Slate) */
-  --color-brandBlue: #1e3a8a;
-  --color-brand-blue: #1e3a8a;
+  --color-brandBlue: #0066ff;
+  --color-brand-blue: #0066ff;
 }
 
-@layer base {
-  body {
-    font-family: var(--font-sans);
-  }
+html {
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+}
 
-  h1, h2, h3, .font-serif {
-    font-family: var(--font-serif);
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-/* Utilitários de acabamento editorial */
-.border-subtle {
-  border-color: rgba(229, 231, 235, 0.9);
+.animate-fadeIn {
+  animation: fadeIn 0.25s ease-out forwards;
 }
-
-.dark .border-subtle {
-  border-color: rgba(38, 41, 49, 0.9);
-}
-

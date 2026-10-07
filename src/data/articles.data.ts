@@ -123,3 +123,111 @@ export const ARTICLES_DATA: Article[] = [
     excerpt: 'Novas diretrizes para controle de acesso granular e sincronização em tempo real facilitam construção de arquiteturas seguras.',
   },
 ];
+
+export function slugify(text: string): string {
+  return text
+    .toString()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+export function getArticleBySlug(slug: string): Article | undefined {
+  if (!slug) return undefined;
+  const cleanSlug = slug.toLowerCase().trim();
+  return ARTICLES_DATA.find((a) => a.id.toLowerCase() === cleanSlug);
+}
+
+export function getArticlesByCategory(categorySlug: string): { categoryName: string; articles: Article[] } {
+  const cleanSlug = slugify(categorySlug);
+  
+  // Mapeamento semântico amigável
+  const categoryMap: Record<string, { name: string; filter: (a: Article) => boolean }> = {
+    startups: {
+      name: 'Startups',
+      filter: (a) => a.id.includes('vite') || a.id.includes('supabase') || a.category.toLowerCase().includes('web') || a.category.toLowerCase().includes('cloud') || true,
+    },
+    noticias: {
+      name: 'Notícias',
+      filter: (a) => a.id.includes('apple') || a.id.includes('m4') || a.id.includes('opera') || true,
+    },
+    eventos: {
+      name: 'Eventos',
+      filter: (a) => a.id.includes('announcement') || a.id.includes('released') || true,
+    },
+    artigos: {
+      name: 'Artigos',
+      filter: (a) => true,
+    },
+    mundo: {
+      name: 'Mundo',
+      filter: (a) => true,
+    },
+    'desenvolvimento-web': {
+      name: 'Desenvolvimento Web',
+      filter: (a) => slugify(a.category).includes('desenvolvimento') || slugify(a.category).includes('web') || a.id.includes('web') || a.id.includes('vite'),
+    },
+    'inteligencia-artificial': {
+      name: 'Inteligência Artificial',
+      filter: (a) => slugify(a.category).includes('ia') || slugify(a.category).includes('artificial') || a.id.includes('ia') || a.id.includes('m4'),
+    },
+    'hardware-macbooks': {
+      name: 'Hardware & MacBooks',
+      filter: (a) => slugify(a.category).includes('maca') || slugify(a.category).includes('hardware') || a.id.includes('macbook') || a.id.includes('m4'),
+    },
+    'games-emuladores': {
+      name: 'Games & Emuladores',
+      filter: (a) => slugify(a.category).includes('android') || a.id.includes('ps4'),
+    },
+    'seguranca-cloud': {
+      name: 'Segurança & Cloud',
+      filter: (a) => slugify(a.category).includes('seguranca') || slugify(a.category).includes('cloud') || a.id.includes('supabase'),
+    },
+    maca: {
+      name: 'Apple',
+      filter: (a) => slugify(a.category) === 'maca' || a.id.includes('apple') || a.id.includes('macbook'),
+    },
+    android: {
+      name: 'Android',
+      filter: (a) => slugify(a.category) === 'android' || a.id.includes('phone') || a.id.includes('ps4'),
+    },
+  };
+
+  const matchedConfig = categoryMap[cleanSlug];
+  if (matchedConfig) {
+    const list = ARTICLES_DATA.filter(matchedConfig.filter);
+    return {
+      categoryName: matchedConfig.name,
+      articles: list.length > 0 ? list : ARTICLES_DATA,
+    };
+  }
+
+  // Busca genérica por categoria
+  const matchedArticles = ARTICLES_DATA.filter(
+    (a) => slugify(a.category) === cleanSlug || slugify(a.category).includes(cleanSlug)
+  );
+
+  const formattedName = categorySlug
+    .split('-')
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+
+  return {
+    categoryName: formattedName,
+    articles: matchedArticles.length > 0 ? matchedArticles : ARTICLES_DATA.slice(0, 6),
+  };
+}
+
+export function getArticlesByAuthor(authorSlug: string): { authorName: string; articles: Article[] } {
+  const cleanSlug = slugify(authorSlug);
+  const matched = ARTICLES_DATA.filter((a) => slugify(a.author) === cleanSlug);
+  const foundAuthorName = matched[0]?.author || authorSlug.split('-').map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+  return {
+    authorName: foundAuthorName,
+    articles: matched.length > 0 ? matched : ARTICLES_DATA.slice(0, 4),
+  };
+}
+
