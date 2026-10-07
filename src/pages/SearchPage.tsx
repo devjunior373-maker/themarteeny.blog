@@ -2,11 +2,27 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import { ARTICLES_DATA, Article } from '../data/articles.data';
 import Sidebar from '../components/Sidebar';
+import { useDocumentTitle } from '../hooks/useDocumentTitle';
+import { useMetaDescription } from '../hooks/useMetaDescription';
+import { useCanonical } from '../hooks/useCanonical';
 
 export default function SearchPage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const queryParam = searchParams.get('q') || '';
   const [searchInput, setSearchInput] = useState(queryParam);
+
+  const searchTitle = queryParam.trim()
+    ? `Pesquisa: ${queryParam.trim()} | The Marteeny`
+    : 'Pesquisar | The Marteeny';
+  useDocumentTitle(searchTitle);
+
+  const searchDescription = queryParam.trim()
+    ? `Resultados de pesquisa por ${queryParam.trim()} no The Marteeny.`
+    : 'Pesquise notícias, artigos, dicas e conteúdos sobre tecnologia no The Marteeny.';
+  useMetaDescription(searchDescription);
+
+  // A canonical oficial é sempre https://themarteeny.pages.dev/pesquisa sem parâmetros nem alias
+  useCanonical('https://themarteeny.pages.dev/pesquisa');
 
   useEffect(() => {
     setSearchInput(queryParam);

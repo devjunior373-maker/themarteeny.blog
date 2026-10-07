@@ -1,7 +1,15 @@
 import { Link } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
+import { useDocumentTitle } from '../hooks/useDocumentTitle';
+import { useMetaDescription } from '../hooks/useMetaDescription';
+import { useCanonical } from '../hooks/useCanonical';
 
 export default function NotFoundPage() {
+  useDocumentTitle('Página não encontrada | The Marteeny');
+  useMetaDescription('A página que você procura não foi encontrada no The Marteeny. Volte à página inicial para continuar navegando.');
+  // Páginas 404 não devem possuir URL canônica para não sugerir indexação
+  useCanonical(null);
+
   return (
     <main className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-8 sm:py-12">
       {/* BREADCRUMB */}

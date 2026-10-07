@@ -1,8 +1,15 @@
 import { Link } from 'react-router-dom';
 import { ARTICLES_DATA } from '../data/articles.data';
 import Sidebar from '../components/Sidebar';
+import { useDocumentTitle } from '../hooks/useDocumentTitle';
+import { useMetaDescription } from '../hooks/useMetaDescription';
+import { useCanonical } from '../hooks/useCanonical';
 
 export default function HomePage() {
+  useDocumentTitle('The Marteeny | Tecnologia, IA, Apps, Games e muito mais');
+  useMetaDescription('Notícias, artigos, dicas e conteúdos sobre tecnologia, inteligência artificial, apps, games, ferramentas e inovação no The Marteeny.');
+  useCanonical('https://themarteeny.pages.dev/');
+
   return (
     <main className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6">
       {/* ESPAÇO DE ANÚNCIO DO GOOGLE (Área limpa e preparada, sem texto) */}

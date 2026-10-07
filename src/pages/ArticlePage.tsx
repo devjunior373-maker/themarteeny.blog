@@ -2,11 +2,23 @@ import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { getArticleBySlug, ARTICLES_DATA, slugify } from '../data/articles.data';
 import Sidebar from '../components/Sidebar';
+import { useDocumentTitle } from '../hooks/useDocumentTitle';
+import { useMetaDescription } from '../hooks/useMetaDescription';
+import { useCanonical } from '../hooks/useCanonical';
 
 export default function ArticlePage() {
   const { slug } = useParams<{ slug: string }>();
   const article = getArticleBySlug(slug || '');
   const [copied, setCopied] = useState(false);
+
+  useDocumentTitle(article ? `${article.title} | The Marteeny` : 'Artigo não encontrado | The Marteeny');
+  useMetaDescription(
+    article
+      ? (article.excerpt || `Confira no The Marteeny o artigo completo sobre ${article.title}. Análises, tutoriais e novidades de tecnologia.`)
+      : 'O artigo solicitado não foi encontrado no The Marteeny. Explore outros conteúdos e novidades de tecnologia em nossa página inicial.'
+  );
+  // Canonical oficial de artigos é sempre https://themarteeny.pages.dev/blog/:slug
+  useCanonical(article ? `https://themarteeny.pages.dev/blog/${article.id}` : null);
 
   if (!article) {
     return (

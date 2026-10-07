@@ -1,10 +1,21 @@
 import { useParams, Link } from 'react-router-dom';
 import { getArticlesByCategory, slugify } from '../data/articles.data';
 import Sidebar from '../components/Sidebar';
+import { useDocumentTitle } from '../hooks/useDocumentTitle';
+import { useMetaDescription } from '../hooks/useMetaDescription';
+import { useCanonical } from '../hooks/useCanonical';
 
 export default function CategoryPage() {
   const { slug } = useParams<{ slug: string }>();
   const { categoryName, articles } = getArticlesByCategory(slug || '');
+
+  useDocumentTitle(categoryName ? `${categoryName} | The Marteeny` : 'Categoria não encontrada | The Marteeny');
+  useMetaDescription(
+    categoryName
+      ? `Confira as últimas notícias, análises e conteúdos publicados na categoria ${categoryName} do The Marteeny.`
+      : 'A categoria solicitada não foi encontrada no The Marteeny. Explore outras categorias e matérias em nosso portal.'
+  );
+  useCanonical(slug ? `https://themarteeny.pages.dev/categoria/${slug}` : null);
 
   return (
     <main className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-8">

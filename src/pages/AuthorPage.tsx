@@ -1,10 +1,21 @@
 import { useParams, Link } from 'react-router-dom';
 import { getArticlesByAuthor } from '../data/articles.data';
 import Sidebar from '../components/Sidebar';
+import { useDocumentTitle } from '../hooks/useDocumentTitle';
+import { useMetaDescription } from '../hooks/useMetaDescription';
+import { useCanonical } from '../hooks/useCanonical';
 
 export default function AuthorPage() {
   const { slug } = useParams<{ slug: string }>();
   const { authorName, articles } = getArticlesByAuthor(slug || '');
+
+  useDocumentTitle(slug && authorName ? `Artigos de ${authorName} | The Marteeny` : 'Autor não encontrado | The Marteeny');
+  useMetaDescription(
+    slug && authorName
+      ? `Confira os artigos publicados por ${authorName} no The Marteeny.`
+      : 'O autor procurado não foi encontrado no The Marteeny. Explore matérias e outros autores em nosso portal.'
+  );
+  useCanonical(slug && authorName ? `https://themarteeny.pages.dev/autor/${slug}` : null);
 
   return (
     <main className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-8">
