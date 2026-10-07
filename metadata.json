@@ -1,0 +1,6 @@
+{
+  "name": "Themarteeny",
+  "description": "Portal de referência em tecnologia, notícias atualizadas, artigos de desenvolvimento e entretenimento digital.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
