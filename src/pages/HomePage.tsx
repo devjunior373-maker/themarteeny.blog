@@ -4,11 +4,41 @@ import Sidebar from '../components/Sidebar';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { useMetaDescription } from '../hooks/useMetaDescription';
 import { useCanonical } from '../hooks/useCanonical';
+import { useJsonLd, BASE_URL, SITE_NAME, LOGO_URL } from '../hooks/useJsonLd';
 
 export default function HomePage() {
   useDocumentTitle('The Marteeny | Tecnologia, IA, Apps, Games e muito mais');
   useMetaDescription('Notícias, artigos, dicas e conteúdos sobre tecnologia, inteligência artificial, apps, games, ferramentas e inovação no The Marteeny.');
   useCanonical('https://themarteeny.pages.dev/');
+
+  // Dados Estruturados JSON-LD: WebSite com SearchAction
+  useJsonLd('website', {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: SITE_NAME,
+    url: `${BASE_URL}/`,
+    description: 'Notícias, artigos, dicas e conteúdos sobre tecnologia, inteligência artificial, apps, games, ferramentas e inovação no The Marteeny.',
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: `${BASE_URL}/pesquisa?q={search_term_string}`,
+      },
+      'query-input': 'required name=search_term_string',
+    },
+  });
+
+  // Dados Estruturados JSON-LD: Organization
+  useJsonLd('organization', {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: SITE_NAME,
+    url: `${BASE_URL}/`,
+    logo: {
+      '@type': 'ImageObject',
+      url: LOGO_URL,
+    },
+  });
 
   return (
     <main className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6">
@@ -21,7 +51,7 @@ export default function HomePage() {
       <section aria-label="Notícias em Destaque" className="mb-6 sm:mb-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-1.5 sm:gap-2 items-stretch">
           
-          {/* LADO ESQUERDO: Card Principal Grande */}
+          {/* LADO ESQUERDO: Card Principal Grande (LCP candidate -> eager + fetchpriority="high") */}
           <Link
             to={`/blog/${ARTICLES_DATA[0].id}`}
             className="relative group overflow-hidden h-[260px] xs:h-[320px] sm:h-[400px] lg:h-full min-h-[260px] sm:min-h-[360px] lg:min-h-[462px] flex flex-col justify-end bg-gray-950 cursor-pointer shadow-xs active:scale-[0.99] transition-transform block"
@@ -29,7 +59,12 @@ export default function HomePage() {
             <div className="absolute inset-0 z-0">
               <img
                 src={ARTICLES_DATA[0].image}
-                alt={ARTICLES_DATA[0].title}
+                alt={`Imagem de destaque: ${ARTICLES_DATA[0].title}`}
+                width={800}
+                height={500}
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/45 to-transparent"></div>
@@ -61,7 +96,11 @@ export default function HomePage() {
               <div className="absolute inset-0 z-0">
                 <img
                   src={ARTICLES_DATA[1].image}
-                  alt={ARTICLES_DATA[1].title}
+                  alt={`Destaque: ${ARTICLES_DATA[1].title}`}
+                  width={400}
+                  height={228}
+                  loading="eager"
+                  decoding="async"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent"></div>
@@ -90,7 +129,11 @@ export default function HomePage() {
               <div className="absolute inset-0 z-0">
                 <img
                   src={ARTICLES_DATA[2].image}
-                  alt={ARTICLES_DATA[2].title}
+                  alt={`Destaque: ${ARTICLES_DATA[2].title}`}
+                  width={400}
+                  height={228}
+                  loading="eager"
+                  decoding="async"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent"></div>
@@ -119,7 +162,11 @@ export default function HomePage() {
               <div className="absolute inset-0 z-0">
                 <img
                   src={ARTICLES_DATA[3].image}
-                  alt={ARTICLES_DATA[3].title}
+                  alt={`Destaque: ${ARTICLES_DATA[3].title}`}
+                  width={400}
+                  height={228}
+                  loading="eager"
+                  decoding="async"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent"></div>
@@ -148,7 +195,11 @@ export default function HomePage() {
               <div className="absolute inset-0 z-0">
                 <img
                   src={ARTICLES_DATA[4].image}
-                  alt={ARTICLES_DATA[4].title}
+                  alt={`Destaque: ${ARTICLES_DATA[4].title}`}
+                  width={400}
+                  height={228}
+                  loading="eager"
+                  decoding="async"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent"></div>
@@ -192,7 +243,7 @@ export default function HomePage() {
                 to="/categoria/noticias"
                 className="text-xs sm:text-sm font-medium text-gray-400 hover:text-brandBlue transition-colors pb-1 min-h-[36px] flex items-center"
               >
-                View all
+                Ver todas as notícias
               </Link>
             </div>
 
@@ -207,7 +258,11 @@ export default function HomePage() {
                 <div className="absolute inset-0 z-0">
                   <img
                     src={ARTICLES_DATA[0].image}
-                    alt={ARTICLES_DATA[0].title}
+                    alt={`Tecnologia em foco: ${ARTICLES_DATA[0].title}`}
+                    width={800}
+                    height={450}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/45 to-transparent"></div>
@@ -245,7 +300,11 @@ export default function HomePage() {
                   <div className="relative w-full aspect-[16/10] bg-gray-900 overflow-hidden shadow-xs">
                     <img
                       src={ARTICLES_DATA[1].image}
-                      alt={ARTICLES_DATA[1].title}
+                      alt={`Imagem do artigo: ${ARTICLES_DATA[1].title}`}
+                      width={380}
+                      height={238}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
                     />
                     <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
@@ -278,7 +337,11 @@ export default function HomePage() {
                   <div className="relative w-full aspect-[16/10] bg-gray-900 overflow-hidden shadow-xs">
                     <img
                       src={ARTICLES_DATA[2].image}
-                      alt={ARTICLES_DATA[2].title}
+                      alt={`Imagem do artigo: ${ARTICLES_DATA[2].title}`}
+                      width={380}
+                      height={238}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
                     />
                     <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
@@ -311,7 +374,11 @@ export default function HomePage() {
                   <div className="relative w-full aspect-[16/10] bg-gray-900 overflow-hidden shadow-xs">
                     <img
                       src={ARTICLES_DATA[4].image}
-                      alt={ARTICLES_DATA[4].title}
+                      alt={`Imagem do artigo: ${ARTICLES_DATA[4].title}`}
+                      width={380}
+                      height={238}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
                     />
                     <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
@@ -358,7 +425,7 @@ export default function HomePage() {
                   to="/categoria/artigos"
                   className="text-xs font-semibold text-gray-500 hover:text-brandBlue dark:text-gray-400 transition-colors pb-1 min-h-[36px] flex items-center"
                 >
-                  Ver tudo
+                  Ver todos os artigos
                 </Link>
               </div>
 
@@ -370,7 +437,11 @@ export default function HomePage() {
                 <div className="relative overflow-hidden aspect-[16/10] bg-gray-100 dark:bg-gray-900 block">
                   <img
                     src={ARTICLES_DATA[1].image}
-                    alt={ARTICLES_DATA[1].title}
+                    alt={`Dicas e Truques: ${ARTICLES_DATA[1].title}`}
+                    width={500}
+                    height={312}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute bottom-2.5 left-2.5 z-10">
@@ -393,10 +464,14 @@ export default function HomePage() {
                   to={`/blog/${ARTICLES_DATA[2].id}`}
                   className="py-2.5 sm:py-3 flex items-center space-x-3 group cursor-pointer active:bg-gray-100/60 dark:active:bg-gray-900/60 transition-colors rounded-xs block"
                 >
-                  <div className="w-20 h-16 sm:w-24 sm:h-18 flex-shrink-0 overflow-hidden bg-gray-100 dark:bg-gray-900">
+                  <div className="w-20 h-16 sm:w-24 sm:h-18 flex-shrink-0 overflow-hidden bg-gray-100 dark:bg-gray-900 aspect-[4/3]">
                     <img
                       src={ARTICLES_DATA[2].image}
-                      alt={ARTICLES_DATA[2].title}
+                      alt={`Miniatura: ${ARTICLES_DATA[2].title}`}
+                      width={96}
+                      height={72}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>
@@ -414,10 +489,14 @@ export default function HomePage() {
                   to={`/blog/${ARTICLES_DATA[3].id}`}
                   className="py-2.5 sm:py-3 flex items-center space-x-3 group cursor-pointer active:bg-gray-100/60 dark:active:bg-gray-900/60 transition-colors rounded-xs block"
                 >
-                  <div className="w-20 h-16 sm:w-24 sm:h-18 flex-shrink-0 overflow-hidden bg-gray-100 dark:bg-gray-900">
+                  <div className="w-20 h-16 sm:w-24 sm:h-18 flex-shrink-0 overflow-hidden bg-gray-100 dark:bg-gray-900 aspect-[4/3]">
                     <img
                       src={ARTICLES_DATA[3].image}
-                      alt={ARTICLES_DATA[3].title}
+                      alt={`Miniatura: ${ARTICLES_DATA[3].title}`}
+                      width={96}
+                      height={72}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>
@@ -435,10 +514,14 @@ export default function HomePage() {
                   to={`/blog/${ARTICLES_DATA[4].id}`}
                   className="py-2.5 sm:py-3 flex items-center space-x-3 group cursor-pointer active:bg-gray-100/60 dark:active:bg-gray-900/60 transition-colors rounded-xs block"
                 >
-                  <div className="w-20 h-16 sm:w-24 sm:h-18 flex-shrink-0 overflow-hidden bg-gray-100 dark:bg-gray-900">
+                  <div className="w-20 h-16 sm:w-24 sm:h-18 flex-shrink-0 overflow-hidden bg-gray-100 dark:bg-gray-900 aspect-[4/3]">
                     <img
                       src={ARTICLES_DATA[4].image}
-                      alt={ARTICLES_DATA[4].title}
+                      alt={`Miniatura: ${ARTICLES_DATA[4].title}`}
+                      width={96}
+                      height={72}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>
@@ -464,7 +547,7 @@ export default function HomePage() {
                   to="/categoria/startups"
                   className="text-xs font-semibold text-gray-500 hover:text-brandBlue dark:text-gray-400 transition-colors pb-1 min-h-[36px] flex items-center"
                 >
-                  Ver tudo
+                  Ver todos os projetos
                 </Link>
               </div>
 
@@ -477,6 +560,10 @@ export default function HomePage() {
                   <img
                     src="https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?auto=format&fit=crop&w=800&q=80"
                     alt="10 coisas incríveis para experimentar no seu PS4 agora mesmo"
+                    width={500}
+                    height={312}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute bottom-2.5 left-2.5 z-10">
@@ -499,10 +586,14 @@ export default function HomePage() {
                   to="/blog/current-trends-tablet-applications"
                   className="py-2.5 sm:py-3 flex items-center space-x-3 group cursor-pointer active:bg-gray-100/60 dark:active:bg-gray-900/60 transition-colors rounded-xs block"
                 >
-                  <div className="w-20 h-16 sm:w-24 sm:h-18 flex-shrink-0 overflow-hidden bg-gray-100 dark:bg-gray-900">
+                  <div className="w-20 h-16 sm:w-24 sm:h-18 flex-shrink-0 overflow-hidden bg-gray-100 dark:bg-gray-900 aspect-[4/3]">
                     <img
                       src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=600&q=80"
                       alt="Tendências atuais e perspectivas futuras para aplicativos em tablets"
+                      width={96}
+                      height={72}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>
@@ -520,10 +611,14 @@ export default function HomePage() {
                   to="/blog/apple-jul-announcement-macbooks"
                   className="py-2.5 sm:py-3 flex items-center space-x-3 group cursor-pointer active:bg-gray-100/60 dark:active:bg-gray-900/60 transition-colors rounded-xs block"
                 >
-                  <div className="w-20 h-16 sm:w-24 sm:h-18 flex-shrink-0 overflow-hidden bg-gray-100 dark:bg-gray-900">
+                  <div className="w-20 h-16 sm:w-24 sm:h-18 flex-shrink-0 overflow-hidden bg-gray-100 dark:bg-gray-900 aspect-[4/3]">
                     <img
                       src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=600&q=80"
                       alt="Anúncio de julho da Apple: que atualização para os MacBooks"
+                      width={96}
+                      height={72}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>
@@ -541,10 +636,14 @@ export default function HomePage() {
                   to={`/blog/${ARTICLES_DATA[0].id}`}
                   className="py-2.5 sm:py-3 flex items-center space-x-3 group cursor-pointer active:bg-gray-100/60 dark:active:bg-gray-900/60 transition-colors rounded-xs block"
                 >
-                  <div className="w-20 h-16 sm:w-24 sm:h-18 flex-shrink-0 overflow-hidden bg-gray-100 dark:bg-gray-900">
+                  <div className="w-20 h-16 sm:w-24 sm:h-18 flex-shrink-0 overflow-hidden bg-gray-100 dark:bg-gray-900 aspect-[4/3]">
                     <img
                       src={ARTICLES_DATA[0].image}
-                      alt={ARTICLES_DATA[0].title}
+                      alt={`Miniatura: ${ARTICLES_DATA[0].title}`}
+                      width={96}
+                      height={72}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>
@@ -572,7 +671,7 @@ export default function HomePage() {
                 to="/categoria/artigos"
                 className="text-xs font-semibold text-gray-500 hover:text-brandBlue dark:text-gray-400 transition-colors pb-1 flex items-center gap-1 min-h-[36px]"
               >
-                <span>Ver tudo</span>
+                <span>Ver mais matérias</span>
                 <i className="fa-solid fa-angle-right text-[10px]"></i>
               </Link>
             </div>
@@ -588,7 +687,11 @@ export default function HomePage() {
                 <div className="sm:col-span-5 relative overflow-hidden aspect-[16/10] bg-gray-100 dark:bg-gray-900 block">
                   <img
                     src={ARTICLES_DATA[0].image}
-                    alt={ARTICLES_DATA[0].title}
+                    alt={`Artigo de leitura: ${ARTICLES_DATA[0].title}`}
+                    width={480}
+                    height={300}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute bottom-2 left-2 z-10">
@@ -622,7 +725,11 @@ export default function HomePage() {
                 <div className="sm:col-span-5 relative overflow-hidden aspect-[16/10] bg-gray-100 dark:bg-gray-900 block">
                   <img
                     src={ARTICLES_DATA[1].image}
-                    alt={ARTICLES_DATA[1].title}
+                    alt={`Artigo de leitura: ${ARTICLES_DATA[1].title}`}
+                    width={480}
+                    height={300}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute bottom-2 left-2 z-10">
@@ -656,7 +763,11 @@ export default function HomePage() {
                 <div className="sm:col-span-5 relative overflow-hidden aspect-[16/10] bg-gray-100 dark:bg-gray-900 block">
                   <img
                     src={ARTICLES_DATA[2].image}
-                    alt={ARTICLES_DATA[2].title}
+                    alt={`Artigo de leitura: ${ARTICLES_DATA[2].title}`}
+                    width={480}
+                    height={300}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute bottom-2 left-2 z-10">

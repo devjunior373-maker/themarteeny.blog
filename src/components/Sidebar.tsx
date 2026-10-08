@@ -109,7 +109,11 @@ export default function Sidebar() {
               <div className="absolute inset-0 z-0">
                 <img
                   src={popularArticles[0].image}
-                  alt={popularArticles[0].title}
+                  alt={`Capa do artigo popular: ${popularArticles[0].title}`}
+                  width={400}
+                  height={250}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/45 to-transparent"></div>
@@ -143,7 +147,11 @@ export default function Sidebar() {
               <div className="w-20 sm:w-24 aspect-[16/11] flex-shrink-0 bg-gray-900 overflow-hidden shadow-xs">
                 <img
                   src={art.image}
-                  alt={art.title}
+                  alt={`Miniatura do artigo: ${art.title}`}
+                  width={96}
+                  height={66}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
               </div>

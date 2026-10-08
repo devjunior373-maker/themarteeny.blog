@@ -3,17 +3,26 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import HomePage from './pages/HomePage';
-import ArticlePage from './pages/ArticlePage';
-import CategoryPage from './pages/CategoryPage';
-import SearchPage from './pages/SearchPage';
-import AuthorPage from './pages/AuthorPage';
-import NotFoundPage from './pages/NotFoundPage';
+
+// Code splitting nas rotas secundárias para diminuir o JavaScript inicial sem impactar a Home crítica
+const ArticlePage = lazy(() => import('./pages/ArticlePage'));
+const CategoryPage = lazy(() => import('./pages/CategoryPage'));
+const SearchPage = lazy(() => import('./pages/SearchPage'));
+const AuthorPage = lazy(() => import('./pages/AuthorPage'));
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
+
+// Fallback visual discreto com preservação do layout e acessibilidade
+const PageLoadingFallback = () => (
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 flex items-center justify-center min-h-[40vh]" role="status" aria-label="Carregando conteúdo">
+    <div className="w-8 h-8 rounded-full border-3 border-gray-200 dark:border-gray-800 border-t-brandBlue animate-spin"></div>
+  </div>
+);
 
 export default function App() {
   const [showBackToTop, setShowBackToTop] = useState<boolean>(false);
@@ -50,27 +59,29 @@ export default function App() {
           <Header />
 
           {/* ROTAS DO PORTAL */}
-          <Routes>
-            {/* Página Inicial */}
-            <Route path="/" element={<HomePage />} />
+          <Suspense fallback={<PageLoadingFallback />}>
+            <Routes>
+              {/* Página Inicial (síncrona, renderização imediata sem fallback) */}
+              <Route path="/" element={<HomePage />} />
 
-            {/* Página de Artigo com Slugs Amigáveis */}
-            <Route path="/blog/:slug" element={<ArticlePage />} />
-            <Route path="/artigo/:slug" element={<ArticlePage />} />
+              {/* Página de Artigo com Slugs Amigáveis */}
+              <Route path="/blog/:slug" element={<ArticlePage />} />
+              <Route path="/artigo/:slug" element={<ArticlePage />} />
 
-            {/* Página de Categoria */}
-            <Route path="/categoria/:slug" element={<CategoryPage />} />
+              {/* Página de Categoria */}
+              <Route path="/categoria/:slug" element={<CategoryPage />} />
 
-            {/* Página de Pesquisa */}
-            <Route path="/pesquisa" element={<SearchPage />} />
-            <Route path="/busca" element={<SearchPage />} />
+              {/* Página de Pesquisa */}
+              <Route path="/pesquisa" element={<SearchPage />} />
+              <Route path="/busca" element={<SearchPage />} />
 
-            {/* Página de Autor */}
-            <Route path="/autor/:slug" element={<AuthorPage />} />
+              {/* Página de Autor */}
+              <Route path="/autor/:slug" element={<AuthorPage />} />
 
-            {/* Página 404 */}
-            <Route path="*" element={<NotFoundPage />} />
-          </Routes>
+              {/* Página 404 */}
+              <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+          </Suspense>
         </div>
 
         {/* FOOTER */}

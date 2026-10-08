@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { getArticleBySlug, ARTICLES_DATA, slugify } from '../data/articles.data';
+import { getArticleBySlug, getRelatedArticles, getNextPreviousArticles, slugify } from '../data/articles.data';
 import Sidebar from '../components/Sidebar';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { useMetaDescription } from '../hooks/useMetaDescription';
 import { useCanonical } from '../hooks/useCanonical';
+import { useJsonLd, BASE_URL, SITE_NAME, LOGO_URL, parseDateToISO, ensureAbsoluteUrl } from '../hooks/useJsonLd';
 
 export default function ArticlePage() {
   const { slug } = useParams<{ slug: string }>();
@@ -19,6 +20,89 @@ export default function ArticlePage() {
   );
   // Canonical oficial de artigos é sempre https://themarteeny.pages.dev/blog/:slug
   useCanonical(article ? `https://themarteeny.pages.dev/blog/${article.id}` : null);
+
+  // Schema JSON-LD para BlogPosting / Article
+  const articleSchema = useMemo(() => {
+    if (!article) return null;
+    const datePublishedISO = parseDateToISO(article.date);
+    const articleCanonical = `${BASE_URL}/blog/${article.id}`;
+    const authorSlug = slugify(article.author);
+    const authorCanonical = `${BASE_URL}/autor/${authorSlug}`;
+    const imageUrl = ensureAbsoluteUrl(article.image);
+
+    // Seleciona BlogPosting para postagens de blog/tutoriais, ou Article para artigos editoriais
+    const schemaType = 'BlogPosting';
+
+    const schema: Record<string, unknown> = {
+      '@context': 'https://schema.org',
+      '@type': schemaType,
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': articleCanonical,
+      },
+      headline: article.title,
+      description: article.excerpt || `Confira no The Marteeny o artigo completo sobre ${article.title}.`,
+      author: {
+        '@type': 'Person',
+        name: article.author,
+        url: authorCanonical,
+      },
+      publisher: {
+        '@type': 'Organization',
+        name: SITE_NAME,
+        logo: {
+          '@type': 'ImageObject',
+          url: LOGO_URL,
+        },
+      },
+      articleSection: article.category,
+    };
+
+    if (imageUrl) {
+      schema.image = [imageUrl];
+    }
+
+    if (datePublishedISO) {
+      schema.datePublished = datePublishedISO;
+    }
+
+    // Nota: dateModified só deve ser adicionada se houver registro real de modificação no artigo.
+    // Como os dados contêm apenas a data de criação/publicação, dateModified é omitida.
+
+    return schema;
+  }, [article]);
+  useJsonLd('article', articleSchema);
+
+  // Schema JSON-LD para BreadcrumbList
+  const breadcrumbSchema = useMemo(() => {
+    if (!article) return null;
+    const categorySlug = slugify(article.category);
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Início',
+          item: `${BASE_URL}/`,
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: article.category,
+          item: `${BASE_URL}/categoria/${categorySlug}`,
+        },
+        {
+          '@type': 'ListItem',
+          position: 3,
+          name: article.title,
+          item: `${BASE_URL}/blog/${article.id}`,
+        },
+      ],
+    };
+  }, [article]);
+  useJsonLd('breadcrumb', breadcrumbSchema);
 
   if (!article) {
     return (
@@ -47,9 +131,8 @@ export default function ArticlePage() {
     );
   }
 
-  const relatedArticles = ARTICLES_DATA
-    .filter((a) => a.id !== article.id)
-    .slice(0, 3);
+  const relatedArticles = getRelatedArticles(article.id, 3);
+  const { previousArticle, nextArticle } = getNextPreviousArticles(article.id);
 
   const currentUrl = typeof window !== 'undefined' ? window.location.href : `https://themarteeny.pages.dev/blog/${article.id}`;
 
@@ -122,11 +205,16 @@ export default function ArticlePage() {
             )}
           </div>
 
-          {/* Imagem de Capa do Artigo */}
+          {/* Imagem de Capa do Artigo (LCP da página -> loading="eager", fetchPriority="high") */}
           <div className="relative aspect-[16/9] w-full bg-gray-900 overflow-hidden mb-6 shadow-xs">
             <img
               src={article.image}
-              alt={article.title}
+              alt={`Imagem principal do artigo: ${article.title}`}
+              width={1200}
+              height={675}
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
               className="w-full h-full object-cover"
             />
           </div>
@@ -143,7 +231,14 @@ export default function ArticlePage() {
             </p>
 
             <p>
-              Entre os pontos de maior destaque, os dados demonstram ganhos significativos em tempo de resposta e retenção de utilizadores em plataformas que adotam padrões modernos de otimização de renderização e infraestrutura distribuída na nuvem.
+              Entre os pontos de maior destaque, os dados demonstram ganhos significativos em tempo de resposta e retenção de utilizadores em plataformas que adotam padrões modernos de otimização de renderização e infraestrutura distribuída na nuvem. Para mais análises temáticas deste segmento, confira também nossa cobertura completa na seção de{' '}
+              <Link
+                to={`/categoria/${categorySlug}`}
+                className="text-brandBlue font-semibold underline underline-offset-2 hover:text-blue-700 dark:hover:text-blue-400 transition-colors"
+              >
+                artigos sobre {article.category}
+              </Link>
+              .
             </p>
 
             <div className="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 p-4 my-6">
@@ -162,6 +257,68 @@ export default function ArticlePage() {
               Em resumo, acompanhar estas transformações é essencial para manter soluções digitais competitivas, velozes e alinhadas às expectativas mais exigentes do mercado global.
             </p>
           </div>
+
+          {/* Cartão de Autor com link para perfil */}
+          <div className="mt-8 p-4 bg-gray-50 dark:bg-gray-900/70 border border-gray-200 dark:border-gray-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+            <div className="flex items-center space-x-3">
+              <div className="w-10 h-10 rounded-full bg-brandBlue/10 text-brandBlue flex items-center justify-center font-bold text-sm shrink-0 border border-brandBlue/30">
+                {article.author.charAt(0).toUpperCase()}
+              </div>
+              <div>
+                <span className="text-[10px] uppercase font-bold text-gray-400 tracking-wider block">Escrito por</span>
+                <Link
+                  to={`/autor/${authorSlug}`}
+                  className="text-sm font-bold text-gray-900 dark:text-white hover:text-brandBlue transition-colors"
+                >
+                  {article.author}
+                </Link>
+              </div>
+            </div>
+            <Link
+              to={`/autor/${authorSlug}`}
+              className="text-xs font-semibold text-brandBlue hover:underline inline-flex items-center gap-1.5 min-h-[36px]"
+            >
+              <span>Ver todos os artigos de {article.author}</span>
+              <i className="fa-solid fa-arrow-right text-[10px]"></i>
+            </Link>
+          </div>
+
+          {/* Navegação Entre Artigos (Anterior / Próximo) */}
+          {(previousArticle || nextArticle) && (
+            <nav aria-label="Navegação entre artigos" className="mt-6 pt-5 border-t border-gray-200 dark:border-gray-800 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+              {previousArticle ? (
+                <Link
+                  to={`/blog/${previousArticle.id}`}
+                  className="group p-3 border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 hover:border-brandBlue/50 transition-colors flex flex-col justify-between"
+                >
+                  <span className="text-[10px] text-gray-400 uppercase font-semibold flex items-center gap-1 mb-1">
+                    <i className="fa-solid fa-arrow-left text-[9px]"></i>
+                    <span>Artigo Anterior</span>
+                  </span>
+                  <span className="font-bold text-gray-800 dark:text-gray-200 group-hover:text-brandBlue transition-colors line-clamp-2">
+                    {previousArticle.title}
+                  </span>
+                </Link>
+              ) : (
+                <div className="hidden sm:block"></div>
+              )}
+
+              {nextArticle && (
+                <Link
+                  to={`/blog/${nextArticle.id}`}
+                  className="group p-3 border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 hover:border-brandBlue/50 transition-colors flex flex-col justify-between sm:text-right"
+                >
+                  <span className="text-[10px] text-gray-400 uppercase font-semibold flex items-center justify-start sm:justify-end gap-1 mb-1">
+                    <span>Próximo Artigo</span>
+                    <i className="fa-solid fa-arrow-right text-[9px]"></i>
+                  </span>
+                  <span className="font-bold text-gray-800 dark:text-gray-200 group-hover:text-brandBlue transition-colors line-clamp-2">
+                    {nextArticle.title}
+                  </span>
+                </Link>
+              )}
+            </nav>
+          )}
 
           {/* Barra de Compartilhamento Social e Ações */}
           <div className="mt-8 pt-5 border-t border-gray-200 dark:border-gray-800 flex flex-wrap items-center justify-between gap-4">
@@ -243,7 +400,11 @@ export default function ArticlePage() {
                   <div className="aspect-[16/10] overflow-hidden bg-gray-900">
                     <img
                       src={rel.image}
-                      alt={rel.title}
+                      alt={`Artigo relacionado: ${rel.title}`}
+                      width={380}
+                      height={238}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>

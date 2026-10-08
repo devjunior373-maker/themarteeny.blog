@@ -1,9 +1,11 @@
+import { useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { getArticlesByCategory, slugify } from '../data/articles.data';
 import Sidebar from '../components/Sidebar';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { useMetaDescription } from '../hooks/useMetaDescription';
 import { useCanonical } from '../hooks/useCanonical';
+import { useJsonLd, BASE_URL } from '../hooks/useJsonLd';
 
 export default function CategoryPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -16,6 +18,54 @@ export default function CategoryPage() {
       : 'A categoria solicitada não foi encontrada no The Marteeny. Explore outras categorias e matérias em nosso portal.'
   );
   useCanonical(slug ? `https://themarteeny.pages.dev/categoria/${slug}` : null);
+
+  // Schema JSON-LD para CollectionPage com ItemList
+  const collectionSchema = useMemo(() => {
+    if (!slug || !categoryName) return null;
+    const categoryUrl = `${BASE_URL}/categoria/${slug}`;
+
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'CollectionPage',
+      name: `${categoryName} | The Marteeny`,
+      description: `Confira as últimas notícias, análises e conteúdos publicados na categoria ${categoryName} do The Marteeny.`,
+      url: categoryUrl,
+      mainEntity: {
+        '@type': 'ItemList',
+        itemListElement: articles.map((article, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          url: `${BASE_URL}/blog/${article.id}`,
+          name: article.title,
+        })),
+      },
+    };
+  }, [slug, categoryName, articles]);
+  useJsonLd('category-collection', collectionSchema);
+
+  // Schema JSON-LD para BreadcrumbList
+  const breadcrumbSchema = useMemo(() => {
+    if (!slug || !categoryName) return null;
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Início',
+          item: `${BASE_URL}/`,
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: categoryName,
+          item: `${BASE_URL}/categoria/${slug}`,
+        },
+      ],
+    };
+  }, [slug, categoryName]);
+  useJsonLd('breadcrumb', breadcrumbSchema);
 
   return (
     <main className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-8">
@@ -49,7 +99,7 @@ export default function CategoryPage() {
 
           {/* Grid de Artigos */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
-            {articles.map((article) => (
+            {articles.map((article, idx) => (
               <Link
                 key={article.id}
                 to={`/blog/${article.id}`}
@@ -58,7 +108,11 @@ export default function CategoryPage() {
                 <div className="aspect-[16/10] w-full overflow-hidden bg-gray-900 relative">
                   <img
                     src={article.image}
-                    alt={article.title}
+                    alt={`Imagem do artigo: ${article.title}`}
+                    width={500}
+                    height={312}
+                    loading={idx < 2 ? 'eager' : 'lazy'}
+                    decoding="async"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   <span className="absolute top-2 left-2 bg-brandBlue text-white text-[9px] font-bold px-2 py-0.5 uppercase tracking-wider">

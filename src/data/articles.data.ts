@@ -231,3 +231,48 @@ export function getArticlesByAuthor(authorSlug: string): { authorName: string; a
   };
 }
 
+/**
+ * Retorna artigos relacionados com prioridade temática real:
+ * 1. Mesma categoria semântica / slug
+ * 2. Mesmo autor
+ * 3. Artigos recentes do portal (fallback sem duplicar o artigo atual)
+ */
+export function getRelatedArticles(currentArticleId: string, limit: number = 3): Article[] {
+  const current = getArticleBySlug(currentArticleId);
+  if (!current) return ARTICLES_DATA.slice(0, limit);
+
+  const cleanCategory = slugify(current.category);
+  const cleanAuthor = slugify(current.author);
+
+  const sameCategory = ARTICLES_DATA.filter(
+    (a) => a.id !== current.id && slugify(a.category) === cleanCategory
+  );
+
+  const sameAuthor = ARTICLES_DATA.filter(
+    (a) => a.id !== current.id && slugify(a.author) === cleanAuthor && !sameCategory.some((item) => item.id === a.id)
+  );
+
+  const fallback = ARTICLES_DATA.filter(
+    (a) => a.id !== current.id && !sameCategory.some((item) => item.id === a.id) && !sameAuthor.some((item) => item.id === a.id)
+  );
+
+  return [...sameCategory, ...sameAuthor, ...fallback].slice(0, limit);
+}
+
+/**
+ * Retorna os artigos anterior e seguinte na ordem cronológica/editorial da lista.
+ */
+export function getNextPreviousArticles(currentArticleId: string): {
+  previousArticle?: Article;
+  nextArticle?: Article;
+} {
+  const index = ARTICLES_DATA.findIndex((a) => a.id.toLowerCase() === currentArticleId.toLowerCase().trim());
+  if (index === -1) return {};
+
+  return {
+    previousArticle: index > 0 ? ARTICLES_DATA[index - 1] : undefined,
+    nextArticle: index < ARTICLES_DATA.length - 1 ? ARTICLES_DATA[index + 1] : undefined,
+  };
+}
+
+

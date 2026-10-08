@@ -280,7 +280,11 @@ export default function Header() {
                           <div className="w-12 sm:w-14 aspect-[16/11] flex-shrink-0 bg-gray-200 dark:bg-gray-800 overflow-hidden">
                             <img
                               src={article.image}
-                              alt={article.title}
+                              alt={`Ilustração do artigo: ${article.title}`}
+                              width={56}
+                              height={38}
+                              loading="lazy"
+                              decoding="async"
                               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                             />
                           </div>
