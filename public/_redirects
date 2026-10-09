@@ -9,7 +9,3 @@
 
 # 2. Redirecionamento permanente canónico HTTP 301 de busca interna para rota oficial:
 /busca           /pesquisa      301
-
-# 3. Fallback de Single Page Application (SPA) para Cloudflare Pages:
-# Deve ser sempre a última regra do arquivo para não interceptar redirecionamentos
-/*               /index.html    200
