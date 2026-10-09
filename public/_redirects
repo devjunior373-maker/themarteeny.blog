@@ -1,1 +1,15 @@
-/*    /index.html   200
+# ==============================================================================
+# Cloudflare Pages Redirects & Routing Rules
+# Documentação oficial: https://developers.cloudflare.com/pages/configuration/redirects/
+# ==============================================================================
+
+# 1. Redirecionamento permanente canónico HTTP 301 de URLs alternativas de artigos:
+# Redireciona /artigo/:slug para /blog/:slug preservando o slug exato e evitando ciclos
+/artigo/:slug    /blog/:slug    301
+
+# 2. Redirecionamento permanente canónico HTTP 301 de busca interna para rota oficial:
+/busca           /pesquisa      301
+
+# 3. Fallback de Single Page Application (SPA) para Cloudflare Pages:
+# Deve ser sempre a última regra do arquivo para não interceptar redirecionamentos
+/*               /index.html    200

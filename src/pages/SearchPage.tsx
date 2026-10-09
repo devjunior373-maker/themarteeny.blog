@@ -5,12 +5,16 @@ import Sidebar from '../components/Sidebar';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { useMetaDescription } from '../hooks/useMetaDescription';
 import { useCanonical } from '../hooks/useCanonical';
+import { useRobotsMeta } from '../hooks/useRobotsMeta';
 import { useJsonLd, BASE_URL } from '../hooks/useJsonLd';
 
 export default function SearchPage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const queryParam = searchParams.get('q') || '';
   const [searchInput, setSearchInput] = useState(queryParam);
+
+  // Impedir indexação de páginas de busca interna para poupar crawl budget e evitar conteúdo duplicado/fino
+  useRobotsMeta('noindex, follow');
 
   const searchTitle = queryParam.trim()
     ? `Pesquisa: ${queryParam.trim()} | The Marteeny`

@@ -5,12 +5,16 @@ import Sidebar from '../components/Sidebar';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { useMetaDescription } from '../hooks/useMetaDescription';
 import { useCanonical } from '../hooks/useCanonical';
+import { useRobotsMeta } from '../hooks/useRobotsMeta';
 import { useJsonLd, BASE_URL, SITE_NAME, LOGO_URL, parseDateToISO, ensureAbsoluteUrl } from '../hooks/useJsonLd';
 
 export default function ArticlePage() {
   const { slug } = useParams<{ slug: string }>();
   const article = getArticleBySlug(slug || '');
   const [copied, setCopied] = useState(false);
+
+  // Se o artigo não for encontrado, instrui bots a não indexar a rota órfã
+  useRobotsMeta('noindex, nofollow', !article);
 
   useDocumentTitle(article ? `${article.title} | The Marteeny` : 'Artigo não encontrado | The Marteeny');
   useMetaDescription(
