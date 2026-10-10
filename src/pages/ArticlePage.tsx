@@ -112,14 +112,14 @@ export default function ArticlePage() {
     return (
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <div className="lg:col-span-2 flex flex-col items-center justify-center text-center p-8 sm:p-12 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800">
-            <div className="w-16 h-16 rounded-full bg-red-100 dark:bg-red-950/60 text-red-500 flex items-center justify-center text-2xl mb-4">
+          <div className="lg:col-span-2 flex flex-col items-center justify-center text-center p-8 sm:p-12 bg-white border border-gray-200">
+            <div className="w-16 h-16 rounded-full bg-red-100 text-red-500 flex items-center justify-center text-2xl mb-4">
               <i className="fa-solid fa-triangle-exclamation"></i>
             </div>
-            <h1 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-2">
+            <h1 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">
               Artigo não encontrado
             </h1>
-            <p className="text-sm text-gray-600 dark:text-gray-400 mb-6 max-w-md">
+            <p className="text-sm text-gray-600 mb-6 max-w-md">
               O artigo com a URL <code className="text-brandBlue font-mono">/blog/{slug}</code> não foi encontrado ou pode ter sido movido.
             </p>
             <Link
@@ -154,7 +154,7 @@ export default function ArticlePage() {
   return (
     <main className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-8">
       {/* BREADCRUMB NAVEGAÇÃO */}
-      <nav aria-label="Breadcrumb" className="flex items-center space-x-2 text-xs text-gray-500 dark:text-gray-400 mb-5">
+      <nav aria-label="Breadcrumb" className="flex items-center space-x-2 text-xs text-gray-500 mb-5">
         <Link to="/" className="hover:text-brandBlue transition-colors flex items-center gap-1">
           <i className="fa-solid fa-house text-[10px]"></i>
           <span>Início</span>
@@ -164,14 +164,14 @@ export default function ArticlePage() {
           {article.category}
         </Link>
         <span>/</span>
-        <span className="text-gray-700 dark:text-gray-300 font-semibold truncate max-w-[200px] sm:max-w-md">
+        <span className="text-gray-700 font-semibold truncate max-w-[200px] sm:max-w-md">
           {article.title}
         </span>
       </nav>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 items-start">
         {/* COLUNA ESQUERDA: Artigo Principal */}
-        <article className="lg:col-span-2 bg-white dark:bg-gray-950 border border-gray-200 dark:border-gray-800 p-4 sm:p-7 shadow-xs">
+        <article className="lg:col-span-2 bg-white border border-gray-200 p-4 sm:p-7 shadow-xs">
           
           {/* Categoria Badge */}
           <div className="mb-3">
@@ -184,12 +184,12 @@ export default function ArticlePage() {
           </div>
 
           {/* Título Principal */}
-          <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-gray-900 dark:text-white leading-tight mb-4">
+          <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-gray-900 leading-tight mb-4">
             {article.title}
           </h1>
 
           {/* Metadados: Autor, Data, Visualizações */}
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-gray-500 dark:text-gray-400 pb-4 mb-6 border-b border-gray-100 dark:border-gray-800">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-gray-500 pb-4 mb-6 border-b border-gray-100">
             <Link
               to={`/autor/${authorSlug}`}
               className="flex items-center gap-1.5 hover:text-brandBlue transition-colors font-medium"
@@ -224,8 +224,8 @@ export default function ArticlePage() {
           </div>
 
           {/* Conteúdo Textual do Artigo */}
-          <div className="prose dark:prose-invert max-w-none text-xs sm:text-sm text-gray-700 dark:text-gray-300 leading-relaxed space-y-4">
-            <p className="font-medium text-gray-900 dark:text-gray-100 text-sm sm:text-base leading-relaxed border-l-3 border-brandBlue pl-3.5 italic bg-blue-50/40 dark:bg-gray-900/60 py-2">
+          <div className="prose max-w-none text-xs sm:text-sm text-gray-700 leading-relaxed space-y-4">
+            <p className="font-medium text-gray-900 text-sm sm:text-base leading-relaxed border-l-3 border-brandBlue pl-3.5 italic bg-blue-50/40 py-2">
               {article.excerpt ||
                 'Descubra como as mais recentes tecnologias e desenvolvimentos impactam o ecossistema digital.'}
             </p>
@@ -238,19 +238,19 @@ export default function ArticlePage() {
               Entre os pontos de maior destaque, os dados demonstram ganhos significativos em tempo de resposta e retenção de utilizadores em plataformas que adotam padrões modernos de otimização de renderização e infraestrutura distribuída na nuvem. Para mais análises temáticas deste segmento, confira também nossa cobertura completa na seção de{' '}
               <Link
                 to={`/categoria/${categorySlug}`}
-                className="text-brandBlue font-semibold underline underline-offset-2 hover:text-blue-700 dark:hover:text-blue-400 transition-colors"
+                className="text-brandBlue font-semibold underline underline-offset-2 hover:text-blue-700 transition-colors"
               >
                 artigos sobre {article.category}
               </Link>
               .
             </p>
 
-            <div className="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 p-4 my-6">
-              <h3 className="font-bold text-gray-900 dark:text-white text-xs sm:text-sm uppercase tracking-wide mb-2 flex items-center gap-2">
+            <div className="bg-gray-50 border border-gray-200 p-4 my-6">
+              <h3 className="font-bold text-gray-900 text-xs sm:text-sm uppercase tracking-wide mb-2 flex items-center gap-2">
                 <i className="fa-solid fa-circle-check text-brandBlue"></i>
                 Destaques da Análise
               </h3>
-              <ul className="list-disc list-inside space-y-1.5 text-xs text-gray-600 dark:text-gray-400">
+              <ul className="list-disc list-inside space-y-1.5 text-xs text-gray-600">
                 <li>Otimizações nativas com suporte ampliado a ambientes modernos.</li>
                 <li>Redução no consumo de memória e aceleração do carregamento.</li>
                 <li>Compatibilidade garantida com padrões abertos da indústria web.</li>
@@ -263,7 +263,7 @@ export default function ArticlePage() {
           </div>
 
           {/* Cartão de Autor com link para perfil */}
-          <div className="mt-8 p-4 bg-gray-50 dark:bg-gray-900/70 border border-gray-200 dark:border-gray-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+          <div className="mt-8 p-4 bg-gray-50 border border-gray-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
             <div className="flex items-center space-x-3">
               <div className="w-10 h-10 rounded-full bg-brandBlue/10 text-brandBlue flex items-center justify-center font-bold text-sm shrink-0 border border-brandBlue/30">
                 {article.author.charAt(0).toUpperCase()}
@@ -272,7 +272,7 @@ export default function ArticlePage() {
                 <span className="text-[10px] uppercase font-bold text-gray-400 tracking-wider block">Escrito por</span>
                 <Link
                   to={`/autor/${authorSlug}`}
-                  className="text-sm font-bold text-gray-900 dark:text-white hover:text-brandBlue transition-colors"
+                  className="text-sm font-bold text-gray-900 hover:text-brandBlue transition-colors"
                 >
                   {article.author}
                 </Link>
@@ -289,17 +289,17 @@ export default function ArticlePage() {
 
           {/* Navegação Entre Artigos (Anterior / Próximo) */}
           {(previousArticle || nextArticle) && (
-            <nav aria-label="Navegação entre artigos" className="mt-6 pt-5 border-t border-gray-200 dark:border-gray-800 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+            <nav aria-label="Navegação entre artigos" className="mt-6 pt-5 border-t border-gray-200 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
               {previousArticle ? (
                 <Link
                   to={`/blog/${previousArticle.id}`}
-                  className="group p-3 border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 hover:border-brandBlue/50 transition-colors flex flex-col justify-between"
+                  className="group p-3 border border-gray-200 bg-white hover:border-brandBlue/50 transition-colors flex flex-col justify-between"
                 >
                   <span className="text-[10px] text-gray-400 uppercase font-semibold flex items-center gap-1 mb-1">
                     <i className="fa-solid fa-arrow-left text-[9px]"></i>
                     <span>Artigo Anterior</span>
                   </span>
-                  <span className="font-bold text-gray-800 dark:text-gray-200 group-hover:text-brandBlue transition-colors line-clamp-2">
+                  <span className="font-bold text-gray-800 group-hover:text-brandBlue transition-colors line-clamp-2">
                     {previousArticle.title}
                   </span>
                 </Link>
@@ -310,13 +310,13 @@ export default function ArticlePage() {
               {nextArticle && (
                 <Link
                   to={`/blog/${nextArticle.id}`}
-                  className="group p-3 border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 hover:border-brandBlue/50 transition-colors flex flex-col justify-between sm:text-right"
+                  className="group p-3 border border-gray-200 bg-white hover:border-brandBlue/50 transition-colors flex flex-col justify-between sm:text-right"
                 >
                   <span className="text-[10px] text-gray-400 uppercase font-semibold flex items-center justify-start sm:justify-end gap-1 mb-1">
                     <span>Próximo Artigo</span>
                     <i className="fa-solid fa-arrow-right text-[9px]"></i>
                   </span>
-                  <span className="font-bold text-gray-800 dark:text-gray-200 group-hover:text-brandBlue transition-colors line-clamp-2">
+                  <span className="font-bold text-gray-800 group-hover:text-brandBlue transition-colors line-clamp-2">
                     {nextArticle.title}
                   </span>
                 </Link>
@@ -325,9 +325,9 @@ export default function ArticlePage() {
           )}
 
           {/* Barra de Compartilhamento Social e Ações */}
-          <div className="mt-8 pt-5 border-t border-gray-200 dark:border-gray-800 flex flex-wrap items-center justify-between gap-4">
+          <div className="mt-8 pt-5 border-t border-gray-200 flex flex-wrap items-center justify-between gap-4">
             <div className="flex items-center space-x-2 text-xs">
-              <span className="text-gray-500 dark:text-gray-400 font-semibold mr-1">Compartilhar:</span>
+              <span className="text-gray-500 font-semibold mr-1">Compartilhar:</span>
               <a
                 href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentUrl)}`}
                 target="_blank"
@@ -342,7 +342,7 @@ export default function ArticlePage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Compartilhar no Twitter"
-                className="w-9 h-9 flex items-center justify-center bg-black dark:bg-gray-800 text-white hover:opacity-90 transition-opacity active:scale-95"
+                className="w-9 h-9 flex items-center justify-center bg-black text-white hover:opacity-90 transition-opacity active:scale-95"
               >
                 <i className="fa-brands fa-x-twitter text-xs"></i>
               </a>
@@ -369,7 +369,7 @@ export default function ArticlePage() {
                 onClick={handleCopyLink}
                 aria-label="Copiar link"
                 title="Copiar link"
-                className="h-9 px-3 flex items-center gap-1.5 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors text-xs font-medium cursor-pointer"
+                className="h-9 px-3 flex items-center gap-1.5 bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors text-xs font-medium cursor-pointer"
               >
                 <i className="fa-solid fa-link text-xs"></i>
                 <span>{copied ? 'Copiado!' : 'Copiar'}</span>
@@ -399,7 +399,7 @@ export default function ArticlePage() {
                 <Link
                   key={rel.id}
                   to={`/blog/${rel.id}`}
-                  className="group block bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 overflow-hidden hover:border-brandBlue/50 transition-colors"
+                  className="group block bg-gray-50 border border-gray-200 overflow-hidden hover:border-brandBlue/50 transition-colors"
                 >
                   <div className="aspect-[16/10] overflow-hidden bg-gray-900">
                     <img
@@ -416,7 +416,7 @@ export default function ArticlePage() {
                     <span className="text-[9px] text-brandBlue font-bold uppercase">
                       {rel.category}
                     </span>
-                    <h3 className="text-xs font-bold text-gray-900 dark:text-white line-clamp-2 mt-1 group-hover:text-brandBlue transition-colors leading-snug">
+                    <h3 className="text-xs font-bold text-gray-900 line-clamp-2 mt-1 group-hover:text-brandBlue transition-colors leading-snug">
                       {rel.title}
                     </h3>
                     <span className="text-[10px] text-gray-400 mt-1.5 block">

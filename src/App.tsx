@@ -20,7 +20,7 @@ const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 // Fallback visual discreto com preservação do layout e acessibilidade
 const PageLoadingFallback = () => (
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 flex items-center justify-center min-h-[40vh]" role="status" aria-label="Carregando conteúdo">
-    <div className="w-8 h-8 rounded-full border-3 border-gray-200 dark:border-gray-800 border-t-brandBlue animate-spin"></div>
+    <div className="w-8 h-8 rounded-full border-3 border-gray-200 border-t-brandBlue animate-spin"></div>
   </div>
 );
 
@@ -53,7 +53,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
-      <div className="min-h-screen bg-white dark:bg-gray-950 text-gray-800 dark:text-gray-100 font-sans antialiased transition-colors duration-200 overflow-x-hidden flex flex-col justify-between">
+      <div className="min-h-screen bg-white text-gray-800 font-sans antialiased overflow-x-hidden flex flex-col justify-between">
         <div>
           {/* HEADER PRINCIPAL */}
           <Header />

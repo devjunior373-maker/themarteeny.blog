@@ -65,7 +65,7 @@ export default function AuthorPage() {
   return (
     <main className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-8">
       {/* BREADCRUMB */}
-      <nav aria-label="Breadcrumb" className="flex items-center space-x-2 text-xs text-gray-500 dark:text-gray-400 mb-5">
+      <nav aria-label="Breadcrumb" className="flex items-center space-x-2 text-xs text-gray-500 mb-5">
         <Link to="/" className="hover:text-brandBlue transition-colors flex items-center gap-1">
           <i className="fa-solid fa-house text-[10px]"></i>
           <span>Início</span>
@@ -87,7 +87,7 @@ export default function AuthorPage() {
               <i className="fa-regular fa-user text-xs"></i>
               AUTOR: {authorName}
             </div>
-            <span className="text-xs text-gray-500 dark:text-gray-400 pb-1.5">
+            <span className="text-xs text-gray-500 pb-1.5">
               {articles.length} {articles.length === 1 ? 'publicação' : 'publicações'}
             </span>
           </div>
@@ -98,7 +98,7 @@ export default function AuthorPage() {
               <Link
                 key={article.id}
                 to={`/blog/${article.id}`}
-                className="group flex flex-col bg-white dark:bg-gray-950 border border-gray-200 dark:border-gray-800 hover:border-brandBlue/50 overflow-hidden shadow-xs transition-colors"
+                className="group flex flex-col bg-white border border-gray-200 hover:border-brandBlue/50 overflow-hidden shadow-xs transition-colors"
               >
                 <div className="aspect-[16/10] w-full overflow-hidden bg-gray-900 relative">
                   <img
@@ -117,15 +117,15 @@ export default function AuthorPage() {
 
                 <div className="p-4 flex flex-col flex-1 justify-between">
                   <div>
-                    <h2 className="text-xs sm:text-sm font-bold text-gray-900 dark:text-white group-hover:text-brandBlue transition-colors leading-snug line-clamp-2 mb-2">
+                    <h2 className="text-xs sm:text-sm font-bold text-gray-900 group-hover:text-brandBlue transition-colors leading-snug line-clamp-2 mb-2">
                       {article.title}
                     </h2>
-                    <p className="text-[11px] sm:text-xs text-gray-600 dark:text-gray-400 line-clamp-2 mb-3">
+                    <p className="text-[11px] sm:text-xs text-gray-600 line-clamp-2 mb-3">
                       {article.excerpt}
                     </p>
                   </div>
 
-                  <div className="flex items-center justify-between text-[10px] text-gray-500 dark:text-gray-400 pt-2 border-t border-gray-100 dark:border-gray-800">
+                  <div className="flex items-center justify-between text-[10px] text-gray-500 pt-2 border-t border-gray-100">
                     <span>{article.category}</span>
                     <span>{article.date}</span>
                   </div>

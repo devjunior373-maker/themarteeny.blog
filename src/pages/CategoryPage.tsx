@@ -70,7 +70,7 @@ export default function CategoryPage() {
   return (
     <main className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-8">
       {/* BREADCRUMB */}
-      <nav aria-label="Breadcrumb" className="flex items-center space-x-2 text-xs text-gray-500 dark:text-gray-400 mb-5">
+      <nav aria-label="Breadcrumb" className="flex items-center space-x-2 text-xs text-gray-500 mb-5">
         <Link to="/" className="hover:text-brandBlue transition-colors flex items-center gap-1">
           <i className="fa-solid fa-house text-[10px]"></i>
           <span>Início</span>
@@ -92,7 +92,7 @@ export default function CategoryPage() {
               <i className="fa-solid fa-folder-open text-xs"></i>
               CATEGORIA: {categoryName}
             </div>
-            <span className="text-xs text-gray-500 dark:text-gray-400 pb-1.5">
+            <span className="text-xs text-gray-500 pb-1.5">
               {articles.length} {articles.length === 1 ? 'artigo' : 'artigos'}
             </span>
           </div>
@@ -103,7 +103,7 @@ export default function CategoryPage() {
               <Link
                 key={article.id}
                 to={`/blog/${article.id}`}
-                className="group flex flex-col bg-white dark:bg-gray-950 border border-gray-200 dark:border-gray-800 hover:border-brandBlue/50 overflow-hidden shadow-xs transition-colors"
+                className="group flex flex-col bg-white border border-gray-200 hover:border-brandBlue/50 overflow-hidden shadow-xs transition-colors"
               >
                 <div className="aspect-[16/10] w-full overflow-hidden bg-gray-900 relative">
                   <img
@@ -122,15 +122,15 @@ export default function CategoryPage() {
 
                 <div className="p-4 flex flex-col flex-1 justify-between">
                   <div>
-                    <h2 className="text-xs sm:text-sm font-bold text-gray-900 dark:text-white group-hover:text-brandBlue transition-colors leading-snug line-clamp-2 mb-2">
+                    <h2 className="text-xs sm:text-sm font-bold text-gray-900 group-hover:text-brandBlue transition-colors leading-snug line-clamp-2 mb-2">
                       {article.title}
                     </h2>
-                    <p className="text-[11px] sm:text-xs text-gray-600 dark:text-gray-400 line-clamp-2 mb-3">
+                    <p className="text-[11px] sm:text-xs text-gray-600 line-clamp-2 mb-3">
                       {article.excerpt}
                     </p>
                   </div>
 
-                  <div className="flex items-center justify-between text-[10px] text-gray-500 dark:text-gray-400 pt-2 border-t border-gray-100 dark:border-gray-800">
+                  <div className="flex items-center justify-between text-[10px] text-gray-500 pt-2 border-t border-gray-100">
                     <span className="truncate max-w-[120px]">
                       Por {article.author}
                     </span>
@@ -142,7 +142,7 @@ export default function CategoryPage() {
           </div>
 
           {articles.length === 0 && (
-            <div className="p-8 text-center bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 text-gray-500">
+            <div className="p-8 text-center bg-gray-50 border border-gray-200 text-gray-500">
               Nenhum artigo encontrado nesta categoria no momento.
             </div>
           )}

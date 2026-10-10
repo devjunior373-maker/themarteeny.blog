@@ -114,7 +114,7 @@ export default function SearchPage() {
   return (
     <main className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-8">
       {/* BREADCRUMB */}
-      <nav aria-label="Breadcrumb" className="flex items-center space-x-2 text-xs text-gray-500 dark:text-gray-400 mb-5">
+      <nav aria-label="Breadcrumb" className="flex items-center space-x-2 text-xs text-gray-500 mb-5">
         <Link to="/" className="hover:text-brandBlue transition-colors flex items-center gap-1">
           <i className="fa-solid fa-house text-[10px]"></i>
           <span>Início</span>
@@ -139,7 +139,7 @@ export default function SearchPage() {
               PESQUISA {queryParam ? `: "${queryParam}"` : ''}
             </div>
             {queryParam && (
-              <span className="text-xs text-gray-500 dark:text-gray-400 pb-1.5">
+              <span className="text-xs text-gray-500 pb-1.5">
                 {results.length} {results.length === 1 ? 'resultado' : 'resultados'}
               </span>
             )}
@@ -147,13 +147,13 @@ export default function SearchPage() {
 
           {/* Barra de Pesquisa Integrada na Página */}
           <form onSubmit={handleSearchSubmit} className="mb-6">
-            <div className="flex items-center border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-none">
+            <div className="flex items-center border border-gray-300 bg-white shadow-none">
               <input
                 type="text"
                 value={searchInput}
                 onChange={(e) => setSearchInput(e.target.value)}
                 placeholder="Digite palavras-chave, artigos, marcas ou temas..."
-                className="w-full px-4 py-3 text-xs sm:text-sm bg-transparent text-gray-900 dark:text-gray-100 placeholder-gray-400 focus:outline-none"
+                className="w-full px-4 py-3 text-xs sm:text-sm bg-transparent text-gray-900 placeholder-gray-400 focus:outline-none"
               />
               <button
                 type="submit"
@@ -172,7 +172,7 @@ export default function SearchPage() {
                   <Link
                     key={article.id}
                     to={`/blog/${article.id}`}
-                    className="group flex flex-col bg-white dark:bg-gray-950 border border-gray-200 dark:border-gray-800 hover:border-brandBlue/50 overflow-hidden shadow-none transition-colors"
+                    className="group flex flex-col bg-white border border-gray-200 hover:border-brandBlue/50 overflow-hidden shadow-none transition-colors"
                   >
                     <div className="aspect-[16/10] w-full overflow-hidden bg-gray-900 relative">
                       <img
@@ -191,15 +191,15 @@ export default function SearchPage() {
 
                     <div className="p-4 flex flex-col flex-1 justify-between">
                       <div>
-                        <h2 className="text-xs sm:text-sm font-bold text-gray-900 dark:text-white group-hover:text-brandBlue transition-colors leading-snug line-clamp-2 mb-2">
+                        <h2 className="text-xs sm:text-sm font-bold text-gray-900 group-hover:text-brandBlue transition-colors leading-snug line-clamp-2 mb-2">
                           {highlightMatch(article.title, queryParam)}
                         </h2>
-                        <p className="text-[11px] sm:text-xs text-gray-600 dark:text-gray-400 line-clamp-2 mb-3">
+                        <p className="text-[11px] sm:text-xs text-gray-600 line-clamp-2 mb-3">
                           {article.excerpt}
                         </p>
                       </div>
 
-                      <div className="flex items-center justify-between text-[10px] text-gray-500 dark:text-gray-400 pt-2 border-t border-gray-100 dark:border-gray-800">
+                      <div className="flex items-center justify-between text-[10px] text-gray-500 pt-2 border-t border-gray-100">
                         <span>Por {article.author}</span>
                         <span>{article.date}</span>
                       </div>
@@ -208,12 +208,12 @@ export default function SearchPage() {
                 ))}
               </div>
             ) : (
-              <div className="p-8 text-center bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800">
+              <div className="p-8 text-center bg-gray-50 border border-gray-200">
                 <i className="fa-solid fa-circle-question text-3xl text-gray-400 mb-3 block"></i>
-                <h3 className="font-bold text-gray-800 dark:text-gray-200 text-sm mb-1">
+                <h3 className="font-bold text-gray-800 text-sm mb-1">
                   Nenhum resultado encontrado para "{queryParam}"
                 </h3>
-                <p className="text-xs text-gray-500 dark:text-gray-400 mb-4">
+                <p className="text-xs text-gray-500 mb-4">
                   Tente verificar a ortografia ou pesquisar termos mais gerais como "Apple", "Android", "MacBook", "Laptops" ou "Web".
                 </p>
                 <div className="flex flex-wrap items-center justify-center gap-2">
@@ -225,7 +225,7 @@ export default function SearchPage() {
                         setSearchInput(term);
                         setSearchParams({ q: term });
                       }}
-                      className="px-3 py-1 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-xs text-brandBlue hover:border-brandBlue transition-colors cursor-pointer"
+                      className="px-3 py-1 bg-white border border-gray-300 text-xs text-brandBlue hover:border-brandBlue transition-colors cursor-pointer"
                     >
                       {term}
                     </button>
@@ -234,7 +234,7 @@ export default function SearchPage() {
               </div>
             )
           ) : (
-            <div className="p-8 text-center bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 text-gray-500 text-xs">
+            <div className="p-8 text-center bg-gray-50 border border-gray-200 text-gray-500 text-xs">
               Digite um termo na caixa acima para pesquisar entre os artigos do The Marteeny.
             </div>
           )}

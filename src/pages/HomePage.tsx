@@ -44,7 +44,7 @@ export default function HomePage() {
     <main className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6">
       {/* ESPAÇO DE ANÚNCIO DO GOOGLE (Área limpa e preparada, sem texto) */}
       <div className="w-full mb-6 sm:mb-8 flex flex-col items-center justify-center">
-        <div className="w-full max-w-4xl min-h-[60px] xs:min-h-[75px] sm:min-h-[90px] md:min-h-[100px] bg-white dark:bg-gray-950 border border-gray-200 dark:border-gray-800/80 transition-colors"></div>
+        <div className="w-full max-w-4xl min-h-[60px] xs:min-h-[75px] sm:min-h-[90px] md:min-h-[100px] bg-white border border-gray-200 transition-colors"></div>
       </div>
 
       {/* SECÇÃO DE DESTAQUES (Conforme a Imagem de Referência: Grid 5 Artigos) */}
@@ -320,10 +320,10 @@ export default function HomePage() {
                   </div>
 
                   <div className="mt-2 flex flex-col">
-                    <h3 className="text-xs sm:text-sm font-bold text-gray-900 dark:text-white leading-snug group-hover:text-brandBlue transition-colors line-clamp-2">
+                    <h3 className="text-xs sm:text-sm font-bold text-gray-900 leading-snug group-hover:text-brandBlue transition-colors line-clamp-2">
                       {ARTICLES_DATA[1].title}
                     </h3>
-                    <div className="text-[11px] text-gray-400 dark:text-gray-400 mt-1 font-normal">
+                    <div className="text-[11px] text-gray-400 mt-1 font-normal">
                       {ARTICLES_DATA[1].date}
                     </div>
                   </div>
@@ -357,10 +357,10 @@ export default function HomePage() {
                   </div>
 
                   <div className="mt-2 flex flex-col">
-                    <h3 className="text-xs sm:text-sm font-bold text-gray-900 dark:text-white leading-snug group-hover:text-brandBlue transition-colors line-clamp-2">
+                    <h3 className="text-xs sm:text-sm font-bold text-gray-900 leading-snug group-hover:text-brandBlue transition-colors line-clamp-2">
                       {ARTICLES_DATA[2].title}
                     </h3>
-                    <div className="text-[11px] text-gray-400 dark:text-gray-400 mt-1 font-normal">
+                    <div className="text-[11px] text-gray-400 mt-1 font-normal">
                       {ARTICLES_DATA[2].date}
                     </div>
                   </div>
@@ -394,10 +394,10 @@ export default function HomePage() {
                   </div>
 
                   <div className="mt-2 flex flex-col">
-                    <h3 className="text-xs sm:text-sm font-bold text-gray-900 dark:text-white leading-snug group-hover:text-brandBlue transition-colors line-clamp-2">
+                    <h3 className="text-xs sm:text-sm font-bold text-gray-900 leading-snug group-hover:text-brandBlue transition-colors line-clamp-2">
                       {ARTICLES_DATA[4].title}
                     </h3>
-                    <div className="text-[11px] text-gray-400 dark:text-gray-400 mt-1 font-normal">
+                    <div className="text-[11px] text-gray-400 mt-1 font-normal">
                       {ARTICLES_DATA[4].date}
                     </div>
                   </div>
@@ -409,7 +409,7 @@ export default function HomePage() {
 
           {/* ÁREA DE ANÚNCIO (Banner Horizontal limpo e preparado) */}
           <div className="w-full mt-6 sm:mt-8 flex flex-col items-center justify-center">
-            <div className="w-full max-w-4xl min-h-[60px] xs:min-h-[75px] sm:min-h-[90px] md:min-h-[100px] bg-white dark:bg-gray-950 border border-gray-200 dark:border-gray-800/80 transition-colors"></div>
+            <div className="w-full max-w-4xl min-h-[60px] xs:min-h-[75px] sm:min-h-[90px] md:min-h-[100px] bg-white border border-gray-200 transition-colors"></div>
           </div>
 
           {/* SECÇÃO: DICAS E TRUQUES & PROJETO */}
@@ -423,7 +423,7 @@ export default function HomePage() {
                 </div>
                 <Link
                   to="/categoria/artigos"
-                  className="text-xs font-semibold text-gray-500 hover:text-brandBlue dark:text-gray-400 transition-colors pb-1 min-h-[36px] flex items-center"
+                  className="text-xs font-semibold text-gray-500 hover:text-brandBlue transition-colors pb-1 min-h-[36px] flex items-center"
                 >
                   Ver todos os artigos
                 </Link>
@@ -434,7 +434,7 @@ export default function HomePage() {
                 to={`/blog/${ARTICLES_DATA[1].id}`}
                 className="flex flex-col group cursor-pointer mb-4 active:scale-[0.99] transition-transform block"
               >
-                <div className="relative overflow-hidden aspect-[16/10] bg-gray-100 dark:bg-gray-900 block">
+                <div className="relative overflow-hidden aspect-[16/10] bg-gray-100 block">
                   <img
                     src={ARTICLES_DATA[1].image}
                     alt={`Dicas e Truques: ${ARTICLES_DATA[1].title}`}
@@ -450,7 +450,7 @@ export default function HomePage() {
                     </span>
                   </div>
                 </div>
-                <h3 className="text-sm sm:text-base font-bold text-gray-900 dark:text-white leading-snug group-hover:text-brandBlue transition-colors mt-2.5">
+                <h3 className="text-sm sm:text-base font-bold text-gray-900 leading-snug group-hover:text-brandBlue transition-colors mt-2.5">
                   {ARTICLES_DATA[1].title}
                 </h3>
                 <div className="text-[11px] text-gray-400 mt-1">
@@ -459,12 +459,12 @@ export default function HomePage() {
               </Link>
 
               {/* LISTA DE 3 POSTS PEQUENOS */}
-              <div className="flex flex-col divide-y divide-gray-100 dark:divide-gray-800/80">
+              <div className="flex flex-col divide-y divide-gray-100">
                 <Link
                   to={`/blog/${ARTICLES_DATA[2].id}`}
-                  className="py-2.5 sm:py-3 flex items-center space-x-3 group cursor-pointer active:bg-gray-100/60 dark:active:bg-gray-900/60 transition-colors rounded-xs block"
+                  className="py-2.5 sm:py-3 flex items-center space-x-3 group cursor-pointer active:bg-gray-100/60 transition-colors rounded-xs block"
                 >
-                  <div className="w-20 h-16 sm:w-24 sm:h-18 flex-shrink-0 overflow-hidden bg-gray-100 dark:bg-gray-900 aspect-[4/3]">
+                  <div className="w-20 h-16 sm:w-24 sm:h-18 flex-shrink-0 overflow-hidden bg-gray-100 aspect-[4/3]">
                     <img
                       src={ARTICLES_DATA[2].image}
                       alt={`Miniatura: ${ARTICLES_DATA[2].title}`}
@@ -476,7 +476,7 @@ export default function HomePage() {
                     />
                   </div>
                   <div className="flex flex-col flex-1 min-w-0">
-                    <h4 className="text-xs sm:text-sm font-bold text-gray-900 dark:text-white leading-snug line-clamp-2 group-hover:text-brandBlue transition-colors">
+                    <h4 className="text-xs sm:text-sm font-bold text-gray-900 leading-snug line-clamp-2 group-hover:text-brandBlue transition-colors">
                       {ARTICLES_DATA[2].title}
                     </h4>
                     <span className="text-[10px] sm:text-[11px] text-gray-400 mt-1">
@@ -487,9 +487,9 @@ export default function HomePage() {
 
                 <Link
                   to={`/blog/${ARTICLES_DATA[3].id}`}
-                  className="py-2.5 sm:py-3 flex items-center space-x-3 group cursor-pointer active:bg-gray-100/60 dark:active:bg-gray-900/60 transition-colors rounded-xs block"
+                  className="py-2.5 sm:py-3 flex items-center space-x-3 group cursor-pointer active:bg-gray-100/60 transition-colors rounded-xs block"
                 >
-                  <div className="w-20 h-16 sm:w-24 sm:h-18 flex-shrink-0 overflow-hidden bg-gray-100 dark:bg-gray-900 aspect-[4/3]">
+                  <div className="w-20 h-16 sm:w-24 sm:h-18 flex-shrink-0 overflow-hidden bg-gray-100 aspect-[4/3]">
                     <img
                       src={ARTICLES_DATA[3].image}
                       alt={`Miniatura: ${ARTICLES_DATA[3].title}`}
@@ -501,7 +501,7 @@ export default function HomePage() {
                     />
                   </div>
                   <div className="flex flex-col flex-1 min-w-0">
-                    <h4 className="text-xs sm:text-sm font-bold text-gray-900 dark:text-white leading-snug line-clamp-2 group-hover:text-brandBlue transition-colors">
+                    <h4 className="text-xs sm:text-sm font-bold text-gray-900 leading-snug line-clamp-2 group-hover:text-brandBlue transition-colors">
                       {ARTICLES_DATA[3].title}
                     </h4>
                     <span className="text-[10px] sm:text-[11px] text-gray-400 mt-1">
@@ -512,9 +512,9 @@ export default function HomePage() {
 
                 <Link
                   to={`/blog/${ARTICLES_DATA[4].id}`}
-                  className="py-2.5 sm:py-3 flex items-center space-x-3 group cursor-pointer active:bg-gray-100/60 dark:active:bg-gray-900/60 transition-colors rounded-xs block"
+                  className="py-2.5 sm:py-3 flex items-center space-x-3 group cursor-pointer active:bg-gray-100/60 transition-colors rounded-xs block"
                 >
-                  <div className="w-20 h-16 sm:w-24 sm:h-18 flex-shrink-0 overflow-hidden bg-gray-100 dark:bg-gray-900 aspect-[4/3]">
+                  <div className="w-20 h-16 sm:w-24 sm:h-18 flex-shrink-0 overflow-hidden bg-gray-100 aspect-[4/3]">
                     <img
                       src={ARTICLES_DATA[4].image}
                       alt={`Miniatura: ${ARTICLES_DATA[4].title}`}
@@ -526,7 +526,7 @@ export default function HomePage() {
                     />
                   </div>
                   <div className="flex flex-col flex-1 min-w-0">
-                    <h4 className="text-xs sm:text-sm font-bold text-gray-900 dark:text-white leading-snug line-clamp-2 group-hover:text-brandBlue transition-colors">
+                    <h4 className="text-xs sm:text-sm font-bold text-gray-900 leading-snug line-clamp-2 group-hover:text-brandBlue transition-colors">
                       {ARTICLES_DATA[4].title}
                     </h4>
                     <span className="text-[10px] sm:text-[11px] text-gray-400 mt-1">
@@ -545,7 +545,7 @@ export default function HomePage() {
                 </div>
                 <Link
                   to="/categoria/startups"
-                  className="text-xs font-semibold text-gray-500 hover:text-brandBlue dark:text-gray-400 transition-colors pb-1 min-h-[36px] flex items-center"
+                  className="text-xs font-semibold text-gray-500 hover:text-brandBlue transition-colors pb-1 min-h-[36px] flex items-center"
                 >
                   Ver todos os projetos
                 </Link>
@@ -556,7 +556,7 @@ export default function HomePage() {
                 to="/blog/10-awesome-things-ps4"
                 className="flex flex-col group cursor-pointer mb-4 active:scale-[0.99] transition-transform block"
               >
-                <div className="relative overflow-hidden aspect-[16/10] bg-gray-100 dark:bg-gray-900 block">
+                <div className="relative overflow-hidden aspect-[16/10] bg-gray-100 block">
                   <img
                     src="https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?auto=format&fit=crop&w=800&q=80"
                     alt="10 coisas incríveis para experimentar no seu PS4 agora mesmo"
@@ -572,7 +572,7 @@ export default function HomePage() {
                     </span>
                   </div>
                 </div>
-                <h3 className="text-sm sm:text-base font-bold text-gray-900 dark:text-white leading-snug group-hover:text-brandBlue transition-colors mt-2.5">
+                <h3 className="text-sm sm:text-base font-bold text-gray-900 leading-snug group-hover:text-brandBlue transition-colors mt-2.5">
                   10 coisas incríveis para experimentar no seu PS4 agora mesmo
                 </h3>
                 <div className="text-[11px] text-gray-400 mt-1">
@@ -581,12 +581,12 @@ export default function HomePage() {
               </Link>
 
               {/* LISTA DE 3 POSTS PEQUENOS */}
-              <div className="flex flex-col divide-y divide-gray-100 dark:divide-gray-800/80">
+              <div className="flex flex-col divide-y divide-gray-100">
                 <Link
                   to="/blog/current-trends-tablet-applications"
-                  className="py-2.5 sm:py-3 flex items-center space-x-3 group cursor-pointer active:bg-gray-100/60 dark:active:bg-gray-900/60 transition-colors rounded-xs block"
+                  className="py-2.5 sm:py-3 flex items-center space-x-3 group cursor-pointer active:bg-gray-100/60 transition-colors rounded-xs block"
                 >
-                  <div className="w-20 h-16 sm:w-24 sm:h-18 flex-shrink-0 overflow-hidden bg-gray-100 dark:bg-gray-900 aspect-[4/3]">
+                  <div className="w-20 h-16 sm:w-24 sm:h-18 flex-shrink-0 overflow-hidden bg-gray-100 aspect-[4/3]">
                     <img
                       src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=600&q=80"
                       alt="Tendências atuais e perspectivas futuras para aplicativos em tablets"
@@ -598,7 +598,7 @@ export default function HomePage() {
                     />
                   </div>
                   <div className="flex flex-col flex-1 min-w-0">
-                    <h4 className="text-xs sm:text-sm font-bold text-gray-900 dark:text-white leading-snug line-clamp-2 group-hover:text-brandBlue transition-colors">
+                    <h4 className="text-xs sm:text-sm font-bold text-gray-900 leading-snug line-clamp-2 group-hover:text-brandBlue transition-colors">
                       Tendências atuais e perspectivas futuras para aplicativos em tablets
                     </h4>
                     <span className="text-[10px] sm:text-[11px] text-gray-400 mt-1">
@@ -609,9 +609,9 @@ export default function HomePage() {
 
                 <Link
                   to="/blog/apple-jul-announcement-macbooks"
-                  className="py-2.5 sm:py-3 flex items-center space-x-3 group cursor-pointer active:bg-gray-100/60 dark:active:bg-gray-900/60 transition-colors rounded-xs block"
+                  className="py-2.5 sm:py-3 flex items-center space-x-3 group cursor-pointer active:bg-gray-100/60 transition-colors rounded-xs block"
                 >
-                  <div className="w-20 h-16 sm:w-24 sm:h-18 flex-shrink-0 overflow-hidden bg-gray-100 dark:bg-gray-900 aspect-[4/3]">
+                  <div className="w-20 h-16 sm:w-24 sm:h-18 flex-shrink-0 overflow-hidden bg-gray-100 aspect-[4/3]">
                     <img
                       src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=600&q=80"
                       alt="Anúncio de julho da Apple: que atualização para os MacBooks"
@@ -623,7 +623,7 @@ export default function HomePage() {
                     />
                   </div>
                   <div className="flex flex-col flex-1 min-w-0">
-                    <h4 className="text-xs sm:text-sm font-bold text-gray-900 dark:text-white leading-snug line-clamp-2 group-hover:text-brandBlue transition-colors">
+                    <h4 className="text-xs sm:text-sm font-bold text-gray-900 leading-snug line-clamp-2 group-hover:text-brandBlue transition-colors">
                       Anúncio de julho da Apple: que atualização para os MacBooks
                     </h4>
                     <span className="text-[10px] sm:text-[11px] text-gray-400 mt-1">
@@ -634,9 +634,9 @@ export default function HomePage() {
 
                 <Link
                   to={`/blog/${ARTICLES_DATA[0].id}`}
-                  className="py-2.5 sm:py-3 flex items-center space-x-3 group cursor-pointer active:bg-gray-100/60 dark:active:bg-gray-900/60 transition-colors rounded-xs block"
+                  className="py-2.5 sm:py-3 flex items-center space-x-3 group cursor-pointer active:bg-gray-100/60 transition-colors rounded-xs block"
                 >
-                  <div className="w-20 h-16 sm:w-24 sm:h-18 flex-shrink-0 overflow-hidden bg-gray-100 dark:bg-gray-900 aspect-[4/3]">
+                  <div className="w-20 h-16 sm:w-24 sm:h-18 flex-shrink-0 overflow-hidden bg-gray-100 aspect-[4/3]">
                     <img
                       src={ARTICLES_DATA[0].image}
                       alt={`Miniatura: ${ARTICLES_DATA[0].title}`}
@@ -648,7 +648,7 @@ export default function HomePage() {
                     />
                   </div>
                   <div className="flex flex-col flex-1 min-w-0">
-                    <h4 className="text-xs sm:text-sm font-bold text-gray-900 dark:text-white leading-snug line-clamp-2 group-hover:text-brandBlue transition-colors">
+                    <h4 className="text-xs sm:text-sm font-bold text-gray-900 leading-snug line-clamp-2 group-hover:text-brandBlue transition-colors">
                       {ARTICLES_DATA[0].title}
                     </h4>
                     <span className="text-[10px] sm:text-[11px] text-gray-400 mt-1">
@@ -669,7 +669,7 @@ export default function HomePage() {
               </div>
               <Link
                 to="/categoria/artigos"
-                className="text-xs font-semibold text-gray-500 hover:text-brandBlue dark:text-gray-400 transition-colors pb-1 flex items-center gap-1 min-h-[36px]"
+                className="text-xs font-semibold text-gray-500 hover:text-brandBlue transition-colors pb-1 flex items-center gap-1 min-h-[36px]"
               >
                 <span>Ver mais matérias</span>
                 <i className="fa-solid fa-angle-right text-[10px]"></i>
@@ -682,9 +682,9 @@ export default function HomePage() {
               {/* Artigo 1: Opera Browser */}
               <Link
                 to={`/blog/${ARTICLES_DATA[0].id}`}
-                className="grid grid-cols-1 sm:grid-cols-12 gap-3.5 sm:gap-5 items-start group cursor-pointer transition-transform duration-200 ease-out active:scale-[0.99] p-2 sm:p-2.5 -mx-2 sm:-mx-2.5 rounded-xs hover:bg-gray-50/80 dark:hover:bg-gray-900/40 block"
+                className="grid grid-cols-1 sm:grid-cols-12 gap-3.5 sm:gap-5 items-start group cursor-pointer transition-transform duration-200 ease-out active:scale-[0.99] p-2 sm:p-2.5 -mx-2 sm:-mx-2.5 rounded-xs hover:bg-gray-50/80 block"
               >
-                <div className="sm:col-span-5 relative overflow-hidden aspect-[16/10] bg-gray-100 dark:bg-gray-900 block">
+                <div className="sm:col-span-5 relative overflow-hidden aspect-[16/10] bg-gray-100 block">
                   <img
                     src={ARTICLES_DATA[0].image}
                     alt={`Artigo de leitura: ${ARTICLES_DATA[0].title}`}
@@ -701,7 +701,7 @@ export default function HomePage() {
                   </div>
                 </div>
                 <div className="sm:col-span-7 flex flex-col justify-start">
-                  <h3 className="text-sm xs:text-base sm:text-lg md:text-xl font-bold text-gray-900 dark:text-white leading-snug group-hover:text-brandBlue transition-colors">
+                  <h3 className="text-sm xs:text-base sm:text-lg md:text-xl font-bold text-gray-900 leading-snug group-hover:text-brandBlue transition-colors">
                     {ARTICLES_DATA[0].title}
                   </h3>
                   <div className="text-xs text-gray-400 mt-1.5 flex items-center space-x-1 flex-wrap">
@@ -711,7 +711,7 @@ export default function HomePage() {
                     </span>
                     <span>- 30 de julho de 2020</span>
                   </div>
-                  <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-1.5 sm:mt-2 line-clamp-2 sm:line-clamp-3 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-gray-600 mt-1.5 sm:mt-2 line-clamp-2 sm:line-clamp-3 leading-relaxed">
                     Descubra como o novo recurso do navegador Opera transforma qualquer página com modo escuro automático e economia de bateria.
                   </p>
                 </div>
@@ -720,9 +720,9 @@ export default function HomePage() {
               {/* Artigo 2: 11 dos melhores laptops */}
               <Link
                 to={`/blog/${ARTICLES_DATA[1].id}`}
-                className="grid grid-cols-1 sm:grid-cols-12 gap-3.5 sm:gap-5 items-start group cursor-pointer transition-transform duration-200 ease-out active:scale-[0.99] p-2 sm:p-2.5 -mx-2 sm:-mx-2.5 rounded-xs hover:bg-gray-50/80 dark:hover:bg-gray-900/40 block"
+                className="grid grid-cols-1 sm:grid-cols-12 gap-3.5 sm:gap-5 items-start group cursor-pointer transition-transform duration-200 ease-out active:scale-[0.99] p-2 sm:p-2.5 -mx-2 sm:-mx-2.5 rounded-xs hover:bg-gray-50/80 block"
               >
-                <div className="sm:col-span-5 relative overflow-hidden aspect-[16/10] bg-gray-100 dark:bg-gray-900 block">
+                <div className="sm:col-span-5 relative overflow-hidden aspect-[16/10] bg-gray-100 block">
                   <img
                     src={ARTICLES_DATA[1].image}
                     alt={`Artigo de leitura: ${ARTICLES_DATA[1].title}`}
@@ -739,7 +739,7 @@ export default function HomePage() {
                   </div>
                 </div>
                 <div className="sm:col-span-7 flex flex-col justify-start">
-                  <h3 className="text-sm xs:text-base sm:text-lg md:text-xl font-bold text-gray-900 dark:text-white leading-snug group-hover:text-brandBlue transition-colors">
+                  <h3 className="text-sm xs:text-base sm:text-lg md:text-xl font-bold text-gray-900 leading-snug group-hover:text-brandBlue transition-colors">
                     {ARTICLES_DATA[1].title}
                   </h3>
                   <div className="text-xs text-gray-400 mt-1.5 flex items-center space-x-1 flex-wrap">
@@ -749,7 +749,7 @@ export default function HomePage() {
                     </span>
                     <span>- 30 de julho de 2020</span>
                   </div>
-                  <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-1.5 sm:mt-2 line-clamp-2 sm:line-clamp-3 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-gray-600 mt-1.5 sm:mt-2 line-clamp-2 sm:line-clamp-3 leading-relaxed">
                     Guia completo com os melhores computadores portáteis avaliados para produtividade, estudo e desenvolvimento em diversas faixas de preço.
                   </p>
                 </div>
@@ -758,9 +758,9 @@ export default function HomePage() {
               {/* Artigo 3: As 18 práticas */}
               <Link
                 to={`/blog/${ARTICLES_DATA[2].id}`}
-                className="grid grid-cols-1 sm:grid-cols-12 gap-3.5 sm:gap-5 items-start group cursor-pointer transition-transform duration-200 ease-out active:scale-[0.99] p-2 sm:p-2.5 -mx-2 sm:-mx-2.5 rounded-xs hover:bg-gray-50/80 dark:hover:bg-gray-900/40 block"
+                className="grid grid-cols-1 sm:grid-cols-12 gap-3.5 sm:gap-5 items-start group cursor-pointer transition-transform duration-200 ease-out active:scale-[0.99] p-2 sm:p-2.5 -mx-2 sm:-mx-2.5 rounded-xs hover:bg-gray-50/80 block"
               >
-                <div className="sm:col-span-5 relative overflow-hidden aspect-[16/10] bg-gray-100 dark:bg-gray-900 block">
+                <div className="sm:col-span-5 relative overflow-hidden aspect-[16/10] bg-gray-100 block">
                   <img
                     src={ARTICLES_DATA[2].image}
                     alt={`Artigo de leitura: ${ARTICLES_DATA[2].title}`}
@@ -777,7 +777,7 @@ export default function HomePage() {
                   </div>
                 </div>
                 <div className="sm:col-span-7 flex flex-col justify-start">
-                  <h3 className="text-sm xs:text-base sm:text-lg md:text-xl font-bold text-gray-900 dark:text-white leading-snug group-hover:text-brandBlue transition-colors">
+                  <h3 className="text-sm xs:text-base sm:text-lg md:text-xl font-bold text-gray-900 leading-snug group-hover:text-brandBlue transition-colors">
                     {ARTICLES_DATA[2].title}
                   </h3>
                   <div className="text-xs text-gray-400 mt-1.5 flex items-center space-x-1 flex-wrap">
@@ -787,7 +787,7 @@ export default function HomePage() {
                     </span>
                     <span>- 30 de julho de 2020</span>
                   </div>
-                  <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-1.5 sm:mt-2 line-clamp-2 sm:line-clamp-3 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-gray-600 mt-1.5 sm:mt-2 line-clamp-2 sm:line-clamp-3 leading-relaxed">
                     Boas práticas fundamentais de CSS moderno, layout fluido, mobile first e performance para aplicações web modernas.
                   </p>
                 </div>

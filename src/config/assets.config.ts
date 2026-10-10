@@ -7,7 +7,6 @@ import logoSitePng from '../assets/logo/logo-site.png';
 
 export interface LogoAssets {
   primary: string;
-  dark?: string;
   mark: string;
   png: string;
   alt: string;
@@ -30,7 +29,6 @@ export interface AssetsConfig {
 export const ASSETS_CONFIG: AssetsConfig = {
   logo: {
     primary: logoSitePng,
-    dark: logoSitePng,
     png: logoSitePng,
     mark: logoSitePng,
     alt: 'Themarteeny',

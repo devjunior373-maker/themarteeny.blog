@@ -140,8 +140,8 @@ export default function Sidebar() {
             <Link
               key={art.id}
               to={`/blog/${art.id}`}
-              className={`flex items-start space-x-2.5 sm:space-x-3 group cursor-pointer active:bg-gray-100/60 dark:active:bg-gray-900/60 p-1 -mx-1 rounded-xs transition-colors ${
-                idx > 0 ? 'pt-2.5 border-t border-gray-100 dark:border-gray-800/80' : 'pt-1'
+              className={`flex items-start space-x-2.5 sm:space-x-3 group cursor-pointer active:bg-gray-100/60 p-1 -mx-1 rounded-xs transition-colors ${
+                idx > 0 ? 'pt-2.5 border-t border-gray-100' : 'pt-1'
               }`}
             >
               <div className="w-20 sm:w-24 aspect-[16/11] flex-shrink-0 bg-gray-900 overflow-hidden shadow-xs">
@@ -156,10 +156,10 @@ export default function Sidebar() {
                 />
               </div>
               <div className="flex flex-col justify-start flex-1 min-w-0">
-                <h4 className="text-xs font-bold text-gray-900 dark:text-white leading-snug group-hover:text-brandBlue transition-colors line-clamp-2">
+                <h4 className="text-xs font-bold text-gray-900 leading-snug group-hover:text-brandBlue transition-colors line-clamp-2">
                   {art.title}
                 </h4>
-                <div className="text-[10px] text-gray-400 dark:text-gray-400 mt-1 font-normal">
+                <div className="text-[10px] text-gray-400 mt-1 font-normal">
                   {art.date}
                 </div>
               </div>
@@ -170,7 +170,7 @@ export default function Sidebar() {
 
       {/* ÁREA DE ANÚNCIO LATERAL 1 (Área limpa e preparada, sem texto) */}
       <div className="w-full flex items-center justify-center">
-        <div className="w-full min-h-[80px] xs:min-h-[100px] bg-white dark:bg-gray-950 border border-gray-200 dark:border-gray-800/80 transition-colors"></div>
+        <div className="w-full min-h-[80px] xs:min-h-[100px] bg-white border border-gray-200 transition-colors"></div>
       </div>
 
       {/* 3. CATEGORIAS (Estilo Azul Exclusivo) */}
@@ -181,13 +181,13 @@ export default function Sidebar() {
             CATEGORIAS
           </div>
         </div>
-        <div className="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 p-3 sm:p-4 shadow-xs">
+        <div className="bg-gray-50 border border-gray-200 p-3 sm:p-4 shadow-xs">
           <div className="flex flex-col space-y-1.5 sm:space-y-2 text-xs">
             <Link
               to="/categoria/desenvolvimento-web"
-              className="flex items-center justify-between min-h-[42px] py-2 px-2.5 hover:bg-gray-200/60 dark:hover:bg-gray-800/60 active:bg-brandBlue/10 transition-colors group"
+              className="flex items-center justify-between min-h-[42px] py-2 px-2.5 hover:bg-gray-200/60 active:bg-brandBlue/10 transition-colors group"
             >
-              <span className="font-medium text-gray-800 dark:text-gray-200 group-hover:text-brandBlue">
+              <span className="font-medium text-gray-800 group-hover:text-brandBlue">
                 Desenvolvimento Web
               </span>
               <span className="text-[10px] bg-brandBlue/10 text-brandBlue font-bold px-2 py-0.5">
@@ -196,9 +196,9 @@ export default function Sidebar() {
             </Link>
             <Link
               to="/categoria/inteligencia-artificial"
-              className="flex items-center justify-between min-h-[42px] py-2 px-2.5 hover:bg-gray-200/60 dark:hover:bg-gray-800/60 active:bg-brandBlue/10 transition-colors group"
+              className="flex items-center justify-between min-h-[42px] py-2 px-2.5 hover:bg-gray-200/60 active:bg-brandBlue/10 transition-colors group"
             >
-              <span className="font-medium text-gray-800 dark:text-gray-200 group-hover:text-brandBlue">
+              <span className="font-medium text-gray-800 group-hover:text-brandBlue">
                 Inteligência Artificial
               </span>
               <span className="text-[10px] bg-brandBlue/10 text-brandBlue font-bold px-2 py-0.5">
@@ -207,9 +207,9 @@ export default function Sidebar() {
             </Link>
             <Link
               to="/categoria/hardware-macbooks"
-              className="flex items-center justify-between min-h-[42px] py-2 px-2.5 hover:bg-gray-200/60 dark:hover:bg-gray-800/60 active:bg-brandBlue/10 transition-colors group"
+              className="flex items-center justify-between min-h-[42px] py-2 px-2.5 hover:bg-gray-200/60 active:bg-brandBlue/10 transition-colors group"
             >
-              <span className="font-medium text-gray-800 dark:text-gray-200 group-hover:text-brandBlue">
+              <span className="font-medium text-gray-800 group-hover:text-brandBlue">
                 Hardware & MacBooks
               </span>
               <span className="text-[10px] bg-brandBlue/10 text-brandBlue font-bold px-2 py-0.5">
@@ -218,9 +218,9 @@ export default function Sidebar() {
             </Link>
             <Link
               to="/categoria/games-emuladores"
-              className="flex items-center justify-between min-h-[42px] py-2 px-2.5 hover:bg-gray-200/60 dark:hover:bg-gray-800/60 active:bg-brandBlue/10 transition-colors group"
+              className="flex items-center justify-between min-h-[42px] py-2 px-2.5 hover:bg-gray-200/60 active:bg-brandBlue/10 transition-colors group"
             >
-              <span className="font-medium text-gray-800 dark:text-gray-200 group-hover:text-brandBlue">
+              <span className="font-medium text-gray-800 group-hover:text-brandBlue">
                 Games & Emuladores
               </span>
               <span className="text-[10px] bg-brandBlue/10 text-brandBlue font-bold px-2 py-0.5">
@@ -229,9 +229,9 @@ export default function Sidebar() {
             </Link>
             <Link
               to="/categoria/seguranca-cloud"
-              className="flex items-center justify-between min-h-[42px] py-2 px-2.5 hover:bg-gray-200/60 dark:hover:bg-gray-800/60 active:bg-brandBlue/10 transition-colors group"
+              className="flex items-center justify-between min-h-[42px] py-2 px-2.5 hover:bg-gray-200/60 active:bg-brandBlue/10 transition-colors group"
             >
-              <span className="font-medium text-gray-800 dark:text-gray-200 group-hover:text-brandBlue">
+              <span className="font-medium text-gray-800 group-hover:text-brandBlue">
                 Segurança & Cloud
               </span>
               <span className="text-[10px] bg-brandBlue/10 text-brandBlue font-bold px-2 py-0.5">
@@ -253,7 +253,7 @@ export default function Sidebar() {
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Ao Vivo
           </span>
         </div>
-        <div className="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 p-3 sm:p-4 shadow-xs">
+        <div className="bg-gray-50 border border-gray-200 p-3 sm:p-4 shadow-xs">
           <div className="flex flex-col space-y-3 text-xs">
             <Link
               to="/blog/m4-max-performance-tests"
@@ -264,35 +264,35 @@ export default function Sidebar() {
                 <span>•</span>
                 <span className="text-gray-400 font-normal">há 12m</span>
               </div>
-              <p className="font-semibold text-gray-800 dark:text-gray-200 group-hover:text-brandBlue transition-colors leading-snug">
+              <p className="font-semibold text-gray-800 group-hover:text-brandBlue transition-colors leading-snug">
                 Novo review: testes de performance do chip M4 Max surpreendem desenvolvedores.
               </p>
             </Link>
 
             <Link
               to="/blog/vite-6-released"
-              className="group block pt-2.5 border-t border-gray-200/60 dark:border-gray-800/60 active:opacity-80 transition-opacity"
+              className="group block pt-2.5 border-t border-gray-200/60 active:opacity-80 transition-opacity"
             >
               <div className="flex items-center space-x-1.5 text-[10px] text-brandBlue font-bold mb-0.5">
                 <span>ATUALIZAÇÃO</span>
                 <span>•</span>
                 <span className="text-gray-400 font-normal">há 1h</span>
               </div>
-              <p className="font-semibold text-gray-800 dark:text-gray-200 group-hover:text-brandBlue transition-colors leading-snug">
+              <p className="font-semibold text-gray-800 group-hover:text-brandBlue transition-colors leading-snug">
                 Vite 6 lançado com suporte ampliado para módulos ESM e build ultraveloz.
               </p>
             </Link>
 
             <Link
               to="/blog/supabase-integration-serverless"
-              className="group block pt-2.5 border-t border-gray-200/60 dark:border-gray-800/60 active:opacity-80 transition-opacity"
+              className="group block pt-2.5 border-t border-gray-200/60 active:opacity-80 transition-opacity"
             >
               <div className="flex items-center space-x-1.5 text-[10px] text-brandBlue font-bold mb-0.5">
                 <span>DESENVOLVIMENTO</span>
                 <span>•</span>
                 <span className="text-gray-400 font-normal">há 3h</span>
               </div>
-              <p className="font-semibold text-gray-800 dark:text-gray-200 group-hover:text-brandBlue transition-colors leading-snug">
+              <p className="font-semibold text-gray-800 group-hover:text-brandBlue transition-colors leading-snug">
                 Supabase lança integração aprimorada para rotas e segurança serverless.
               </p>
             </Link>
@@ -302,7 +302,7 @@ export default function Sidebar() {
 
       {/* ÁREA DE ANÚNCIO LATERAL 2 (Área limpa e preparada, sem texto) */}
       <div className="w-full flex items-center justify-center">
-        <div className="w-full min-h-[200px] xs:min-h-[250px] bg-white dark:bg-gray-950 border border-gray-200 dark:border-gray-800/80 transition-colors"></div>
+        <div className="w-full min-h-[200px] xs:min-h-[250px] bg-white border border-gray-200 transition-colors"></div>
       </div>
 
       {/* Bloco de Newsletter na Sidebar */}
