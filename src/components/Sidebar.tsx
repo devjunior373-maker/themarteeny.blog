@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ARTICLES_DATA } from '../data/articles.data';
+import AdcashBanner from './AdcashBanner';
 
 export default function Sidebar() {
   const [sidebarEmail, setSidebarEmail] = useState<string>('');
@@ -168,10 +169,12 @@ export default function Sidebar() {
         </div>
       </div>
 
-      {/* ÁREA DE ANÚNCIO LATERAL 1 (Área limpa e preparada, sem texto) */}
-      <div className="w-full flex items-center justify-center">
-        <div className="w-full min-h-[80px] xs:min-h-[100px] bg-white border border-gray-200 transition-colors"></div>
-      </div>
+      {/* ÁREA DE ANÚNCIO LATERAL 1 (Espaço Reservado) */}
+      <AdcashBanner
+        slotName="Barra Lateral - Superior"
+        minHeight="min-h-[80px] xs:min-h-[100px]"
+        className="my-2"
+      />
 
       {/* 3. CATEGORIAS (Estilo Azul Exclusivo) */}
       <div className="flex flex-col">
@@ -300,10 +303,12 @@ export default function Sidebar() {
         </div>
       </div>
 
-      {/* ÁREA DE ANÚNCIO LATERAL 2 (Área limpa e preparada, sem texto) */}
-      <div className="w-full flex items-center justify-center">
-        <div className="w-full min-h-[200px] xs:min-h-[250px] bg-white border border-gray-200 transition-colors"></div>
-      </div>
+      {/* ÁREA DE ANÚNCIO LATERAL 2 (Espaço Reservado) */}
+      <AdcashBanner
+        slotName="Barra Lateral - Inferior"
+        minHeight="min-h-[200px] xs:min-h-[250px]"
+        className="my-2"
+      />
 
       {/* Bloco de Newsletter na Sidebar */}
       <div className="bg-brandBlue text-white p-4 sm:p-5 shadow-xs text-center">

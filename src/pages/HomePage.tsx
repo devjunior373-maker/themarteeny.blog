@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ARTICLES_DATA } from '../data/articles.data';
 import Sidebar from '../components/Sidebar';
+import AdcashBanner from '../components/AdcashBanner';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { useMetaDescription } from '../hooks/useMetaDescription';
 import { useCanonical } from '../hooks/useCanonical';
@@ -42,10 +43,12 @@ export default function HomePage() {
 
   return (
     <main className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6">
-      {/* ESPAÇO DE ANÚNCIO DO GOOGLE (Área limpa e preparada, sem texto) */}
-      <div className="w-full mb-6 sm:mb-8 flex flex-col items-center justify-center">
-        <div className="w-full max-w-4xl min-h-[60px] xs:min-h-[75px] sm:min-h-[90px] md:min-h-[100px] bg-white border border-gray-200 transition-colors"></div>
-      </div>
+      {/* ESPAÇO PUBLICITÁRIO: Banner Superior (Zona Display Ativa Adcash) */}
+      <AdcashBanner
+        zoneId="12294586"
+        slotName="Página Inicial - Topo"
+        className="mb-6 sm:mb-8"
+      />
 
       {/* SECÇÃO DE DESTAQUES (Conforme a Imagem de Referência: Grid 5 Artigos) */}
       <section aria-label="Notícias em Destaque" className="mb-6 sm:mb-8">
@@ -407,10 +410,11 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* ÁREA DE ANÚNCIO (Banner Horizontal limpo e preparado) */}
-          <div className="w-full mt-6 sm:mt-8 flex flex-col items-center justify-center">
-            <div className="w-full max-w-4xl min-h-[60px] xs:min-h-[75px] sm:min-h-[90px] md:min-h-[100px] bg-white border border-gray-200 transition-colors"></div>
-          </div>
+          {/* ÁREA DE ANÚNCIO (Banner Horizontal Intermediário Reservado) */}
+          <AdcashBanner
+            slotName="Página Inicial - Meio"
+            className="mt-6 sm:mt-8"
+          />
 
           {/* SECÇÃO: DICAS E TRUQUES & PROJETO */}
           <div className="mt-8 sm:mt-10 grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">

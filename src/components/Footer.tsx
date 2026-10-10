@@ -1,10 +1,17 @@
 import { Link } from 'react-router-dom';
 import ThemarteenyLogo from '../assets/logo/ThemarteenyLogo';
+import AdcashBanner from './AdcashBanner';
 
 export default function Footer() {
   return (
     <footer className="w-full bg-gray-50 text-gray-600 border-t border-gray-200 py-8 sm:py-10 mt-12 sm:mt-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* ESPAÇO PUBLICITÁRIO: Banner Superior do Rodapé (Espaço Reservado) */}
+        <AdcashBanner
+          slotName="Rodapé"
+          className="mb-6 sm:mb-8"
+        />
+
         {/* Navegação Secundária de Categorias no Rodapé */}
         <div className="pb-6 mb-6 border-b border-gray-200 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <span className="text-[11px] font-bold uppercase tracking-wider text-gray-500">

@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { getArticlesByCategory, slugify } from '../data/articles.data';
 import Sidebar from '../components/Sidebar';
+import AdcashBanner from '../components/AdcashBanner';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { useMetaDescription } from '../hooks/useMetaDescription';
 import { useCanonical } from '../hooks/useCanonical';
@@ -96,6 +97,12 @@ export default function CategoryPage() {
               {articles.length} {articles.length === 1 ? 'artigo' : 'artigos'}
             </span>
           </div>
+
+          {/* ESPAÇO PUBLICITÁRIO: Topo da Categoria (Espaço Reservado) */}
+          <AdcashBanner
+            slotName="Categoria - Topo"
+            className="mb-5"
+          />
 
           {/* Grid de Artigos */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
