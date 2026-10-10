@@ -410,8 +410,9 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* ÁREA DE ANÚNCIO (Banner Horizontal Intermediário Reservado) */}
+          {/* ESPAÇO PUBLICITÁRIO: Banner Intermediário (Zona Display Ativa Adcash) */}
           <AdcashBanner
+            zoneId="12294614"
             slotName="Página Inicial - Meio"
             className="mt-6 sm:mt-8"
           />
