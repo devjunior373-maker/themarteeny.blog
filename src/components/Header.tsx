@@ -49,7 +49,7 @@ export default function Header() {
       part.toLowerCase() === trimmed.toLowerCase() ? (
         <mark
           key={index}
-          className="bg-brandBlue/15 text-brandBlue font-semibold px-0.5 rounded-2xs"
+          className="bg-[#3F6288]/15 text-[#3F6288] font-semibold px-0.5 rounded-2xs"
         >
           {part}
         </mark>
@@ -131,7 +131,7 @@ export default function Header() {
   };
 
   return (
-    <header className="w-full bg-white/95 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50">
+    <header className="w-full bg-[#3F6288] sticky top-0 z-50 border-b border-black/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 sm:h-16 flex items-center justify-between relative">
         {/* ESQUERDA: Menu Hambúrguer (Mobile) + Logótipo + Navegação Editorial */}
         <div className="flex items-center gap-3 sm:gap-4 md:gap-8 lg:gap-10">
@@ -144,9 +144,9 @@ export default function Header() {
                 setIsMobileMenuOpen(!isMobileMenuOpen);
                 setIsSearchOpen(false);
               }}
-              className="text-gray-700 hover:text-brandBlue min-w-[44px] min-h-[44px] p-2.5 flex items-center justify-center focus:outline-none cursor-pointer transition-colors"
+              className="text-white hover:text-white/80 min-w-[44px] min-h-[44px] p-2.5 flex items-center justify-center focus:outline-none cursor-pointer transition-colors"
             >
-              <i className={`fa-solid ${isMobileMenuOpen ? 'fa-xmark text-lg text-brandBlue' : 'fa-bars text-base'}`}></i>
+              <i className={`fa-solid ${isMobileMenuOpen ? 'fa-xmark text-lg text-white' : 'fa-bars text-base text-white'}`}></i>
             </button>
           </div>
 
@@ -159,11 +159,11 @@ export default function Header() {
                 setIsSearchOpen(false);
               }}
             >
-              <ThemarteenyLogo className="h-7 xs:h-7.5 sm:h-8 md:h-8.5 w-auto max-w-[160px] sm:max-w-none" />
+              <ThemarteenyLogo className="h-7 xs:h-7.5 sm:h-8 md:h-8.5 w-auto max-w-[160px] sm:max-w-none brightness-0 invert" />
             </Link>
           </div>
 
-          {/* Navegação Desktop: espaçamento harmonioso logo após o logótipo, com peso 500/600 */}
+          {/* Navegação Desktop: tipografia peso 500/600 com texto e indicadores brancos */}
           <nav aria-label="Navegação Principal" className="hidden md:flex items-center space-x-6 lg:space-x-8 text-xs font-medium tracking-wider">
             {NAV_ITEMS.map((item) => (
               <NavLink
@@ -173,8 +173,8 @@ export default function Header() {
                 className={({ isActive }) =>
                   `uppercase transition-colors cursor-pointer py-2 border-b-2 -mb-[1px] ${
                     isActive
-                      ? 'text-brandBlue border-brandBlue font-semibold'
-                      : 'text-gray-600 hover:text-brandBlue border-transparent'
+                      ? 'text-white border-white font-semibold'
+                      : 'text-white/85 hover:text-white border-transparent'
                   }`
                 }
               >
@@ -196,9 +196,9 @@ export default function Header() {
                 setIsSearchOpen(!isSearchOpen);
                 if (!isSearchOpen) setIsMobileMenuOpen(false);
               }}
-              className="text-gray-600 hover:text-brandBlue transition-colors min-w-[44px] min-h-[44px] p-2.5 flex items-center justify-center focus:outline-none cursor-pointer"
+              className="text-white hover:text-white/80 transition-colors min-w-[44px] min-h-[44px] p-2.5 flex items-center justify-center focus:outline-none cursor-pointer"
             >
-              <i className={`fa-solid ${isSearchOpen ? 'fa-xmark text-base text-brandBlue' : 'fa-magnifying-glass text-sm'}`}></i>
+              <i className={`fa-solid ${isSearchOpen ? 'fa-xmark text-base text-white' : 'fa-magnifying-glass text-sm text-white'}`}></i>
             </button>
 
             {isSearchOpen && (
@@ -252,7 +252,7 @@ export default function Header() {
                       </span>
                       <button
                         type="submit"
-                        className="text-[10px] uppercase tracking-wider text-brandBlue hover:underline font-semibold cursor-pointer"
+                        className="text-[10px] uppercase tracking-wider text-[#3F6288] hover:underline font-semibold cursor-pointer"
                       >
                         Ver todos &rarr;
                       </button>
@@ -281,10 +281,10 @@ export default function Header() {
                             />
                           </div>
                           <div className="flex-1 min-w-0">
-                            <span className="text-[10px] uppercase tracking-wider font-medium text-brandBlue block mb-0.5">
+                            <span className="text-[10px] uppercase tracking-wider font-semibold text-[#3F6288] block mb-0.5">
                               {article.category}
                             </span>
-                            <p className="text-xs font-medium text-gray-900 group-hover:text-brandBlue transition-colors line-clamp-2 leading-snug">
+                            <p className="text-xs font-medium text-gray-900 group-hover:text-[#3F6288] transition-colors line-clamp-2 leading-snug">
                               {highlightMatch(article.title, searchQuery)}
                             </p>
                             <span className="text-[10px] text-gray-500 mt-1 block">
@@ -306,7 +306,7 @@ export default function Header() {
                           <button
                             type="button"
                             onClick={() => setSearchQuery('Macbook')}
-                            className="text-brandBlue hover:underline font-medium cursor-pointer"
+                            className="text-[#3F6288] hover:underline font-medium cursor-pointer"
                           >
                             Macbook
                           </button>
@@ -314,7 +314,7 @@ export default function Header() {
                           <button
                             type="button"
                             onClick={() => setSearchQuery('Laptops')}
-                            className="text-brandBlue hover:underline font-medium cursor-pointer"
+                            className="text-[#3F6288] hover:underline font-medium cursor-pointer"
                           >
                             Laptops
                           </button>
@@ -322,7 +322,7 @@ export default function Header() {
                           <button
                             type="button"
                             onClick={() => setSearchQuery('Opera')}
-                            className="text-brandBlue hover:underline font-medium cursor-pointer"
+                            className="text-[#3F6288] hover:underline font-medium cursor-pointer"
                           >
                             Opera
                           </button>
@@ -347,25 +347,25 @@ export default function Header() {
           />
           <div
             id="mobile-menu"
-            className="md:hidden w-full bg-white border-b border-gray-200 px-4 sm:px-6 py-4 shadow-none relative z-50 transition-all duration-300 animate-fadeIn"
+            className="md:hidden w-full bg-[#3F6288] border-b border-black/15 px-4 sm:px-6 py-4 shadow-md relative z-50 transition-all duration-300 animate-fadeIn"
           >
             {/* Campo de Busca Rápida no Mobile */}
-            <form onSubmit={handleSearchSubmit} className="mb-3.5 pb-3 border-b border-gray-100">
-              <div className="flex items-center bg-gray-100 px-3 py-2 border border-gray-300">
-                <i className="fa-solid fa-magnifying-glass text-gray-400 text-xs mr-2.5"></i>
+            <form onSubmit={handleSearchSubmit} className="mb-3.5 pb-3 border-b border-white/15">
+              <div className="flex items-center bg-white/10 px-3 py-2 border border-white/20 rounded-xs">
+                <i className="fa-solid fa-magnifying-glass text-white/70 text-xs mr-2.5"></i>
                 <input
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Pesquisar por título..."
-                  className="w-full bg-transparent text-xs text-gray-800 placeholder-gray-400 focus:outline-none"
+                  className="w-full bg-transparent text-xs text-white placeholder-white/60 focus:outline-none"
                 />
                 {searchQuery && (
                   <button
                     type="button"
                     onClick={() => setSearchQuery('')}
                     aria-label="Limpar"
-                    className="text-gray-400 hover:text-gray-600 text-xs min-w-[28px] min-h-[28px] flex items-center justify-center cursor-pointer"
+                    className="text-white/70 hover:text-white text-xs min-w-[28px] min-h-[28px] flex items-center justify-center cursor-pointer"
                   >
                     <i className="fa-solid fa-circle-xmark"></i>
                   </button>
@@ -382,10 +382,10 @@ export default function Header() {
                   end={item.to === '/'}
                   onClick={() => setIsMobileMenuOpen(false)}
                   className={({ isActive }) =>
-                    `uppercase transition-colors min-h-[44px] flex items-center justify-between px-3.5 py-2.5 cursor-pointer active:scale-[0.99] ${
+                    `uppercase transition-colors min-h-[44px] flex items-center justify-between px-3.5 py-2.5 cursor-pointer active:scale-[0.99] rounded-xs ${
                       isActive
-                        ? 'bg-brandBlue/10 text-brandBlue font-semibold border-l-4 border-brandBlue'
-                        : 'text-gray-700 hover:bg-gray-50 hover:text-brandBlue'
+                        ? 'bg-white/15 text-white font-semibold'
+                        : 'text-white/85 hover:bg-white/10 hover:text-white'
                     }`
                   }
                 >
@@ -393,7 +393,7 @@ export default function Header() {
                     <>
                       <span>{item.label}</span>
                       {isActive && (
-                        <span className="text-[10px] font-semibold text-brandBlue uppercase tracking-wider">
+                        <span className="text-[10px] font-semibold text-white uppercase tracking-wider bg-white/20 px-2 py-0.5 rounded-2xs">
                           Ativo
                         </span>
                       )}
@@ -404,15 +404,15 @@ export default function Header() {
             </nav>
 
             {/* Links Sociais no Mobile Menu */}
-            <div className="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between">
-              <span className="text-[10px] font-medium text-gray-500 uppercase tracking-wider">
+            <div className="mt-4 pt-3 border-t border-white/15 flex items-center justify-between">
+              <span className="text-[10px] font-medium text-white/75 uppercase tracking-wider">
                 Siga Themarteeny:
               </span>
-              <div className="flex items-center space-x-1 text-sm text-gray-600">
-                <a href="#" aria-label="Facebook" className="min-w-[36px] min-h-[36px] flex items-center justify-center hover:text-[#3b5998]"><i className="fa-brands fa-facebook-f"></i></a>
-                <a href="#" aria-label="Twitter" className="min-w-[36px] min-h-[36px] flex items-center justify-center hover:text-black"><i className="fa-brands fa-x-twitter"></i></a>
-                <a href="#" aria-label="YouTube" className="min-w-[36px] min-h-[36px] flex items-center justify-center hover:text-[#ff0000]"><i className="fa-brands fa-youtube"></i></a>
-                <a href="#" aria-label="Instagram" className="min-w-[36px] min-h-[36px] flex items-center justify-center hover:text-[#e1306c]"><i className="fa-brands fa-instagram"></i></a>
+              <div className="flex items-center space-x-1 text-sm text-white/80">
+                <a href="#" aria-label="Facebook" className="min-w-[36px] min-h-[36px] flex items-center justify-center hover:text-white"><i className="fa-brands fa-facebook-f"></i></a>
+                <a href="#" aria-label="Twitter" className="min-w-[36px] min-h-[36px] flex items-center justify-center hover:text-white"><i className="fa-brands fa-x-twitter"></i></a>
+                <a href="#" aria-label="YouTube" className="min-w-[36px] min-h-[36px] flex items-center justify-center hover:text-white"><i className="fa-brands fa-youtube"></i></a>
+                <a href="#" aria-label="Instagram" className="min-w-[36px] min-h-[36px] flex items-center justify-center hover:text-white"><i className="fa-brands fa-instagram"></i></a>
               </div>
             </div>
           </div>

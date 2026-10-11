@@ -57,7 +57,7 @@ export default function HomePage() {
           {/* LADO ESQUERDO: Card Principal Grande (LCP candidate -> eager + fetchpriority="high") */}
           <Link
             to={`/blog/${ARTICLES_DATA[0].id}`}
-            className="relative group overflow-hidden h-[280px] xs:h-[340px] sm:h-[420px] lg:h-full min-h-[280px] sm:min-h-[380px] lg:min-h-[460px] flex flex-col justify-end bg-gray-900 cursor-pointer block rounded-xs border border-gray-200"
+            className="relative group overflow-hidden h-[280px] xs:h-[340px] sm:h-[420px] lg:h-full min-h-[280px] sm:min-h-[380px] lg:min-h-[460px] flex flex-col justify-end bg-gray-900 cursor-pointer block rounded-xs"
           >
             <div className="absolute inset-0 z-0">
               <img
@@ -97,7 +97,7 @@ export default function HomePage() {
             {/* Card 1 (Superior Esquerdo) */}
             <Link
               to={`/blog/${ARTICLES_DATA[1].id}`}
-              className="relative group overflow-hidden h-[180px] xs:h-[195px] sm:h-[205px] lg:h-[224px] flex flex-col justify-end bg-gray-900 cursor-pointer block rounded-xs border border-gray-200"
+              className="relative group overflow-hidden h-[180px] xs:h-[195px] sm:h-[205px] lg:h-[224px] flex flex-col justify-end bg-gray-900 cursor-pointer block rounded-xs"
             >
               <div className="absolute inset-0 z-0">
                 <img
@@ -130,7 +130,7 @@ export default function HomePage() {
             {/* Card 2 (Superior Direito) */}
             <Link
               to={`/blog/${ARTICLES_DATA[2].id}`}
-              className="relative group overflow-hidden h-[180px] xs:h-[195px] sm:h-[205px] lg:h-[224px] flex flex-col justify-end bg-gray-900 cursor-pointer block rounded-xs border border-gray-200"
+              className="relative group overflow-hidden h-[180px] xs:h-[195px] sm:h-[205px] lg:h-[224px] flex flex-col justify-end bg-gray-900 cursor-pointer block rounded-xs"
             >
               <div className="absolute inset-0 z-0">
                 <img
@@ -163,7 +163,7 @@ export default function HomePage() {
             {/* Card 3 (Inferior Esquerdo) */}
             <Link
               to={`/blog/${ARTICLES_DATA[3].id}`}
-              className="relative group overflow-hidden h-[180px] xs:h-[195px] sm:h-[205px] lg:h-[224px] flex flex-col justify-end bg-gray-900 cursor-pointer block rounded-xs border border-gray-200"
+              className="relative group overflow-hidden h-[180px] xs:h-[195px] sm:h-[205px] lg:h-[224px] flex flex-col justify-end bg-gray-900 cursor-pointer block rounded-xs"
             >
               <div className="absolute inset-0 z-0">
                 <img
@@ -196,7 +196,7 @@ export default function HomePage() {
             {/* Card 4 (Inferior Direito) */}
             <Link
               to={`/blog/${ARTICLES_DATA[4].id}`}
-              className="relative group overflow-hidden h-[180px] xs:h-[195px] sm:h-[205px] lg:h-[224px] flex flex-col justify-end bg-gray-900 cursor-pointer block rounded-xs border border-gray-200"
+              className="relative group overflow-hidden h-[180px] xs:h-[195px] sm:h-[205px] lg:h-[224px] flex flex-col justify-end bg-gray-900 cursor-pointer block rounded-xs"
             >
               <div className="absolute inset-0 z-0">
                 <img
@@ -242,12 +242,9 @@ export default function HomePage() {
             
             {/* CABEÇALHO DA SECÇÃO: Editorial com traço sobrio */}
             <div className="w-full border-b border-gray-200 flex items-center justify-between pb-2.5 mb-5">
-              <div className="flex items-center space-x-2">
-                <span className="w-1.5 h-4 bg-brandBlue inline-block rounded-xs"></span>
-                <h2 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-gray-900">
-                  Technology
-                </h2>
-              </div>
+              <h2 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-gray-900">
+                Technology
+              </h2>
               <Link
                 to="/categoria/noticias"
                 className="text-xs font-medium text-gray-500 hover:text-brandBlue transition-colors flex items-center gap-1 min-h-[32px]"
@@ -263,7 +260,7 @@ export default function HomePage() {
               {/* 1. ARTIGO PRINCIPAL EM DESTAQUE */}
               <Link
                 to={`/blog/${ARTICLES_DATA[0].id}`}
-                className="relative group cursor-pointer overflow-hidden aspect-[16/10] sm:aspect-[16/8.5] md:aspect-[16/8] flex flex-col justify-end bg-gray-900 block rounded-xs border border-gray-200"
+                className="relative group cursor-pointer overflow-hidden aspect-[16/10] sm:aspect-[16/8.5] md:aspect-[16/8] flex flex-col justify-end bg-gray-900 block rounded-xs"
               >
                 <div className="absolute inset-0 z-0">
                   <img
@@ -297,12 +294,12 @@ export default function HomePage() {
               </Link>
 
               {/* 2. GRELHA DE 3 CARTÕES */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5 mt-5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mt-6">
                 
                 {/* Card 1 */}
                 <Link
                   to={`/blog/${ARTICLES_DATA[1].id}`}
-                  className="group cursor-pointer flex flex-col block bg-white p-3 border border-gray-200 hover:border-gray-300 transition-colors rounded-xs"
+                  className="group cursor-pointer flex flex-col block transition-colors"
                 >
                   <div className="relative w-full aspect-[16/10] bg-gray-100 overflow-hidden rounded-xs">
                     <img
@@ -334,7 +331,7 @@ export default function HomePage() {
                 {/* Card 2 */}
                 <Link
                   to={`/blog/${ARTICLES_DATA[2].id}`}
-                  className="group cursor-pointer flex flex-col block bg-white p-3 border border-gray-200 hover:border-gray-300 transition-colors rounded-xs"
+                  className="group cursor-pointer flex flex-col block transition-colors"
                 >
                   <div className="relative w-full aspect-[16/10] bg-gray-100 overflow-hidden rounded-xs">
                     <img
@@ -366,7 +363,7 @@ export default function HomePage() {
                 {/* Card 3 */}
                 <Link
                   to={`/blog/${ARTICLES_DATA[4].id}`}
-                  className="group cursor-pointer flex flex-col block bg-white p-3 border border-gray-200 hover:border-gray-300 transition-colors rounded-xs"
+                  className="group cursor-pointer flex flex-col block transition-colors"
                 >
                   <div className="relative w-full aspect-[16/10] bg-gray-100 overflow-hidden rounded-xs">
                     <img
@@ -412,12 +409,9 @@ export default function HomePage() {
             {/* COLUNA 1: DICAS E TRUQUES */}
             <div className="flex flex-col">
               <div className="w-full border-b border-gray-200 flex items-center justify-between pb-2 mb-4">
-                <div className="flex items-center space-x-2">
-                  <span className="w-1.5 h-3.5 bg-brandBlue inline-block rounded-xs"></span>
-                  <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-gray-900">
-                    Dicas e Truques
-                  </h3>
-                </div>
+                <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-gray-900">
+                  Dicas e Truques
+                </h3>
                 <Link
                   to="/categoria/artigos"
                   className="text-xs font-medium text-gray-500 hover:text-brandBlue transition-colors flex items-center gap-1 min-h-[32px]"
@@ -430,7 +424,7 @@ export default function HomePage() {
               {/* POST PRINCIPAL EM DESTAQUE */}
               <Link
                 to={`/blog/${ARTICLES_DATA[1].id}`}
-                className="flex flex-col group cursor-pointer mb-4 block bg-white p-3 border border-gray-200 rounded-xs hover:border-gray-300 transition-colors"
+                className="flex flex-col group cursor-pointer mb-4 block transition-colors"
               >
                 <div className="relative overflow-hidden aspect-[16/10] bg-gray-100 block rounded-xs">
                   <img
@@ -459,12 +453,12 @@ export default function HomePage() {
               </Link>
 
               {/* LISTA DE 3 POSTS PEQUENOS */}
-              <div className="flex flex-col divide-y divide-gray-100 bg-white border border-gray-200 rounded-xs p-2">
+              <div className="flex flex-col divide-y divide-gray-100">
                 <Link
                   to={`/blog/${ARTICLES_DATA[2].id}`}
-                  className="py-2.5 px-2 flex items-center space-x-3 group cursor-pointer hover:bg-gray-50 transition-colors rounded-xs block"
+                  className="py-2.5 px-1 flex items-center space-x-3 group cursor-pointer hover:bg-gray-50/70 transition-colors rounded-xs block"
                 >
-                  <div className="w-18 h-14 sm:w-20 sm:h-15 flex-shrink-0 overflow-hidden bg-gray-100 aspect-[4/3] rounded-xs border border-gray-150">
+                  <div className="w-18 h-14 sm:w-20 sm:h-15 flex-shrink-0 overflow-hidden bg-gray-100 aspect-[4/3] rounded-xs">
                     <img
                       src={ARTICLES_DATA[2].image}
                       alt={`Miniatura: ${ARTICLES_DATA[2].title}`}
@@ -487,9 +481,9 @@ export default function HomePage() {
 
                 <Link
                   to={`/blog/${ARTICLES_DATA[3].id}`}
-                  className="py-2.5 px-2 flex items-center space-x-3 group cursor-pointer hover:bg-gray-50 transition-colors rounded-xs block"
+                  className="py-2.5 px-1 flex items-center space-x-3 group cursor-pointer hover:bg-gray-50/70 transition-colors rounded-xs block"
                 >
-                  <div className="w-18 h-14 sm:w-20 sm:h-15 flex-shrink-0 overflow-hidden bg-gray-100 aspect-[4/3] rounded-xs border border-gray-150">
+                  <div className="w-18 h-14 sm:w-20 sm:h-15 flex-shrink-0 overflow-hidden bg-gray-100 aspect-[4/3] rounded-xs">
                     <img
                       src={ARTICLES_DATA[3].image}
                       alt={`Miniatura: ${ARTICLES_DATA[3].title}`}
@@ -512,9 +506,9 @@ export default function HomePage() {
 
                 <Link
                   to={`/blog/${ARTICLES_DATA[4].id}`}
-                  className="py-2.5 px-2 flex items-center space-x-3 group cursor-pointer hover:bg-gray-50 transition-colors rounded-xs block"
+                  className="py-2.5 px-1 flex items-center space-x-3 group cursor-pointer hover:bg-gray-50/70 transition-colors rounded-xs block"
                 >
-                  <div className="w-18 h-14 sm:w-20 sm:h-15 flex-shrink-0 overflow-hidden bg-gray-100 aspect-[4/3] rounded-xs border border-gray-150">
+                  <div className="w-18 h-14 sm:w-20 sm:h-15 flex-shrink-0 overflow-hidden bg-gray-100 aspect-[4/3] rounded-xs">
                     <img
                       src={ARTICLES_DATA[4].image}
                       alt={`Miniatura: ${ARTICLES_DATA[4].title}`}
@@ -540,12 +534,9 @@ export default function HomePage() {
             {/* COLUNA 2: PROJETO */}
             <div className="flex flex-col">
               <div className="w-full border-b border-gray-200 flex items-center justify-between pb-2 mb-4">
-                <div className="flex items-center space-x-2">
-                  <span className="w-1.5 h-3.5 bg-brandBlue inline-block rounded-xs"></span>
-                  <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-gray-900">
-                    Projeto
-                  </h3>
-                </div>
+                <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-gray-900">
+                  Projeto
+                </h3>
                 <Link
                   to="/categoria/startups"
                   className="text-xs font-medium text-gray-500 hover:text-brandBlue transition-colors flex items-center gap-1 min-h-[32px]"
@@ -558,7 +549,7 @@ export default function HomePage() {
               {/* POST PRINCIPAL EM DESTAQUE (PS4) */}
               <Link
                 to="/blog/10-awesome-things-ps4"
-                className="flex flex-col group cursor-pointer mb-4 block bg-white p-3 border border-gray-200 rounded-xs hover:border-gray-300 transition-colors"
+                className="flex flex-col group cursor-pointer mb-4 block transition-colors"
               >
                 <div className="relative overflow-hidden aspect-[16/10] bg-gray-100 block rounded-xs">
                   <img
@@ -587,12 +578,12 @@ export default function HomePage() {
               </Link>
 
               {/* LISTA DE 3 POSTS PEQUENOS */}
-              <div className="flex flex-col divide-y divide-gray-100 bg-white border border-gray-200 rounded-xs p-2">
+              <div className="flex flex-col divide-y divide-gray-100">
                 <Link
                   to="/blog/current-trends-tablet-applications"
-                  className="py-2.5 px-2 flex items-center space-x-3 group cursor-pointer hover:bg-gray-50 transition-colors rounded-xs block"
+                  className="py-2.5 px-1 flex items-center space-x-3 group cursor-pointer hover:bg-gray-50/70 transition-colors rounded-xs block"
                 >
-                  <div className="w-18 h-14 sm:w-20 sm:h-15 flex-shrink-0 overflow-hidden bg-gray-100 aspect-[4/3] rounded-xs border border-gray-150">
+                  <div className="w-18 h-14 sm:w-20 sm:h-15 flex-shrink-0 overflow-hidden bg-gray-100 aspect-[4/3] rounded-xs">
                     <img
                       src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=600&q=80"
                       alt="Tendências atuais e perspectivas futuras para aplicativos em tablets"
@@ -615,9 +606,9 @@ export default function HomePage() {
 
                 <Link
                   to="/blog/apple-jul-announcement-macbooks"
-                  className="py-2.5 px-2 flex items-center space-x-3 group cursor-pointer hover:bg-gray-50 transition-colors rounded-xs block"
+                  className="py-2.5 px-1 flex items-center space-x-3 group cursor-pointer hover:bg-gray-50/70 transition-colors rounded-xs block"
                 >
-                  <div className="w-18 h-14 sm:w-20 sm:h-15 flex-shrink-0 overflow-hidden bg-gray-100 aspect-[4/3] rounded-xs border border-gray-150">
+                  <div className="w-18 h-14 sm:w-20 sm:h-15 flex-shrink-0 overflow-hidden bg-gray-100 aspect-[4/3] rounded-xs">
                     <img
                       src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=600&q=80"
                       alt="Anúncio de julho da Apple: que atualização para os MacBooks"
@@ -640,9 +631,9 @@ export default function HomePage() {
 
                 <Link
                   to={`/blog/${ARTICLES_DATA[0].id}`}
-                  className="py-2.5 px-2 flex items-center space-x-3 group cursor-pointer hover:bg-gray-50 transition-colors rounded-xs block"
+                  className="py-2.5 px-1 flex items-center space-x-3 group cursor-pointer hover:bg-gray-50/70 transition-colors rounded-xs block"
                 >
-                  <div className="w-18 h-14 sm:w-20 sm:h-15 flex-shrink-0 overflow-hidden bg-gray-100 aspect-[4/3] rounded-xs border border-gray-150">
+                  <div className="w-18 h-14 sm:w-20 sm:h-15 flex-shrink-0 overflow-hidden bg-gray-100 aspect-[4/3] rounded-xs">
                     <img
                       src={ARTICLES_DATA[0].image}
                       alt={`Miniatura: ${ARTICLES_DATA[0].title}`}
@@ -669,13 +660,10 @@ export default function HomePage() {
 
           {/* SECÇÃO: LEIA MAIS (Estilo Editorial Limpo) */}
           <div className="mt-8 sm:mt-10 flex flex-col">
-            <div className="w-full border-b border-gray-200 flex items-center justify-between pb-2 mb-5">
-              <div className="flex items-center space-x-2">
-                <span className="w-1.5 h-3.5 bg-brandBlue inline-block rounded-xs"></span>
-                <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-gray-900">
-                  Leia Mais
-                </h3>
-              </div>
+            <div className="w-full border-b border-gray-200 flex items-center justify-between pb-2 mb-2">
+              <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-gray-900">
+                Leia Mais
+              </h3>
               <Link
                 to="/categoria/artigos"
                 className="text-xs font-medium text-gray-500 hover:text-brandBlue transition-colors pb-1 flex items-center gap-1 min-h-[32px]"
@@ -685,13 +673,13 @@ export default function HomePage() {
               </Link>
             </div>
 
-            {/* LISTA VERTICAL DE ARTIGOS */}
-            <div className="flex flex-col space-y-4">
+            {/* LISTA VERTICAL DE ARTIGOS COM SEPARAÇÃO EDITORIAL */}
+            <div className="flex flex-col divide-y divide-gray-100">
               
               {/* Artigo 1 */}
               <Link
                 to={`/blog/${ARTICLES_DATA[0].id}`}
-                className="grid grid-cols-1 sm:grid-cols-12 gap-3.5 sm:gap-4 items-start group cursor-pointer bg-white border border-gray-200 p-3.5 sm:p-4 rounded-xs hover:border-gray-300 transition-colors block"
+                className="grid grid-cols-1 sm:grid-cols-12 gap-3.5 sm:gap-4 items-start group cursor-pointer py-4 transition-colors block"
               >
                 <div className="sm:col-span-5 relative overflow-hidden aspect-[16/10] bg-gray-100 block rounded-xs">
                   <img
@@ -728,7 +716,7 @@ export default function HomePage() {
               {/* Artigo 2 */}
               <Link
                 to={`/blog/${ARTICLES_DATA[1].id}`}
-                className="grid grid-cols-1 sm:grid-cols-12 gap-3.5 sm:gap-4 items-start group cursor-pointer bg-white border border-gray-200 p-3.5 sm:p-4 rounded-xs hover:border-gray-300 transition-colors block"
+                className="grid grid-cols-1 sm:grid-cols-12 gap-3.5 sm:gap-4 items-start group cursor-pointer py-4 transition-colors block"
               >
                 <div className="sm:col-span-5 relative overflow-hidden aspect-[16/10] bg-gray-100 block rounded-xs">
                   <img
@@ -765,7 +753,7 @@ export default function HomePage() {
               {/* Artigo 3 */}
               <Link
                 to={`/blog/${ARTICLES_DATA[2].id}`}
-                className="grid grid-cols-1 sm:grid-cols-12 gap-3.5 sm:gap-4 items-start group cursor-pointer bg-white border border-gray-200 p-3.5 sm:p-4 rounded-xs hover:border-gray-300 transition-colors block"
+                className="grid grid-cols-1 sm:grid-cols-12 gap-3.5 sm:gap-4 items-start group cursor-pointer py-4 transition-colors block"
               >
                 <div className="sm:col-span-5 relative overflow-hidden aspect-[16/10] bg-gray-100 block rounded-xs">
                   <img

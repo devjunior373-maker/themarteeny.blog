@@ -112,7 +112,7 @@ export default function CategoryPage() {
               <Link
                 key={article.id}
                 to={`/blog/${article.id}`}
-                className="group flex flex-col bg-white border border-gray-200 hover:border-gray-300 overflow-hidden rounded-xs transition-colors"
+                className="group flex flex-col bg-white border border-gray-200 overflow-hidden rounded-xs transition-colors"
               >
                 <div className="aspect-[16/10] w-full overflow-hidden bg-gray-100 relative">
                   <img

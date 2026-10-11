@@ -226,7 +226,7 @@ export default function ArticlePage() {
 
           {/* Conteúdo Textual do Artigo */}
           <div className="text-sm sm:text-base text-gray-800 leading-relaxed space-y-5">
-            <p className="font-normal text-gray-800 text-base sm:text-lg leading-relaxed border-l-2 border-brandBlue pl-4 py-1 italic bg-gray-50/60 rounded-r-xs">
+            <p className="font-normal text-gray-800 text-base sm:text-lg leading-relaxed border-l-2 border-gray-300 pl-4 py-1 italic bg-gray-50/60 rounded-r-xs">
               {article.excerpt ||
                 'Descubra como as mais recentes tecnologias e desenvolvimentos impactam o ecossistema digital.'}
             </p>
@@ -300,7 +300,7 @@ export default function ArticlePage() {
               {previousArticle ? (
                 <Link
                   to={`/blog/${previousArticle.id}`}
-                  className="group p-3 border border-gray-200 bg-white hover:border-gray-300 transition-colors flex flex-col justify-between rounded-xs"
+                  className="group p-3 border border-gray-200 bg-white transition-colors flex flex-col justify-between rounded-xs"
                 >
                   <span className="text-[10px] text-gray-400 uppercase font-semibold flex items-center gap-1 mb-1">
                     <i className="fa-solid fa-arrow-left text-[9px]"></i>
@@ -317,7 +317,7 @@ export default function ArticlePage() {
               {nextArticle && (
                 <Link
                   to={`/blog/${nextArticle.id}`}
-                  className="group p-3 border border-gray-200 bg-white hover:border-gray-300 transition-colors flex flex-col justify-between sm:text-right rounded-xs"
+                  className="group p-3 border border-gray-200 bg-white transition-colors flex flex-col justify-between sm:text-right rounded-xs"
                 >
                   <span className="text-[10px] text-gray-400 uppercase font-semibold flex items-center justify-start sm:justify-end gap-1 mb-1">
                     <span>Próximo Artigo</span>
@@ -408,7 +408,7 @@ export default function ArticlePage() {
                 <Link
                   key={rel.id}
                   to={`/blog/${rel.id}`}
-                  className="group block bg-white border border-gray-200 overflow-hidden hover:border-gray-300 transition-colors rounded-xs"
+                  className="group block bg-white border border-gray-200 overflow-hidden transition-colors rounded-xs"
                 >
                   <div className="aspect-[16/10] overflow-hidden bg-gray-100">
                     <img

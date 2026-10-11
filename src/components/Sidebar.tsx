@@ -25,12 +25,9 @@ export default function Sidebar() {
       {/* 1. SIGA-NOS (Editorial sóbrio e limpo) */}
       <div className="flex flex-col">
         <div className="w-full border-b border-gray-200 flex items-center justify-between pb-2 mb-3.5">
-          <div className="flex items-center space-x-2">
-            <span className="w-1.5 h-3.5 bg-brandBlue inline-block rounded-xs"></span>
-            <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-gray-900">
-              Siga-nos
-            </h3>
-          </div>
+          <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-gray-900">
+            Siga-nos
+          </h3>
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-2 gap-2 mt-1">
           <a
@@ -117,19 +114,16 @@ export default function Sidebar() {
       {/* 2. POSTAGENS POPULARES */}
       <div className="flex flex-col">
         <div className="w-full border-b border-gray-200 flex items-center justify-between pb-2 mb-3.5">
-          <div className="flex items-center space-x-2">
-            <span className="w-1.5 h-3.5 bg-brandBlue inline-block rounded-xs"></span>
-            <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-gray-900">
-              Mais Lidos
-            </h3>
-          </div>
+          <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-gray-900">
+            Mais Lidos
+          </h3>
         </div>
         <div className="flex flex-col space-y-3">
           {/* 1º Artigo Popular: Foto com sobreposição limpa */}
           {popularArticles[0] && (
             <Link
               to={`/blog/${popularArticles[0].id}`}
-              className="relative group cursor-pointer overflow-hidden aspect-[16/10] flex flex-col justify-end bg-gray-900 rounded-xs border border-gray-200 block"
+              className="relative group cursor-pointer overflow-hidden aspect-[16/10] flex flex-col justify-end bg-gray-900 rounded-xs block"
             >
               <div className="absolute inset-0 z-0">
                 <img
@@ -161,17 +155,17 @@ export default function Sidebar() {
           )}
 
           {/* Demais Artigos Populares: Estilo lista editorial */}
-          <div className="bg-white border border-gray-200 rounded-xs divide-y divide-gray-100 p-2">
+          <div className="divide-y divide-gray-100">
             {popularArticles.slice(1).map((art, idx) => (
               <Link
                 key={art.id}
                 to={`/blog/${art.id}`}
-                className="flex items-start space-x-3 group cursor-pointer hover:bg-gray-50 p-2 rounded-xs transition-colors"
+                className="flex items-start space-x-3 group cursor-pointer hover:bg-gray-50/70 p-2 rounded-xs transition-colors"
               >
                 <span className="text-xs font-bold text-gray-300 group-hover:text-brandBlue w-4 pt-0.5 select-none">
                   0{idx + 2}
                 </span>
-                <div className="w-16 aspect-[16/11] flex-shrink-0 bg-gray-100 overflow-hidden rounded-xs border border-gray-150">
+                <div className="w-16 aspect-[16/11] flex-shrink-0 bg-gray-100 overflow-hidden rounded-xs">
                   <img
                     src={art.image}
                     alt={`Miniatura do artigo: ${art.title}`}
@@ -206,17 +200,14 @@ export default function Sidebar() {
       {/* 3. CATEGORIAS */}
       <div className="flex flex-col">
         <div className="w-full border-b border-gray-200 flex items-center justify-between pb-2 mb-3.5">
-          <div className="flex items-center space-x-2">
-            <span className="w-1.5 h-3.5 bg-brandBlue inline-block rounded-xs"></span>
-            <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-gray-900">
-              Categorias
-            </h3>
-          </div>
+          <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-gray-900">
+            Categorias
+          </h3>
         </div>
-        <div className="bg-white border border-gray-200 rounded-xs divide-y divide-gray-100 p-1.5">
+        <div className="divide-y divide-gray-100">
           <Link
             to="/categoria/desenvolvimento-web"
-            className="flex items-center justify-between min-h-[38px] py-1.5 px-2.5 hover:bg-gray-50 transition-colors group rounded-xs"
+            className="flex items-center justify-between min-h-[38px] py-1.5 px-2 hover:bg-gray-50/70 transition-colors group rounded-xs"
           >
             <span className="text-xs font-medium text-gray-700 group-hover:text-brandBlue">
               Desenvolvimento Web
@@ -227,7 +218,7 @@ export default function Sidebar() {
           </Link>
           <Link
             to="/categoria/inteligencia-artificial"
-            className="flex items-center justify-between min-h-[38px] py-1.5 px-2.5 hover:bg-gray-50 transition-colors group rounded-xs"
+            className="flex items-center justify-between min-h-[38px] py-1.5 px-2 hover:bg-gray-50/70 transition-colors group rounded-xs"
           >
             <span className="text-xs font-medium text-gray-700 group-hover:text-brandBlue">
               Inteligência Artificial
@@ -238,7 +229,7 @@ export default function Sidebar() {
           </Link>
           <Link
             to="/categoria/hardware-macbooks"
-            className="flex items-center justify-between min-h-[38px] py-1.5 px-2.5 hover:bg-gray-50 transition-colors group rounded-xs"
+            className="flex items-center justify-between min-h-[38px] py-1.5 px-2 hover:bg-gray-50/70 transition-colors group rounded-xs"
           >
             <span className="text-xs font-medium text-gray-700 group-hover:text-brandBlue">
               Hardware & MacBooks
@@ -249,7 +240,7 @@ export default function Sidebar() {
           </Link>
           <Link
             to="/categoria/games-emuladores"
-            className="flex items-center justify-between min-h-[38px] py-1.5 px-2.5 hover:bg-gray-50 transition-colors group rounded-xs"
+            className="flex items-center justify-between min-h-[38px] py-1.5 px-2 hover:bg-gray-50/70 transition-colors group rounded-xs"
           >
             <span className="text-xs font-medium text-gray-700 group-hover:text-brandBlue">
               Games & Emuladores
@@ -260,7 +251,7 @@ export default function Sidebar() {
           </Link>
           <Link
             to="/categoria/seguranca-cloud"
-            className="flex items-center justify-between min-h-[38px] py-1.5 px-2.5 hover:bg-gray-50 transition-colors group rounded-xs"
+            className="flex items-center justify-between min-h-[38px] py-1.5 px-2 hover:bg-gray-50/70 transition-colors group rounded-xs"
           >
             <span className="text-xs font-medium text-gray-700 group-hover:text-brandBlue">
               Segurança & Cloud
@@ -275,20 +266,17 @@ export default function Sidebar() {
       {/* 4. ATUALIZAÇÕES */}
       <div className="flex flex-col">
         <div className="w-full border-b border-gray-200 flex items-center justify-between pb-2 mb-3.5">
-          <div className="flex items-center space-x-2">
-            <span className="w-1.5 h-3.5 bg-brandBlue inline-block rounded-xs"></span>
-            <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-gray-900">
-              Em Tempo Real
-            </h3>
-          </div>
+          <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-gray-900">
+            Em Tempo Real
+          </h3>
           <span className="flex items-center gap-1.5 text-[10px] text-emerald-600 font-semibold uppercase">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Ao Vivo
           </span>
         </div>
-        <div className="bg-white border border-gray-200 rounded-xs p-3.5 divide-y divide-gray-100 text-xs">
+        <div className="divide-y divide-gray-100 text-xs">
           <Link
             to="/blog/m4-max-performance-tests"
-            className="group block pb-2.5 hover:opacity-90 transition-opacity"
+            className="group block py-2.5 px-1 hover:opacity-90 transition-opacity"
           >
             <div className="flex items-center space-x-1.5 text-[10px] text-brandBlue font-semibold mb-1">
               <span>AGORA MESMO</span>
@@ -302,7 +290,7 @@ export default function Sidebar() {
 
           <Link
             to="/blog/vite-6-released"
-            className="group block py-2.5 hover:opacity-90 transition-opacity"
+            className="group block py-2.5 px-1 hover:opacity-90 transition-opacity"
           >
             <div className="flex items-center space-x-1.5 text-[10px] text-brandBlue font-semibold mb-1">
               <span>ATUALIZAÇÃO</span>
@@ -316,7 +304,7 @@ export default function Sidebar() {
 
           <Link
             to="/blog/supabase-integration-serverless"
-            className="group block pt-2.5 hover:opacity-90 transition-opacity"
+            className="group block py-2.5 px-1 hover:opacity-90 transition-opacity"
           >
             <div className="flex items-center space-x-1.5 text-[10px] text-brandBlue font-semibold mb-1">
               <span>DESENVOLVIMENTO</span>
@@ -358,7 +346,7 @@ export default function Sidebar() {
               value={sidebarEmail}
               onChange={(e) => setSidebarEmail(e.target.value)}
               placeholder="O seu e-mail..."
-              className="w-full min-h-[40px] bg-gray-50 border border-gray-200 text-gray-800 placeholder-gray-400 px-3 py-2 text-xs focus:outline-none focus:border-brandBlue rounded-xs"
+              className="w-full min-h-[40px] bg-gray-50 border border-gray-200 text-gray-800 placeholder-gray-400 px-3 py-2 text-xs focus:outline-none focus:border-gray-400 rounded-xs"
             />
             <button
               type="submit"

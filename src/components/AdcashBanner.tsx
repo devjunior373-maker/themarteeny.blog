@@ -96,7 +96,7 @@ export const AdcashBanner: React.FC<AdcashBannerProps> = ({
 
   return (
     <div
-      className={`w-full max-w-full flex flex-col items-center justify-center my-4 sm:my-6 overflow-hidden ${className}`}
+      className={`w-full max-w-full flex flex-col items-center justify-center my-4 sm:my-6 ${className}`}
       aria-label={`Espaço publicitário: ${slotName}`}
     >
       {/* Rótulo discreto conforme a regra 9 */}
@@ -104,14 +104,14 @@ export const AdcashBanner: React.FC<AdcashBannerProps> = ({
         Publicidade
       </span>
 
-      {/* Caixa delimitadora de publicidade com garantia de contenção e responsividade */}
+      {/* Caixa de publicidade perfeitamente integrada no layout, sem bordas visíveis, contornos ou molduras */}
       <div
         ref={containerRef}
         id={`adcash-slot-${zoneId || 'reserved'}-${slotName.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
-        className={`w-full max-w-4xl ${minHeight} bg-white border border-gray-200 flex items-center justify-center overflow-hidden transition-colors`}
+        className={`w-full max-w-4xl ${minHeight} flex items-center justify-center`}
       >
         {!zoneId && (
-          <div className="p-3 text-center text-gray-400 select-none">
+          <div className="py-2.5 px-3 text-center text-gray-400 select-none">
             <span className="text-[11px] font-medium tracking-wide">
               {slotName}
             </span>
