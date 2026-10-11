@@ -6,6 +6,7 @@
 import { useState, useEffect, lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Topbar from './components/Topbar';
+import HeaderBrandArea from './components/HeaderBrandArea';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
@@ -58,6 +59,9 @@ export default function App() {
         <div>
           {/* TOPBAR SUPERIOR */}
           <Topbar />
+
+          {/* ÁREA DE LOGÓTIPO E PUBLICIDADE (140px) */}
+          <HeaderBrandArea />
 
           {/* HEADER PRINCIPAL */}
           <Header />
