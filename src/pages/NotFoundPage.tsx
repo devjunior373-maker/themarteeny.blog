@@ -27,12 +27,12 @@ export default function NotFoundPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 items-start">
         {/* COLUNA ESQUERDA: Erro 404 */}
-        <section className="lg:col-span-2 bg-white border border-gray-200 p-6 sm:p-10 text-center shadow-xs">
-          <div className="w-20 h-20 mx-auto rounded-full bg-blue-50 border-2 border-brandBlue flex items-center justify-center text-brandBlue text-3xl font-extrabold mb-4">
+        <section className="lg:col-span-2 bg-white border border-gray-200 p-8 sm:p-12 text-center rounded-xs">
+          <div className="w-16 h-16 mx-auto rounded-full bg-gray-50 border border-gray-200 flex items-center justify-center text-brandBlue text-2xl font-bold mb-4">
             404
           </div>
 
-          <h1 className="text-xl sm:text-2xl font-extrabold text-gray-900 mb-2">
+          <h1 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">
             Página Não Encontrada
           </h1>
 
@@ -43,14 +43,14 @@ export default function NotFoundPage() {
           <div className="flex flex-wrap items-center justify-center gap-3">
             <Link
               to="/"
-              className="px-5 py-2.5 bg-brandBlue hover:bg-blue-600 text-white text-xs font-semibold uppercase tracking-wider transition-colors inline-flex items-center gap-2"
+              className="px-5 py-2.5 bg-brandBlue hover:opacity-90 text-white text-xs font-semibold uppercase tracking-wider transition-opacity inline-flex items-center gap-2 rounded-xs"
             >
               <i className="fa-solid fa-house text-xs"></i>
               <span>Página Inicial</span>
             </Link>
             <Link
               to="/categoria/noticias"
-              className="px-5 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-800 text-xs font-semibold uppercase tracking-wider transition-colors"
+              className="px-5 py-2.5 bg-white border border-gray-300 hover:border-gray-400 text-gray-700 text-xs font-semibold uppercase tracking-wider transition-colors rounded-xs"
             >
               Ver Notícias
             </Link>

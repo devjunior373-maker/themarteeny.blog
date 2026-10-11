@@ -49,7 +49,7 @@ export default function Header() {
       part.toLowerCase() === trimmed.toLowerCase() ? (
         <mark
           key={index}
-          className="bg-brandBlue/20 text-brandBlue font-extrabold px-0.5"
+          className="bg-brandBlue/15 text-brandBlue font-semibold px-0.5 rounded-2xs"
         >
           {part}
         </mark>
@@ -131,10 +131,10 @@ export default function Header() {
   };
 
   return (
-    <header className="w-full bg-white/95 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50 shadow-xs">
-      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-14 sm:h-16 flex items-center justify-between relative">
-        {/* ESQUERDA: Menu Hambúrguer (Mobile) + Logotipo */}
-        <div className="flex items-center space-x-1.5 sm:space-x-3">
+    <header className="w-full bg-white/95 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 sm:h-16 flex items-center justify-between relative">
+        {/* ESQUERDA: Menu Hambúrguer (Mobile) + Logótipo + Navegação Editorial */}
+        <div className="flex items-center gap-3 sm:gap-4 md:gap-8 lg:gap-10">
           <div className="md:hidden flex items-center">
             <button
               id="mobile-menu-toggle"
@@ -144,45 +144,45 @@ export default function Header() {
                 setIsMobileMenuOpen(!isMobileMenuOpen);
                 setIsSearchOpen(false);
               }}
-              className="text-gray-700 hover:text-brandBlue min-w-[44px] min-h-[44px] p-2.5 flex items-center justify-center focus:outline-none cursor-pointer active:scale-95 transition-all"
+              className="text-gray-700 hover:text-brandBlue min-w-[44px] min-h-[44px] p-2.5 flex items-center justify-center focus:outline-none cursor-pointer transition-colors"
             >
-              <i className={`fa-solid ${isMobileMenuOpen ? 'fa-xmark text-xl text-brandBlue' : 'fa-bars text-lg sm:text-xl'}`}></i>
+              <i className={`fa-solid ${isMobileMenuOpen ? 'fa-xmark text-lg text-brandBlue' : 'fa-bars text-base'}`}></i>
             </button>
           </div>
 
           <div id="logo-container" className="flex items-center">
             <Link
               to="/"
-              className="flex items-center active:opacity-85 transition-opacity"
+              className="flex items-center hover:opacity-90 transition-opacity"
               onClick={() => {
                 setIsMobileMenuOpen(false);
                 setIsSearchOpen(false);
               }}
             >
-              <ThemarteenyLogo className="h-7 xs:h-7.5 sm:h-8 md:h-9 w-auto max-w-[160px] sm:max-w-none" />
+              <ThemarteenyLogo className="h-7 xs:h-7.5 sm:h-8 md:h-8.5 w-auto max-w-[160px] sm:max-w-none" />
             </Link>
           </div>
-        </div>
 
-        {/* CENTRO: Navegação Desktop */}
-        <nav className="hidden md:flex items-center space-x-5 lg:space-x-7 text-xs font-semibold tracking-wide">
-          {NAV_ITEMS.map((item) => (
-            <NavLink
-              key={item.label}
-              to={item.to}
-              end={item.to === '/'}
-              className={({ isActive }) =>
-                `uppercase transition-colors cursor-pointer py-2 ${
-                  isActive
-                    ? 'text-brandBlue font-bold'
-                    : 'text-gray-600 hover:text-brandBlue'
-                }`
-              }
-            >
-              {item.label}
-            </NavLink>
-          ))}
-        </nav>
+          {/* Navegação Desktop: espaçamento harmonioso logo após o logótipo, com peso 500/600 */}
+          <nav aria-label="Navegação Principal" className="hidden md:flex items-center space-x-6 lg:space-x-8 text-xs font-medium tracking-wider">
+            {NAV_ITEMS.map((item) => (
+              <NavLink
+                key={item.label}
+                to={item.to}
+                end={item.to === '/'}
+                className={({ isActive }) =>
+                  `uppercase transition-colors cursor-pointer py-2 border-b-2 -mb-[1px] ${
+                    isActive
+                      ? 'text-brandBlue border-brandBlue font-semibold'
+                      : 'text-gray-600 hover:text-brandBlue border-transparent'
+                  }`
+                }
+              >
+                {item.label}
+              </NavLink>
+            ))}
+          </nav>
+        </div>
 
         {/* DIREITA: Lupa de Busca */}
         <div id="right-actions" className="flex items-center">
@@ -196,9 +196,9 @@ export default function Header() {
                 setIsSearchOpen(!isSearchOpen);
                 if (!isSearchOpen) setIsMobileMenuOpen(false);
               }}
-              className="text-gray-600 hover:text-brandBlue transition-colors min-w-[44px] min-h-[44px] p-2.5 flex items-center justify-center focus:outline-none cursor-pointer active:scale-95"
+              className="text-gray-600 hover:text-brandBlue transition-colors min-w-[44px] min-h-[44px] p-2.5 flex items-center justify-center focus:outline-none cursor-pointer"
             >
-              <i className={`fa-solid ${isSearchOpen ? 'fa-xmark text-lg text-brandBlue' : 'fa-magnifying-glass text-base sm:text-lg'}`}></i>
+              <i className={`fa-solid ${isSearchOpen ? 'fa-xmark text-base text-brandBlue' : 'fa-magnifying-glass text-sm'}`}></i>
             </button>
 
             {isSearchOpen && (
@@ -206,7 +206,7 @@ export default function Header() {
                 ref={searchBoxRef}
                 id="small-search-box"
                 onSubmit={handleSearchSubmit}
-                className="absolute right-0 top-1/2 -translate-y-1/2 flex items-center bg-white border border-brandBlue/40 px-2.5 py-1.5 sm:py-2 w-[calc(100vw-5rem)] max-w-[280px] sm:w-56 md:w-64 z-30 shadow-none animate-fadeIn"
+                className="absolute right-0 top-1/2 -translate-y-1/2 flex items-center bg-white border border-gray-200 px-3 py-1.5 sm:py-2 w-[calc(100vw-5rem)] max-w-[280px] sm:w-64 md:w-72 z-30 shadow-xs animate-fadeIn rounded-xs"
               >
                 <input
                   ref={searchInputRef}
@@ -214,8 +214,8 @@ export default function Header() {
                   id="search-input"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Pesquisar..."
-                  className="w-full bg-transparent text-xs text-gray-800 placeholder-gray-400 focus:outline-none px-1"
+                  placeholder="Pesquisar artigos..."
+                  className="w-full bg-transparent text-xs text-gray-900 placeholder-gray-400 focus:outline-none px-1"
                 />
                 {searchQuery && (
                   <button
@@ -240,11 +240,11 @@ export default function Header() {
                   <i className="fa-solid fa-xmark text-sm"></i>
                 </button>
 
-                {/* Dropdown de Resultados da Filtragem (Sem sombras, limpo e direto) */}
+                {/* Dropdown de Resultados da Filtragem (Editorial limpo) */}
                 {searchQuery.trim().length > 0 && (
-                  <div className="absolute right-0 top-full mt-2 w-[calc(100vw-2.5rem)] max-w-sm sm:w-72 md:w-80 bg-white border border-gray-300 shadow-none z-50 max-h-[70vh] sm:max-h-[360px] overflow-y-auto divide-y divide-gray-100 text-xs">
+                  <div className="absolute right-0 top-full mt-2 w-[calc(100vw-2.5rem)] max-w-sm sm:w-80 md:w-88 bg-white border border-gray-200 shadow-sm z-50 max-h-[70vh] sm:max-h-[380px] overflow-y-auto divide-y divide-gray-100 text-xs rounded-xs">
                     {/* Barra de Contagem */}
-                    <div className="px-3 py-2 bg-gray-50 text-[10px] font-semibold text-gray-500 flex items-center justify-between sticky top-0 z-10">
+                    <div className="px-3.5 py-2.5 bg-gray-50 text-[11px] font-medium text-gray-600 flex items-center justify-between sticky top-0 z-10 border-b border-gray-200">
                       <span>
                         {filteredArticles.length === 1
                           ? '1 artigo encontrado'
@@ -252,7 +252,7 @@ export default function Header() {
                       </span>
                       <button
                         type="submit"
-                        className="text-[9px] uppercase tracking-wider text-brandBlue hover:underline font-bold cursor-pointer"
+                        className="text-[10px] uppercase tracking-wider text-brandBlue hover:underline font-semibold cursor-pointer"
                       >
                         Ver todos &rarr;
                       </button>
@@ -267,9 +267,9 @@ export default function Header() {
                             setIsSearchOpen(false);
                             setSearchQuery('');
                           }}
-                          className="p-2.5 hover:bg-gray-50 active:bg-gray-100 cursor-pointer transition-colors flex items-start space-x-2.5 group text-left block"
+                          className="p-3 hover:bg-gray-50 cursor-pointer transition-colors flex items-start space-x-3 group text-left block"
                         >
-                          <div className="w-12 sm:w-14 aspect-[16/11] flex-shrink-0 bg-gray-200 overflow-hidden">
+                          <div className="w-14 sm:w-16 aspect-[16/11] flex-shrink-0 bg-gray-100 overflow-hidden rounded-xs border border-gray-150">
                             <img
                               src={article.image}
                               alt={`Ilustração do artigo: ${article.title}`}
@@ -280,35 +280,33 @@ export default function Header() {
                               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                             />
                           </div>
-                          <div className="flex flex-col flex-1 min-w-0">
-                            <div className="flex items-center space-x-1.5 mb-0.5">
-                              <span className="bg-brandBlue text-white text-[8px] font-bold px-1.5 py-0.2 uppercase">
-                                {article.category}
-                              </span>
-                              <span className="text-[9px] text-gray-400">
-                                {article.date}
-                              </span>
-                            </div>
-                            <h4 className="text-[11px] sm:text-xs font-bold text-gray-900 group-hover:text-brandBlue transition-colors line-clamp-2 leading-tight">
+                          <div className="flex-1 min-w-0">
+                            <span className="text-[10px] uppercase tracking-wider font-medium text-brandBlue block mb-0.5">
+                              {article.category}
+                            </span>
+                            <p className="text-xs font-medium text-gray-900 group-hover:text-brandBlue transition-colors line-clamp-2 leading-snug">
                               {highlightMatch(article.title, searchQuery)}
-                            </h4>
+                            </p>
+                            <span className="text-[10px] text-gray-500 mt-1 block">
+                              {article.date}
+                            </span>
                           </div>
                         </Link>
                       ))
                     ) : (
-                      <div className="p-4 text-center">
-                        <p className="font-bold text-gray-800 text-xs">
+                      <div className="p-6 text-center">
+                        <p className="font-medium text-gray-800 text-xs">
                           Nenhum artigo encontrado
                         </p>
-                        <p className="text-[10px] text-gray-500 mt-0.5">
+                        <p className="text-[11px] text-gray-500 mt-1">
                           Sem resultados para "{searchQuery}".
                         </p>
-                        <div className="mt-2.5 pt-2 border-t border-gray-100 text-[10px] text-gray-400 flex flex-wrap items-center justify-center gap-1.5">
-                          <span>Ex.:</span>
+                        <div className="mt-3 pt-2.5 border-t border-gray-100 text-[10px] text-gray-500 flex flex-wrap items-center justify-center gap-2">
+                          <span>Sugestões:</span>
                           <button
                             type="button"
                             onClick={() => setSearchQuery('Macbook')}
-                            className="text-brandBlue hover:underline font-semibold cursor-pointer p-0.5"
+                            className="text-brandBlue hover:underline font-medium cursor-pointer"
                           >
                             Macbook
                           </button>
@@ -316,7 +314,7 @@ export default function Header() {
                           <button
                             type="button"
                             onClick={() => setSearchQuery('Laptops')}
-                            className="text-brandBlue hover:underline font-semibold cursor-pointer p-0.5"
+                            className="text-brandBlue hover:underline font-medium cursor-pointer"
                           >
                             Laptops
                           </button>
@@ -324,7 +322,7 @@ export default function Header() {
                           <button
                             type="button"
                             onClick={() => setSearchQuery('Opera')}
-                            className="text-brandBlue hover:underline font-semibold cursor-pointer p-0.5"
+                            className="text-brandBlue hover:underline font-medium cursor-pointer"
                           >
                             Opera
                           </button>
@@ -376,7 +374,7 @@ export default function Header() {
             </form>
 
             {/* Lista de navegação com touch target mínimo de 44px */}
-            <nav className="flex flex-col space-y-1 text-xs font-semibold tracking-wide">
+            <nav className="flex flex-col space-y-1 text-xs font-medium tracking-wide">
               {NAV_ITEMS.map((item) => (
                 <NavLink
                   key={item.label}
@@ -386,7 +384,7 @@ export default function Header() {
                   className={({ isActive }) =>
                     `uppercase transition-colors min-h-[44px] flex items-center justify-between px-3.5 py-2.5 cursor-pointer active:scale-[0.99] ${
                       isActive
-                        ? 'bg-brandBlue/10 text-brandBlue font-bold border-l-4 border-brandBlue'
+                        ? 'bg-brandBlue/10 text-brandBlue font-semibold border-l-4 border-brandBlue'
                         : 'text-gray-700 hover:bg-gray-50 hover:text-brandBlue'
                     }`
                   }
@@ -395,7 +393,7 @@ export default function Header() {
                     <>
                       <span>{item.label}</span>
                       {isActive && (
-                        <span className="text-[10px] font-bold text-brandBlue uppercase tracking-wider">
+                        <span className="text-[10px] font-semibold text-brandBlue uppercase tracking-wider">
                           Ativo
                         </span>
                       )}
@@ -407,7 +405,7 @@ export default function Header() {
 
             {/* Links Sociais no Mobile Menu */}
             <div className="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between">
-              <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">
+              <span className="text-[10px] font-medium text-gray-500 uppercase tracking-wider">
                 Siga Themarteeny:
               </span>
               <div className="flex items-center space-x-1 text-sm text-gray-600">

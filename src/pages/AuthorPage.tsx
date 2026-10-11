@@ -81,13 +81,15 @@ export default function AuthorPage() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 items-start">
         {/* COLUNA ESQUERDA: Artigos do Autor */}
         <section className="lg:col-span-2">
-          {/* Banner de Título com Estilo Azul Exclusivo */}
-          <div className="w-full border-b-2 border-brandBlue flex items-end justify-between mb-5">
-            <div className="bg-brandBlue text-white text-xs sm:text-sm font-bold uppercase px-3.5 sm:px-4 py-1.5 sm:py-2 tracking-wider flex items-center gap-2">
-              <i className="fa-regular fa-user text-xs"></i>
-              AUTOR: {authorName}
+          {/* Cabeçalho do Autor com Estilo Editorial */}
+          <div className="w-full border-b border-gray-200 flex items-center justify-between pb-2.5 mb-5">
+            <div className="flex items-center space-x-2">
+              <span className="w-1.5 h-4 bg-brandBlue inline-block rounded-xs"></span>
+              <h1 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-gray-900">
+                Autor: {authorName}
+              </h1>
             </div>
-            <span className="text-xs text-gray-500 pb-1.5">
+            <span className="text-xs text-gray-500 font-medium">
               {articles.length} {articles.length === 1 ? 'publicação' : 'publicações'}
             </span>
           </div>
@@ -98,9 +100,9 @@ export default function AuthorPage() {
               <Link
                 key={article.id}
                 to={`/blog/${article.id}`}
-                className="group flex flex-col bg-white border border-gray-200 hover:border-brandBlue/50 overflow-hidden shadow-xs transition-colors"
+                className="group flex flex-col bg-white border border-gray-200 hover:border-gray-300 overflow-hidden rounded-xs transition-colors"
               >
-                <div className="aspect-[16/10] w-full overflow-hidden bg-gray-900 relative">
+                <div className="aspect-[16/10] w-full overflow-hidden bg-gray-100 relative">
                   <img
                     src={article.image}
                     alt={`Artigo de ${authorName}: ${article.title}`}
@@ -108,9 +110,9 @@ export default function AuthorPage() {
                     height={312}
                     loading={idx < 2 ? 'eager' : 'lazy'}
                     decoding="async"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300"
                   />
-                  <span className="absolute top-2 left-2 bg-brandBlue text-white text-[9px] font-bold px-2 py-0.5 uppercase tracking-wider">
+                  <span className="absolute top-2.5 left-2.5 bg-brandBlue text-white text-[9px] font-semibold px-2 py-0.5 uppercase tracking-wider rounded-xs">
                     {article.category}
                   </span>
                 </div>
@@ -120,13 +122,13 @@ export default function AuthorPage() {
                     <h2 className="text-xs sm:text-sm font-bold text-gray-900 group-hover:text-brandBlue transition-colors leading-snug line-clamp-2 mb-2">
                       {article.title}
                     </h2>
-                    <p className="text-[11px] sm:text-xs text-gray-600 line-clamp-2 mb-3">
+                    <p className="text-xs text-gray-600 line-clamp-2 mb-3 leading-relaxed">
                       {article.excerpt}
                     </p>
                   </div>
 
-                  <div className="flex items-center justify-between text-[10px] text-gray-500 pt-2 border-t border-gray-100">
-                    <span>{article.category}</span>
+                  <div className="flex items-center justify-between text-[11px] text-gray-400 pt-2.5 border-t border-gray-100">
+                    <span className="text-gray-600 font-medium">{article.category}</span>
                     <span>{article.date}</span>
                   </div>
                 </div>

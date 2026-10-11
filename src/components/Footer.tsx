@@ -4,12 +4,12 @@ import AdcashBanner from './AdcashBanner';
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-gray-50 text-gray-600 border-t border-gray-200 py-8 sm:py-10 mt-12 sm:mt-16">
+    <footer className="w-full bg-white text-gray-600 border-t border-gray-200 py-8 sm:py-12 mt-12 sm:mt-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* ESPAÇO PUBLICITÁRIO: Banner Superior do Rodapé (Espaço Reservado) */}
         <AdcashBanner
           slotName="Rodapé"
-          className="mb-6 sm:mb-8"
+          className="mb-8 sm:mb-10"
         />
 
         {/* Navegação Secundária de Categorias no Rodapé */}
@@ -48,20 +48,20 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-5 sm:gap-6 text-xs">
           {/* Canto Esquerdo: Logo do Blog e Links */}
           <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 text-center sm:text-left">
-            <Link to="/" className="inline-block active:opacity-85 transition-opacity" aria-label="The Marteeny - Página Inicial">
+            <Link to="/" className="inline-block hover:opacity-90 transition-opacity" aria-label="The Marteeny - Página Inicial">
               <ThemarteenyLogo className="h-6 sm:h-7 w-auto shrink-0" />
             </Link>
-            <nav aria-label="Links Institucionais" className="flex flex-wrap items-center justify-center sm:justify-start gap-x-5 sm:gap-x-6 gap-y-2 text-gray-700 font-medium">
-              <Link to="/sobre" className="min-h-[38px] flex items-center hover:text-brandBlue active:text-brandBlue transition-colors py-1 px-1">
+            <nav aria-label="Links Institucionais" className="flex flex-wrap items-center justify-center sm:justify-start gap-x-5 sm:gap-x-6 gap-y-2 text-gray-600 font-medium">
+              <Link to="/sobre" className="hover:text-brandBlue transition-colors py-1">
                 Sobre
               </Link>
-              <Link to="/termos" className="min-h-[38px] flex items-center hover:text-brandBlue active:text-brandBlue transition-colors py-1 px-1">
+              <Link to="/termos" className="hover:text-brandBlue transition-colors py-1">
                 Termos
               </Link>
-              <Link to="/privacidade" className="min-h-[38px] flex items-center hover:text-brandBlue active:text-brandBlue transition-colors py-1 px-1">
+              <Link to="/privacidade" className="hover:text-brandBlue transition-colors py-1">
                 Privacidade
               </Link>
-              <Link to="/contacto" className="min-h-[38px] flex items-center hover:text-brandBlue active:text-brandBlue transition-colors py-1 px-1">
+              <Link to="/contacto" className="hover:text-brandBlue transition-colors py-1">
                 Contacto
               </Link>
             </nav>
@@ -69,7 +69,7 @@ export default function Footer() {
 
           {/* Canto Direito: Direitos autorais e Desenvolvedor com link para autor */}
           <div className="flex flex-col sm:flex-row items-center justify-center md:justify-end gap-1.5 sm:gap-2 text-gray-500 text-center md:text-right">
-            <span>&copy; 2026 Themarteeny.</span>
+            <span>&copy; 2026 The Marteeny. Todos os direitos reservados.</span>
             <span className="hidden sm:inline text-gray-300">•</span>
             <span>
               Desenvolvido por{' '}

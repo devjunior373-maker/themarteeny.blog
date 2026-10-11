@@ -4,6 +4,28 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="color-scheme" content="light" />
+    <!-- Isolamento de erros para scripts de terceiros / redes de anúncios -->
+    <script>
+      window.addEventListener('error', function (event) {
+        if (
+          event.message === 'Script error.' ||
+          (!event.filename && event.lineno === 0) ||
+          (event.filename && (event.filename.includes('acscdn.com') || event.filename.includes('adcash')))
+        ) {
+          event.preventDefault();
+          event.stopImmediatePropagation();
+          return true;
+        }
+      }, true);
+
+      window.addEventListener('unhandledrejection', function (event) {
+        var reason = event.reason;
+        var message = (reason && (reason.message || reason.toString())) || '';
+        if (message.includes('aclib') || message.includes('adcash') || message.includes('acscdn')) {
+          event.preventDefault();
+        }
+      });
+    </script>
     <title>The Marteeny | Tecnologia, IA, Apps, Games e muito mais</title>
     <meta name="description" content="Notícias, artigos, dicas e conteúdos sobre tecnologia, inteligência artificial, apps, games, ferramentas e inovação no The Marteeny." />
     <link rel="canonical" href="https://themarteeny.pages.dev/" />
@@ -11,18 +33,38 @@
     <meta property="og:description" content="Portal de referência em tecnologia, notícias atualizadas, artigos de desenvolvimento e entretenimento digital." />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
+    <!-- Google Fonts: Inter & Newsreader for authentic editorial hierarchy -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet" />
     <!-- Preconnect para origens essenciais de CDN de ícones e imagens críticas -->
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
     <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
     <!-- FontAwesome para os ícones e marcas oficiais -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <!-- Adcash Publicidade - Autotag Zone -->
-    <script id="aclib" type="text/javascript" src="//acscdn.com/script/aclib.js"></script>
+    <!-- Adcash Publicidade - Biblioteca principal ativa para os banners Display -->
+    <script id="aclib" type="text/javascript" crossorigin="anonymous" src="https://acscdn.com/script/aclib.js"></script>
+    <!-- Adcash Autotag Zone (bfbhdispiw) - DESATIVADO TEMPORARIAMENTE para teste de eliminação de pop-ups e redirecionamentos intrusivos
     <script type="text/javascript">
-      aclib.runAutoTag({
-        zoneId: 'bfbhdispiw',
-      });
+      function initAdcashAutoTag() {
+        try {
+          if (typeof aclib !== 'undefined' && typeof aclib.runAutoTag === 'function') {
+            aclib.runAutoTag({
+              zoneId: 'bfbhdispiw',
+            });
+          }
+        } catch (e) {
+          console.warn('[Adcash Autotag]', e);
+        }
+      }
+
+      if (typeof aclib !== 'undefined') {
+        initAdcashAutoTag();
+      } else {
+        window.addEventListener('load', initAdcashAutoTag);
+      }
     </script>
+    -->
   </head>
   <body class="bg-white text-gray-800 font-sans antialiased">
     <div id="root"></div>

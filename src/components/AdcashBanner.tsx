@@ -70,6 +70,9 @@ export const AdcashBanner: React.FC<AdcashBannerProps> = ({
             console.warn('[Adcash Display] Falha ao executar runBanner para zona ${zoneId}:', e);
           }
         `;
+        script.onerror = (e) => {
+          console.warn('[Adcash Display] Erro no script do banner:', e);
+        };
 
         currentContainer.appendChild(script);
       } else if (retryCount < maxRetries) {

@@ -172,46 +172,46 @@ export default function ArticlePage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 items-start">
         {/* COLUNA ESQUERDA: Artigo Principal */}
-        <article className="lg:col-span-2 bg-white border border-gray-200 p-4 sm:p-7 shadow-xs">
+        <article className="lg:col-span-2 bg-white border border-gray-200 p-5 sm:p-8 rounded-xs">
           
           {/* Categoria Badge */}
-          <div className="mb-3">
+          <div className="mb-3.5">
             <Link
               to={`/categoria/${categorySlug}`}
-              className="inline-block bg-brandBlue text-white text-[10px] font-bold px-2.5 py-0.5 uppercase tracking-wider hover:bg-blue-600 transition-colors"
+              className="inline-block bg-brandBlue text-white text-[10px] font-semibold px-2 py-0.5 uppercase tracking-wider rounded-xs hover:opacity-90 transition-opacity"
             >
               {article.category}
             </Link>
           </div>
 
           {/* Título Principal */}
-          <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-gray-900 leading-tight mb-4">
+          <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-gray-900 leading-tight mb-4 tracking-tight">
             {article.title}
           </h1>
 
           {/* Metadados: Autor, Data, Visualizações */}
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-gray-500 pb-4 mb-6 border-b border-gray-100">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-gray-500 pb-4 mb-6 border-b border-gray-200">
             <Link
               to={`/autor/${authorSlug}`}
-              className="flex items-center gap-1.5 hover:text-brandBlue transition-colors font-medium"
+              className="flex items-center gap-1.5 hover:text-brandBlue transition-colors font-medium text-gray-700"
             >
               <i className="fa-regular fa-user text-brandBlue"></i>
               <span>Por {article.author}</span>
             </Link>
             <span className="flex items-center gap-1.5">
-              <i className="fa-regular fa-clock text-brandBlue"></i>
+              <i className="fa-regular fa-clock text-gray-400"></i>
               <span>{article.date}</span>
             </span>
             {article.views && (
               <span className="flex items-center gap-1.5">
-                <i className="fa-solid fa-fire text-brandBlue"></i>
-                <span>{article.views}</span>
+                <i className="fa-solid fa-chart-simple text-gray-400"></i>
+                <span>{article.views} leituras</span>
               </span>
             )}
           </div>
 
           {/* Imagem de Capa do Artigo (LCP da página -> loading="eager", fetchPriority="high") */}
-          <div className="relative aspect-[16/9] w-full bg-gray-900 overflow-hidden mb-6 shadow-xs">
+          <div className="relative aspect-[16/9] w-full bg-gray-900 overflow-hidden mb-6 rounded-xs border border-gray-200">
             <img
               src={article.image}
               alt={`Imagem principal do artigo: ${article.title}`}
@@ -225,8 +225,8 @@ export default function ArticlePage() {
           </div>
 
           {/* Conteúdo Textual do Artigo */}
-          <div className="prose max-w-none text-xs sm:text-sm text-gray-700 leading-relaxed space-y-4">
-            <p className="font-medium text-gray-900 text-sm sm:text-base leading-relaxed border-l-3 border-brandBlue pl-3.5 italic bg-blue-50/40 py-2">
+          <div className="text-sm sm:text-base text-gray-800 leading-relaxed space-y-5">
+            <p className="font-normal text-gray-800 text-base sm:text-lg leading-relaxed border-l-2 border-brandBlue pl-4 py-1 italic bg-gray-50/60 rounded-r-xs">
               {article.excerpt ||
                 'Descubra como as mais recentes tecnologias e desenvolvimentos impactam o ecossistema digital.'}
             </p>
@@ -239,19 +239,19 @@ export default function ArticlePage() {
               Entre os pontos de maior destaque, os dados demonstram ganhos significativos em tempo de resposta e retenção de utilizadores em plataformas que adotam padrões modernos de otimização de renderização e infraestrutura distribuída na nuvem. Para mais análises temáticas deste segmento, confira também nossa cobertura completa na seção de{' '}
               <Link
                 to={`/categoria/${categorySlug}`}
-                className="text-brandBlue font-semibold underline underline-offset-2 hover:text-blue-700 transition-colors"
+                className="text-brandBlue font-semibold underline underline-offset-3 hover:text-blue-700 transition-colors"
               >
                 artigos sobre {article.category}
               </Link>
               .
             </p>
 
-            <div className="bg-gray-50 border border-gray-200 p-4 my-6">
-              <h3 className="font-bold text-gray-900 text-xs sm:text-sm uppercase tracking-wide mb-2 flex items-center gap-2">
-                <i className="fa-solid fa-circle-check text-brandBlue"></i>
+            <div className="bg-gray-50 border border-gray-200 p-4 sm:p-5 rounded-xs my-6">
+              <h3 className="font-bold text-gray-900 text-xs sm:text-sm uppercase tracking-wider mb-2.5 flex items-center gap-2">
+                <i className="fa-solid fa-check text-brandBlue"></i>
                 Destaques da Análise
               </h3>
-              <ul className="list-disc list-inside space-y-1.5 text-xs text-gray-600">
+              <ul className="list-disc list-inside space-y-1.5 text-xs sm:text-sm text-gray-600">
                 <li>Otimizações nativas com suporte ampliado a ambientes modernos.</li>
                 <li>Redução no consumo de memória e aceleração do carregamento.</li>
                 <li>Compatibilidade garantida com padrões abertos da indústria web.</li>
@@ -270,9 +270,9 @@ export default function ArticlePage() {
           />
 
           {/* Cartão de Autor com link para perfil */}
-          <div className="mt-8 p-4 bg-gray-50 border border-gray-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+          <div className="mt-8 p-4 bg-gray-50 border border-gray-200 rounded-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 rounded-full bg-brandBlue/10 text-brandBlue flex items-center justify-center font-bold text-sm shrink-0 border border-brandBlue/30">
+              <div className="w-10 h-10 rounded-full bg-brandBlue text-white flex items-center justify-center font-bold text-sm shrink-0">
                 {article.author.charAt(0).toUpperCase()}
               </div>
               <div>
@@ -300,13 +300,13 @@ export default function ArticlePage() {
               {previousArticle ? (
                 <Link
                   to={`/blog/${previousArticle.id}`}
-                  className="group p-3 border border-gray-200 bg-white hover:border-brandBlue/50 transition-colors flex flex-col justify-between"
+                  className="group p-3 border border-gray-200 bg-white hover:border-gray-300 transition-colors flex flex-col justify-between rounded-xs"
                 >
                   <span className="text-[10px] text-gray-400 uppercase font-semibold flex items-center gap-1 mb-1">
                     <i className="fa-solid fa-arrow-left text-[9px]"></i>
                     <span>Artigo Anterior</span>
                   </span>
-                  <span className="font-bold text-gray-800 group-hover:text-brandBlue transition-colors line-clamp-2">
+                  <span className="font-semibold text-gray-800 group-hover:text-brandBlue transition-colors line-clamp-2">
                     {previousArticle.title}
                   </span>
                 </Link>
@@ -317,13 +317,13 @@ export default function ArticlePage() {
               {nextArticle && (
                 <Link
                   to={`/blog/${nextArticle.id}`}
-                  className="group p-3 border border-gray-200 bg-white hover:border-brandBlue/50 transition-colors flex flex-col justify-between sm:text-right"
+                  className="group p-3 border border-gray-200 bg-white hover:border-gray-300 transition-colors flex flex-col justify-between sm:text-right rounded-xs"
                 >
                   <span className="text-[10px] text-gray-400 uppercase font-semibold flex items-center justify-start sm:justify-end gap-1 mb-1">
                     <span>Próximo Artigo</span>
                     <i className="fa-solid fa-arrow-right text-[9px]"></i>
                   </span>
-                  <span className="font-bold text-gray-800 group-hover:text-brandBlue transition-colors line-clamp-2">
+                  <span className="font-semibold text-gray-800 group-hover:text-brandBlue transition-colors line-clamp-2">
                     {nextArticle.title}
                   </span>
                 </Link>
@@ -340,7 +340,7 @@ export default function ArticlePage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Compartilhar no Facebook"
-                className="w-9 h-9 flex items-center justify-center bg-[#1877F2] text-white hover:opacity-90 transition-opacity active:scale-95"
+                className="w-8 h-8 flex items-center justify-center bg-white border border-gray-200 text-gray-700 hover:text-[#1877F2] hover:border-gray-300 transition-colors rounded-xs"
               >
                 <i className="fa-brands fa-facebook-f text-xs"></i>
               </a>
@@ -349,7 +349,7 @@ export default function ArticlePage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Compartilhar no Twitter"
-                className="w-9 h-9 flex items-center justify-center bg-black text-white hover:opacity-90 transition-opacity active:scale-95"
+                className="w-8 h-8 flex items-center justify-center bg-white border border-gray-200 text-gray-700 hover:text-black hover:border-gray-300 transition-colors rounded-xs"
               >
                 <i className="fa-brands fa-x-twitter text-xs"></i>
               </a>
@@ -358,7 +358,7 @@ export default function ArticlePage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Compartilhar no LinkedIn"
-                className="w-9 h-9 flex items-center justify-center bg-[#0A66C2] text-white hover:opacity-90 transition-opacity active:scale-95"
+                className="w-8 h-8 flex items-center justify-center bg-white border border-gray-200 text-gray-700 hover:text-[#0A66C2] hover:border-gray-300 transition-colors rounded-xs"
               >
                 <i className="fa-brands fa-linkedin-in text-xs"></i>
               </a>
@@ -367,7 +367,7 @@ export default function ArticlePage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Compartilhar no WhatsApp"
-                className="w-9 h-9 flex items-center justify-center bg-[#25D366] text-white hover:opacity-90 transition-opacity active:scale-95"
+                className="w-8 h-8 flex items-center justify-center bg-white border border-gray-200 text-gray-700 hover:text-[#25D366] hover:border-gray-300 transition-colors rounded-xs"
               >
                 <i className="fa-brands fa-whatsapp text-xs"></i>
               </a>
@@ -376,7 +376,7 @@ export default function ArticlePage() {
                 onClick={handleCopyLink}
                 aria-label="Copiar link"
                 title="Copiar link"
-                className="h-9 px-3 flex items-center gap-1.5 bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors text-xs font-medium cursor-pointer"
+                className="h-8 px-3 flex items-center gap-1.5 bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors text-xs font-medium cursor-pointer rounded-xs"
               >
                 <i className="fa-solid fa-link text-xs"></i>
                 <span>{copied ? 'Copiado!' : 'Copiar'}</span>
@@ -385,7 +385,7 @@ export default function ArticlePage() {
 
             <Link
               to="/"
-              className="min-h-[38px] px-4 py-2 bg-brandBlue hover:bg-blue-600 text-white text-xs font-semibold uppercase tracking-wider transition-colors inline-flex items-center gap-1.5"
+              className="min-h-[36px] px-3.5 py-1.5 bg-white border border-gray-300 hover:border-gray-400 text-gray-800 text-xs font-semibold uppercase tracking-wider transition-colors inline-flex items-center gap-1.5 rounded-xs"
             >
               <i className="fa-solid fa-arrow-left text-[10px]"></i>
               <span>Voltar ao Início</span>
@@ -393,12 +393,14 @@ export default function ArticlePage() {
           </div>
 
           {/* ARTIGOS RELACIONADOS */}
-          <div className="mt-10 pt-6 border-t-2 border-brandBlue">
+          <div className="mt-10 pt-6 border-t border-gray-200">
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-brandBlue flex items-center gap-2">
-                <i className="fa-solid fa-newspaper text-xs"></i>
-                Artigos Relacionados
-              </h2>
+              <div className="flex items-center space-x-2">
+                <span className="w-1.5 h-3.5 bg-brandBlue inline-block rounded-xs"></span>
+                <h2 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-gray-900">
+                  Artigos Relacionados
+                </h2>
+              </div>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
@@ -406,9 +408,9 @@ export default function ArticlePage() {
                 <Link
                   key={rel.id}
                   to={`/blog/${rel.id}`}
-                  className="group block bg-gray-50 border border-gray-200 overflow-hidden hover:border-brandBlue/50 transition-colors"
+                  className="group block bg-white border border-gray-200 overflow-hidden hover:border-gray-300 transition-colors rounded-xs"
                 >
-                  <div className="aspect-[16/10] overflow-hidden bg-gray-900">
+                  <div className="aspect-[16/10] overflow-hidden bg-gray-100">
                     <img
                       src={rel.image}
                       alt={`Artigo relacionado: ${rel.title}`}
@@ -419,11 +421,11 @@ export default function ArticlePage() {
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>
-                  <div className="p-2.5">
-                    <span className="text-[9px] text-brandBlue font-bold uppercase">
+                  <div className="p-3">
+                    <span className="text-[9px] text-brandBlue font-semibold uppercase tracking-wider">
                       {rel.category}
                     </span>
-                    <h3 className="text-xs font-bold text-gray-900 line-clamp-2 mt-1 group-hover:text-brandBlue transition-colors leading-snug">
+                    <h3 className="text-xs font-semibold text-gray-900 line-clamp-2 mt-1 group-hover:text-brandBlue transition-colors leading-snug">
                       {rel.title}
                     </h3>
                     <span className="text-[10px] text-gray-400 mt-1.5 block">

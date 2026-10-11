@@ -132,14 +132,16 @@ export default function SearchPage() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 items-start">
         {/* COLUNA ESQUERDA: Resultados da Pesquisa */}
         <section className="lg:col-span-2">
-          {/* Banner de Título com Estilo Azul Exclusivo */}
-          <div className="w-full border-b-2 border-brandBlue flex items-end justify-between mb-4">
-            <div className="bg-brandBlue text-white text-xs sm:text-sm font-bold uppercase px-3.5 sm:px-4 py-1.5 sm:py-2 tracking-wider flex items-center gap-2">
-              <i className="fa-solid fa-magnifying-glass text-xs"></i>
-              PESQUISA {queryParam ? `: "${queryParam}"` : ''}
+          {/* Cabeçalho da Pesquisa com Estilo Editorial */}
+          <div className="w-full border-b border-gray-200 flex items-center justify-between pb-2.5 mb-5">
+            <div className="flex items-center space-x-2">
+              <span className="w-1.5 h-4 bg-brandBlue inline-block rounded-xs"></span>
+              <h1 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-gray-900">
+                Pesquisa {queryParam ? `: "${queryParam}"` : ''}
+              </h1>
             </div>
             {queryParam && (
-              <span className="text-xs text-gray-500 pb-1.5">
+              <span className="text-xs text-gray-500 font-medium">
                 {results.length} {results.length === 1 ? 'resultado' : 'resultados'}
               </span>
             )}
@@ -147,17 +149,17 @@ export default function SearchPage() {
 
           {/* Barra de Pesquisa Integrada na Página */}
           <form onSubmit={handleSearchSubmit} className="mb-6">
-            <div className="flex items-center border border-gray-300 bg-white shadow-none">
+            <div className="flex items-center border border-gray-300 bg-white rounded-xs focus-within:border-brandBlue">
               <input
                 type="text"
                 value={searchInput}
                 onChange={(e) => setSearchInput(e.target.value)}
                 placeholder="Digite palavras-chave, artigos, marcas ou temas..."
-                className="w-full px-4 py-3 text-xs sm:text-sm bg-transparent text-gray-900 placeholder-gray-400 focus:outline-none"
+                className="w-full px-4 py-2.5 text-xs sm:text-sm bg-transparent text-gray-900 placeholder-gray-400 focus:outline-none"
               />
               <button
                 type="submit"
-                className="bg-brandBlue hover:bg-blue-600 text-white px-5 py-3 text-xs font-semibold uppercase tracking-wider transition-colors cursor-pointer shrink-0"
+                className="bg-brandBlue hover:opacity-90 text-white px-5 py-2.5 text-xs font-semibold uppercase tracking-wider transition-opacity cursor-pointer shrink-0 rounded-r-xs"
               >
                 Buscar
               </button>
@@ -172,9 +174,9 @@ export default function SearchPage() {
                   <Link
                     key={article.id}
                     to={`/blog/${article.id}`}
-                    className="group flex flex-col bg-white border border-gray-200 hover:border-brandBlue/50 overflow-hidden shadow-none transition-colors"
+                    className="group flex flex-col bg-white border border-gray-200 hover:border-gray-300 overflow-hidden rounded-xs transition-colors"
                   >
-                    <div className="aspect-[16/10] w-full overflow-hidden bg-gray-900 relative">
+                    <div className="aspect-[16/10] w-full overflow-hidden bg-gray-100 relative">
                       <img
                         src={article.image}
                         alt={`Resultado da pesquisa: ${article.title}`}
@@ -182,9 +184,9 @@ export default function SearchPage() {
                         height={312}
                         loading={idx < 2 ? 'eager' : 'lazy'}
                         decoding="async"
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300"
                       />
-                      <span className="absolute top-2 left-2 bg-brandBlue text-white text-[9px] font-bold px-2 py-0.5 uppercase tracking-wider">
+                      <span className="absolute top-2.5 left-2.5 bg-brandBlue text-white text-[9px] font-semibold px-2 py-0.5 uppercase tracking-wider rounded-xs">
                         {article.category}
                       </span>
                     </div>
@@ -194,13 +196,15 @@ export default function SearchPage() {
                         <h2 className="text-xs sm:text-sm font-bold text-gray-900 group-hover:text-brandBlue transition-colors leading-snug line-clamp-2 mb-2">
                           {highlightMatch(article.title, queryParam)}
                         </h2>
-                        <p className="text-[11px] sm:text-xs text-gray-600 line-clamp-2 mb-3">
+                        <p className="text-xs text-gray-600 line-clamp-2 mb-3 leading-relaxed">
                           {article.excerpt}
                         </p>
                       </div>
 
-                      <div className="flex items-center justify-between text-[10px] text-gray-500 pt-2 border-t border-gray-100">
-                        <span>Por {article.author}</span>
+                      <div className="flex items-center justify-between text-[11px] text-gray-400 pt-2.5 border-t border-gray-100">
+                        <span className="truncate max-w-[120px] text-gray-600 font-medium">
+                          Por {article.author}
+                        </span>
                         <span>{article.date}</span>
                       </div>
                     </div>
@@ -208,13 +212,13 @@ export default function SearchPage() {
                 ))}
               </div>
             ) : (
-              <div className="p-8 text-center bg-gray-50 border border-gray-200">
-                <i className="fa-solid fa-circle-question text-3xl text-gray-400 mb-3 block"></i>
-                <h3 className="font-bold text-gray-800 text-sm mb-1">
-                  Nenhum resultado encontrado para "{queryParam}"
+              <div className="p-8 text-center bg-white border border-gray-200 text-gray-600 rounded-xs">
+                <i className="fa-solid fa-magnifying-glass text-gray-300 text-3xl mb-3 block"></i>
+                <h3 className="font-bold text-gray-900 text-sm mb-1">
+                  Nenhum artigo encontrado
                 </h3>
-                <p className="text-xs text-gray-500 mb-4">
-                  Tente verificar a ortografia ou pesquisar termos mais gerais como "Apple", "Android", "MacBook", "Laptops" ou "Web".
+                <p className="text-xs text-gray-500 max-w-sm mx-auto mb-4">
+                  Não encontramos matérias para "{queryParam}". Tente utilizar palavras-chave mais genéricas.
                 </p>
                 <div className="flex flex-wrap items-center justify-center gap-2">
                   {['Opera', 'MacBook', 'Laptops', 'Vite', 'Android'].map((term) => (
@@ -225,7 +229,7 @@ export default function SearchPage() {
                         setSearchInput(term);
                         setSearchParams({ q: term });
                       }}
-                      className="px-3 py-1 bg-white border border-gray-300 text-xs text-brandBlue hover:border-brandBlue transition-colors cursor-pointer"
+                      className="px-3 py-1 bg-white border border-gray-200 text-xs text-gray-700 hover:text-brandBlue hover:border-gray-300 transition-colors cursor-pointer rounded-xs"
                     >
                       {term}
                     </button>
@@ -234,8 +238,14 @@ export default function SearchPage() {
               </div>
             )
           ) : (
-            <div className="p-8 text-center bg-gray-50 border border-gray-200 text-gray-500 text-xs">
-              Digite um termo na caixa acima para pesquisar entre os artigos do The Marteeny.
+            <div className="p-8 text-center bg-white border border-gray-200 text-gray-600 rounded-xs">
+              <i className="fa-solid fa-keyboard text-gray-300 text-3xl mb-3 block"></i>
+              <h3 className="font-bold text-gray-900 text-sm mb-1">
+                Explore todo o acervo do The Marteeny
+              </h3>
+              <p className="text-xs text-gray-500 max-w-sm mx-auto">
+                Digite um termo no campo de busca acima para encontrar análises, notícias e tutoriais.
+              </p>
             </div>
           )}
         </section>
