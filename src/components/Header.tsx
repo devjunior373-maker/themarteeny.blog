@@ -49,7 +49,7 @@ export default function Header() {
       part.toLowerCase() === trimmed.toLowerCase() ? (
         <mark
           key={index}
-          className="bg-[#3F6288]/15 text-[#3F6288] font-semibold px-0.5 rounded-2xs"
+          className="bg-[#0086FC]/15 text-[#0086FC] font-semibold px-0.5 rounded-2xs"
         >
           {part}
         </mark>
@@ -131,7 +131,7 @@ export default function Header() {
   };
 
   return (
-    <header className="w-full bg-[#3F6288] sticky top-0 z-50 border-b border-black/10">
+    <header className="w-full bg-[#0086FC] sticky top-0 z-50 border-b border-black/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 sm:h-16 flex items-center justify-between relative">
         {/* ESQUERDA: Menu Hambúrguer (Mobile) + Logótipo + Navegação Editorial */}
         <div className="flex items-center gap-3 sm:gap-4 md:gap-8 lg:gap-10">
@@ -252,7 +252,7 @@ export default function Header() {
                       </span>
                       <button
                         type="submit"
-                        className="text-[10px] uppercase tracking-wider text-[#3F6288] hover:underline font-semibold cursor-pointer"
+                        className="text-[10px] uppercase tracking-wider text-[#0086FC] hover:underline font-semibold cursor-pointer"
                       >
                         Ver todos &rarr;
                       </button>
@@ -281,10 +281,10 @@ export default function Header() {
                             />
                           </div>
                           <div className="flex-1 min-w-0">
-                            <span className="text-[10px] uppercase tracking-wider font-semibold text-[#3F6288] block mb-0.5">
+                            <span className="text-[10px] uppercase tracking-wider font-semibold text-[#0086FC] block mb-0.5">
                               {article.category}
                             </span>
-                            <p className="text-xs font-medium text-gray-900 group-hover:text-[#3F6288] transition-colors line-clamp-2 leading-snug">
+                            <p className="text-xs font-medium text-gray-900 group-hover:text-[#0086FC] transition-colors line-clamp-2 leading-snug">
                               {highlightMatch(article.title, searchQuery)}
                             </p>
                             <span className="text-[10px] text-gray-500 mt-1 block">
@@ -306,7 +306,7 @@ export default function Header() {
                           <button
                             type="button"
                             onClick={() => setSearchQuery('Macbook')}
-                            className="text-[#3F6288] hover:underline font-medium cursor-pointer"
+                            className="text-[#0086FC] hover:underline font-medium cursor-pointer"
                           >
                             Macbook
                           </button>
@@ -314,7 +314,7 @@ export default function Header() {
                           <button
                             type="button"
                             onClick={() => setSearchQuery('Laptops')}
-                            className="text-[#3F6288] hover:underline font-medium cursor-pointer"
+                            className="text-[#0086FC] hover:underline font-medium cursor-pointer"
                           >
                             Laptops
                           </button>
@@ -322,7 +322,7 @@ export default function Header() {
                           <button
                             type="button"
                             onClick={() => setSearchQuery('Opera')}
-                            className="text-[#3F6288] hover:underline font-medium cursor-pointer"
+                            className="text-[#0086FC] hover:underline font-medium cursor-pointer"
                           >
                             Opera
                           </button>
@@ -347,7 +347,7 @@ export default function Header() {
           />
           <div
             id="mobile-menu"
-            className="md:hidden w-full bg-[#3F6288] border-b border-black/15 px-4 sm:px-6 py-4 shadow-md relative z-50 transition-all duration-300 animate-fadeIn"
+            className="md:hidden w-full bg-[#0086FC] border-b border-black/15 px-4 sm:px-6 py-4 shadow-md relative z-50 transition-all duration-300 animate-fadeIn"
           >
             {/* Campo de Busca Rápida no Mobile */}
             <form onSubmit={handleSearchSubmit} className="mb-3.5 pb-3 border-b border-white/15">

@@ -121,7 +121,7 @@ export default function ArticlePage() {
               Artigo não encontrado
             </h1>
             <p className="text-sm text-gray-600 mb-6 max-w-md">
-              O artigo com a URL <code className="text-brandBlue font-mono">/blog/{slug}</code> não foi encontrado ou pode ter sido movido.
+              O artigo com a URL <code className="text-brandBlue font-medium">/blog/{slug}</code> não foi encontrado ou pode ter sido movido.
             </p>
             <Link
               to="/"

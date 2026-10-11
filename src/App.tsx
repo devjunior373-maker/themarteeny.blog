@@ -5,6 +5,7 @@
 
 import { useState, useEffect, lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Topbar from './components/Topbar';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
@@ -55,6 +56,9 @@ export default function App() {
       <ScrollToTop />
       <div className="min-h-screen bg-white text-gray-800 font-sans antialiased overflow-x-hidden flex flex-col justify-between">
         <div>
+          {/* TOPBAR SUPERIOR */}
+          <Topbar />
+
           {/* HEADER PRINCIPAL */}
           <Header />
 

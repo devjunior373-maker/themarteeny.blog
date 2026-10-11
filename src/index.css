@@ -1,17 +1,31 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brandBlue: #0f52ba;
-  --color-brand-blue: #0f52ba;
-  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-serif: "Newsreader", Georgia, Cambria, "Times New Roman", serif;
+  --color-brandBlue: #0086FC;
+  --color-brand-blue: #0086FC;
+  --font-sans: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-serif: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-poppins: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+html,
+body,
+#root {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+input,
+textarea,
+select,
+button {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 html {
   color-scheme: light;
   scroll-behavior: smooth;
   -webkit-tap-highlight-color: transparent;
-  font-family: var(--font-sans);
 }
 
 body {
@@ -25,7 +39,7 @@ body {
 /* Subtle, authentic editorial links and text */
 ::selection {
   background-color: #dbeafe;
-  color: #0f52ba;
+  color: #0086FC;
 }
 
 @keyframes fadeIn {
